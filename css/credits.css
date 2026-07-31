@@ -1,0 +1,87 @@
+/* Page des crédits photographiques — s'ajoute à css/page.css. */
+
+#c-outils {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 4px;
+}
+
+#c-recherche {
+  flex: 1;
+  min-width: 200px;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 0.92rem;
+  border: 1px solid #c7cfd6;
+  border-radius: 6px;
+}
+#c-recherche:focus { outline: 2px solid #1d6fb8; outline-offset: 1px; }
+
+#c-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.c-theme-btn {
+  min-height: 38px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 0.84rem;
+  color: var(--bleu-nuit);
+  background: #fff;
+  border: 1px solid #c7cfd6;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.c-theme-btn[aria-pressed="true"] {
+  color: #fff;
+  background: var(--bleu-nuit);
+  border-color: var(--bleu-nuit);
+}
+.c-theme-btn:focus-visible { outline: 2px solid #1d6fb8; outline-offset: 2px; }
+
+#c-compte {
+  margin: 10px 0 6px;
+  font-size: 0.82rem;
+  color: #6b7885;
+}
+
+#c-liste section { margin-top: 20px; }
+#c-liste h2 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #d8dee4;
+}
+
+.c-ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.c-item {
+  padding: 9px 0;
+  border-bottom: 1px solid #e8ecef;
+}
+.c-nom { display: inline; font-size: 0.94rem; }
+.c-theme-tag {
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #4a5560;
+  background: #e9edf1;
+  border-radius: 10px;
+}
+.c-meta {
+  margin-top: 3px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #5a626a;
+}
+.c-titre { font-style: italic; }
+
+@media (max-width: 480px) {
+  #c-recherche { flex-basis: 100%; }
+}

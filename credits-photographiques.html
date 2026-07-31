@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Cette page ne charge AUCUNE image (voir js/credits.js) : elle reste
+       légère et utilisable hors ligne dès que le futur service worker
+       pré-cachera l'interface. script-src 'self' est nécessaire pour
+       construire la liste depuis les mêmes données que les fiches, sans
+       recopier 337 lignes divergentes à la main. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Crédits photographiques — Patrimoine de France</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#1d3557">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/credits.css">
+</head>
+<body>
+  <header><h1>Crédits photographiques</h1></header>
+  <main>
+    <p class="maj">337 photographies, construites ici à partir des mêmes métadonnées
+      que les fiches de l'application. Cette page ne charge aucune image : elle reste
+      légère et consultable hors ligne.</p>
+
+    <div id="c-outils">
+      <input id="c-recherche" type="search" placeholder="Filtrer par nom, auteur ou licence…"
+             autocomplete="off" aria-label="Filtrer les crédits">
+      <nav id="c-themes" aria-label="Filtrer par thème"></nav>
+    </div>
+
+    <p id="c-compte" role="status"></p>
+    <div id="c-liste"></div>
+
+    <a class="retour" href="index.html">← Retour à la carte</a>
+  </main>
+  <script src="js/themes.js"></script>
+  <script src="js/data/chateaux-fr.js"></script>
+  <script src="js/data/religieux-fr.js"></script>
+  <script src="js/data/templiers-fr.js"></script>
+  <script src="js/credits.js"></script>
+</body>
+</html>

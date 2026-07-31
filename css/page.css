@@ -1,0 +1,33 @@
+/* Pages statiques (confidentialité, mentions) */
+:root { --bleu-nuit: #1e3a5f; --texte: #22303e; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color: var(--texte);
+  background: #f5f7fa;
+  line-height: 1.65;
+}
+header {
+  background: var(--bleu-nuit);
+  color: #fff;
+  padding: 18px 20px;
+}
+header h1 { margin: 0; font-size: 20px; }
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+main h2 { font-size: 17px; margin-top: 28px; color: var(--bleu-nuit); }
+a { color: #1d6fb8; }
+.retour {
+  display: inline-block;
+  margin-top: 24px;
+  background: var(--bleu-nuit);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+}
+.maj { color: #6b7885; font-size: 13px; }

@@ -1,0 +1,805 @@
+/*
+ * Patrimoine de France — style commun provisoire (étape 5 sur 9).
+ *
+ * Palette volontairement NEUTRE : ni celle des templiers, ni celle des
+ * châteaux, ni celle des cathédrales. La couleur d'un thème n'apparaît que par
+ * la variable --c, posée par JS (CSSOM) sur chaque épingle et sur la pastille
+ * de la fiche — jamais par un attribut style dans le HTML, que la CSP
+ * « style-src 'self' » bloquerait.
+ *
+ * Ce fichier ne contient AUCUN style thématique définitif : les classes
+ * .pin-<categorie>, les plans SVG (.s-*), les frises (.chrono-*), les figures
+ * de photographies et de vues anciennes viendront à l'étape 8, réparties entre
+ * css/socle.css et css/themes.css.
+ */
+
+:root {
+  --nuit: #2b3038;
+  --gris: #667080;
+  --fond: #eef0f2;
+  --texte: #262b31;
+  --carte: #ffffff;
+  --accent: #5b6b7a;
+  --ombre: 0 2px 12px rgba(25, 30, 38, 0.22);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Barre supérieure ---------- */
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  padding-top: max(8px, env(safe-area-inset-top));
+  background: var(--nuit);
+  color: #fff;
+  box-shadow: var(--ombre);
+  z-index: 1000;
+}
+
+#topbar h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#search {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--texte);
+  background: var(--carte);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+}
+#search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+#btn-about {
+  flex: none;
+  width: 44px; height: 44px;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  cursor: pointer;
+}
+#btn-about:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ---------- Carte ---------- */
+#map {
+  flex: 1;
+  min-height: 0;
+  background: #dfe4e8;
+}
+
+.leaflet-container { font: inherit; }
+
+/* ---------- Étiquettes géographiques ---------- */
+.geo-wrap { background: none; border: none; }
+
+.geo-lbl {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+}
+.geo-lbl em { font-style: normal; opacity: 0.75; }
+
+.lbl-mer, .lbl-cote { color: #21618c; font-style: italic; font-size: 0.85rem; letter-spacing: 0.06em; }
+.lbl-cote { font-size: 0.75rem; }
+.lbl-ile { color: #2b6f5f; font-size: 0.75rem; }
+.lbl-massif { color: #6b5535; font-size: 0.82rem; font-variant: small-caps; letter-spacing: 0.05em; }
+.lbl-sommet { color: #6b5535; font-size: 0.72rem; }
+.lbl-fleuve { color: #2a6fa8; font-size: 0.75rem; font-style: italic; }
+
+/* Densité d'étiquettes selon l'échelle : lisibilité avant exhaustivité. */
+.zoom-far .lbl-cote,
+.zoom-far .lbl-sommet,
+.zoom-far .lbl-ile { display: none; }
+.zoom-near .lbl-mer,
+.zoom-near .lbl-massif { display: none; }
+
+/* ---------- Marqueurs provisoires ---------- */
+.site-wrap { background: none; border: none; }
+
+.site-pin {
+  --c: var(--accent);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  color: #fff;
+  background: var(--c);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+.site-pin svg { width: 15px; height: 15px; fill: currentColor; }
+
+.zoom-far .site-pin { width: 20px; height: 20px; }
+.zoom-far .site-pin svg { width: 12px; height: 12px; }
+
+.pin-top { box-shadow: 0 0 0 2px #d8a13a, 0 1px 4px rgba(0, 0, 0, 0.45); }
+.pin-sel { box-shadow: 0 0 0 3px var(--nuit), 0 1px 6px rgba(0, 0, 0, 0.5); }
+
+/* ---------- Bouton de localisation ---------- */
+.locate-btn {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  color: var(--texte);
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.locate-btn:hover { background: #f4f4f4; }
+
+/* Sur écran tactile, 34 px est sous le minimum recommandé (44 px) : on agrandit
+   la cible et on colore le bouton pour le distinguer des contrôles de zoom. */
+@media (pointer: coarse) {
+  .locate-btn {
+    width: 46px; height: 46px;
+    color: #fff;
+    background: var(--nuit);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  .locate-btn svg { width: 24px; height: 24px; }
+  .locate-btn:hover { background: #3a414a; }
+}
+
+/* ---------- Panneau de fiche ---------- */
+#panel {
+  position: absolute;
+  left: 12px;
+  bottom: 24px;
+  z-index: 900;
+  width: min(380px, calc(100vw - 24px));
+  max-height: min(70vh, 640px);
+  padding: 14px 16px 16px;
+  overflow-y: auto;
+  background: var(--carte);
+  border-radius: 10px;
+  box-shadow: var(--ombre);
+}
+
+/* Sticky : reste visible en haut de la fiche pendant tout le défilement,
+   quelle que soit la longueur du contenu (#panel défile en overflow-y:auto). */
+#p-header {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--carte);
+}
+
+/* 44 px de haut en permanence, et non seulement sous @media (pointer: coarse) :
+   la requête tactile ne se déclenche pas sur les écrans hybrides ni sur les
+   tablettes reconnues comme pointeur fin, où la cible restait à 30 px. */
+#p-close {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nuit);
+  background: #e6ebef;
+  border: 1px solid #ccd5dc;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#p-close:hover { background: #dbe2e8; }
+#p-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Retour aux résultats : présent seulement si la fiche vient d'une liste,
+   distinct du bouton de fermeture (icône et libellé différents). */
+#p-retour {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nuit);
+  background: #e6ebef;
+  border: 1px solid #ccd5dc;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#p-retour:hover { background: #dbe2e8; }
+#p-retour:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#p-retour[hidden] { display: none; }
+
+#p-cat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  color: var(--gris);
+}
+#p-chip {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+#p-theme {
+  padding: 1px 7px;
+  font-weight: 600;
+  color: var(--nuit);
+  background: #e3e7eb;
+  border-radius: 10px;
+}
+#p-top { color: #a5741c; font-weight: 600; }
+
+#panel h2 { margin: 2px 0 2px; font-size: 1.12rem; line-height: 1.25; }
+#panel h3 {
+  margin: 12px 0 3px;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gris);
+}
+#panel p { margin: 0 0 6px; font-size: 0.9rem; line-height: 1.5; }
+#p-lieu { color: var(--gris); font-size: 0.85rem; }
+
+#panel dl { margin: 8px 0 0; font-size: 0.9rem; }
+#panel dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gris);
+}
+#panel dd { margin: 0 0 6px; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 11px;
+  background: #e3e7eb;
+  color: var(--nuit);
+}
+.badge-libre { background: #dcece0; color: #1f5c37; }
+.badge-payant { background: #e6e2f2; color: #453a72; }
+.badge-exterieur { background: #eae6dd; color: #5f5136; }
+.badge-office { background: #dde8ee; color: #1d5064; }
+/* `memoire` n'est pas une condition d'accès : c'est l'absence de vestige à voir.
+   Teinte neutre et désaturée, délibérément en retrait des badges d'accès, pour
+   qu'elle ne se lise pas comme une invitation à la visite. */
+.badge-memoire {
+  background: #eceae7;
+  color: #5a5550;
+  font-weight: 500;
+  font-style: italic;
+}
+
+#p-locate-note {
+  padding: 5px 8px;
+  font-size: 0.83rem;
+  background: #e8f0f7;
+  border-radius: 6px;
+}
+
+/* ---------- Photographie de fiche ----------
+ * 247 fiches sur 584 n'ont pas de photo : #p-figure reste hidden, sans cadre
+ * ni pictogramme de remplacement.
+ * Dimensions réservées par les attributs width/height de l'<img> (620x230) :
+ * la mise en page ne bouge pas pendant le chargement, avant même que l'image
+ * réelle (480 ou 620 px de large selon le thème) ne soit décodée. */
+#p-figure {
+  position: relative;
+  margin: 8px 0 10px;
+}
+#p-figure[hidden] { display: none; }
+#p-figure-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: #e5e0d8;
+  border: 0;
+  border-radius: 8px;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+#p-figure-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#p-figure-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 230px;
+  object-fit: cover;
+  /* Le tiers supérieur cadre mieux les façades et les tours que le centre
+     géométrique — quatre fiches ont un ratio extrême (0,44 à 3,06). */
+  object-position: center 30%;
+}
+#p-figure-caption {
+  margin: 4px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  /* --gris sur fond blanc : contraste 5,01:1, au-dessus du seuil AA (4,5:1). */
+  color: var(--gris);
+}
+#p-figure-caption a { color: inherit; text-decoration: underline; }
+.credit-titre { font-style: italic; }
+
+/* ---------- Dialogue d'agrandissement ---------- */
+#dialogue-photo {
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--carte);
+  box-shadow: var(--ombre);
+}
+#dialogue-photo::backdrop { background: rgba(20, 22, 26, 0.72); }
+#dialogue-photo-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px; height: 44px;
+  font-size: 1.05rem;
+  color: #fff;
+  background: rgba(20, 22, 26, 0.55);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#dialogue-photo-close:hover { background: rgba(20, 22, 26, 0.75); }
+#dialogue-photo-close:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+#dialogue-photo-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 70px);
+  margin: 0 auto;
+  border-radius: 6px;
+}
+#dialogue-photo-credit {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--gris);
+  text-align: center;
+}
+#dialogue-photo-credit a { color: inherit; text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  #dialogue-photo, #dialogue-photo::backdrop { transition: none !important; animation: none !important; }
+}
+
+#p-note {
+  padding: 7px 9px;
+  font-size: 0.83rem;
+  line-height: 1.45;
+  background: #f5f1e4;
+  border-left: 3px solid #c8a95a;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Renvoi explicite vers le même lieu dans un autre thème. Encadré et coloré,
+   pour se distinguer nettement de « Autres sites à proximité », qui ne dit rien
+   de plus qu'une distance. */
+#p-renvoi {
+  margin: 12px 0 4px;
+  padding: 8px 10px 6px;
+  background: #eef2f6;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+}
+#p-renvoi[hidden] { display: none; }
+#p-renvoi h3 {
+  margin: 0 0 4px;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nuit);
+}
+#p-renvoi ul { margin: 0; padding: 0; list-style: none; }
+.rv-item {
+  display: grid;
+  grid-template-columns: 11px 1fr;
+  gap: 1px 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 4px 4px 4px 2px;
+  font: inherit;
+  text-align: left;
+  color: var(--texte);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.rv-item:hover { background: #e2e8ee; }
+.rv-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.rv-chip {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: 9px; height: 9px;
+  margin-top: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.rv-nom { font-size: 0.86rem; font-weight: 600; line-height: 1.3; }
+.rv-meta { font-size: 0.76rem; line-height: 1.3; color: var(--gris); }
+
+/* Voisins : inter-thèmes, donc chaque entrée annonce son thème, sa catégorie et
+   sa distance — une simple liste de noms ne distinguerait pas le château de
+   Josselin de la basilique voisine. */
+#p-nearby ol { margin: 4px 0 0; padding: 0; list-style: none; }
+#p-nearby li { margin-bottom: 2px; }
+.nb-item {
+  display: grid;
+  grid-template-columns: 11px 1fr;
+  gap: 1px 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 5px 6px;
+  font: inherit;
+  text-align: left;
+  color: var(--texte);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.nb-item:hover { background: #eef1f4; }
+.nb-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.nb-chip {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: 9px; height: 9px;
+  margin-top: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.nb-nom { font-size: 0.86rem; font-weight: 600; line-height: 1.3; }
+.nb-meta { font-size: 0.76rem; line-height: 1.3; color: var(--gris); }
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.actions button, .actions a {
+  flex: 1;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 0.86rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.actions button {
+  color: #fff;
+  background: var(--nuit);
+  border: 0;
+}
+.actions a {
+  color: var(--nuit);
+  background: #e3e7eb;
+  border: 1px solid #cfd6dd;
+}
+
+/* ---------- Panneau de résultats ---------- */
+/* Même emplacement que la fiche : les deux ne s'affichent jamais ensemble.
+   Hauteur plafonnée et bouton de fermeture — la carte reste toujours visible. */
+#results {
+  position: absolute;
+  left: 12px;
+  bottom: 24px;
+  z-index: 900;
+  width: min(400px, calc(100vw - 24px));
+  max-height: min(70vh, 640px);
+  padding: 12px 14px 14px;
+  overflow-y: auto;
+  background: var(--carte);
+  border-radius: 10px;
+  box-shadow: var(--ombre);
+}
+
+#r-close {
+  float: right;
+  width: 44px; height: 44px;
+  margin: -6px -6px 0 0;
+  font-size: 1.05rem;
+  color: var(--gris);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#r-close:hover { color: var(--texte); background: #eef1f4; }
+#r-close:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+#r-title {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris);
+}
+
+#r-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.r-item {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 2px 8px;
+  width: 100%;
+  padding: 7px 8px;
+  font: inherit;
+  text-align: left;
+  color: var(--texte);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.r-item:hover { background: #eef1f4; }
+.r-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.r-chip {
+  /* Trois lignes en colonne 2 : nom, thème + catégorie, localisation. */
+  grid-row: 1 / span 3;
+  align-self: start;
+  width: 11px; height: 11px;
+  margin-top: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.r-nom { font-size: 0.9rem; font-weight: 600; line-height: 1.3; }
+/* Thème et catégorie du résultat, dans la couleur de la catégorie : avec deux
+   corpus, la provenance d'un résultat doit se lire d'un coup d'œil. */
+.r-theme {
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--tc, var(--accent));
+}
+.r-meta { font-size: 0.78rem; line-height: 1.35; color: var(--gris); }
+/* Résultat d'où l'on revient après « Retour aux résultats ». */
+.r-item-vu { background: #eef1f4; }
+
+/* ---------- Filtre de thèmes ---------- */
+#theme-filter {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 3px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+#theme-filter[hidden] { display: none; }
+
+.tf-opt { position: relative; display: flex; }
+/* Le bouton radio reste dans le DOM — donc focusable et annoncé par les
+   lecteurs d'écran, avec navigation aux flèches — mais invisible : c'est le
+   libellé qui porte l'apparence. */
+.tf-opt input {
+  position: absolute;
+  width: 100%; height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.tf-opt span {
+  display: flex;
+  align-items: center;
+  /* 44 px en permanence, comme les boutons de fermeture : la barre fait déjà
+     cette hauteur à cause du bouton « ⓘ », l'alignement est donc gratuit. */
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+}
+.tf-opt input:checked + span {
+  color: var(--nuit);
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--tf-c, transparent);
+}
+.tf-opt input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+.tf-opt input:not(:checked):hover + span { background: rgba(255, 255, 255, 0.16); }
+
+/* ---------- Toast ---------- */
+#toast {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 1200;
+  max-width: min(520px, calc(100vw - 24px));
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: #fff;
+  background: rgba(30, 35, 42, 0.94);
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+  cursor: pointer;
+}
+
+#maj-bandeau {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 8px 8px 8px 16px;
+  font-size: 0.88rem;
+  color: #fff;
+  background: #1d3557;
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+}
+#maj-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 14px;
+  font: inherit;
+  font-weight: 600;
+  color: #1d3557;
+  background: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#maj-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Message persistant : plus lisible, et explicitement refermable au doigt. */
+.toast-sticky {
+  text-align: left;
+  line-height: 1.45;
+  padding: 12px 16px;
+}
+
+/* ---------- Dialogue « À propos » ---------- */
+#about {
+  width: min(560px, calc(100vw - 32px));
+  max-height: 84vh;
+  padding: 20px 22px;
+  color: var(--texte);
+  background: var(--carte);
+  border: 0;
+  border-radius: 12px;
+  box-shadow: var(--ombre);
+}
+#about::backdrop { background: rgba(20, 25, 32, 0.55); }
+#about h2 { margin: 0 0 10px; font-size: 1.2rem; }
+#about h3 {
+  margin: 16px 0 4px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--gris);
+}
+#about p, #about li { font-size: 0.9rem; line-height: 1.55; }
+#about ul { margin: 4px 0; padding-left: 20px; }
+#about a { color: var(--accent); }
+
+.avert {
+  padding: 9px 11px;
+  background: #fdf3e0;
+  border-left: 3px solid #d8a13a;
+  border-radius: 0 6px 6px 0;
+}
+
+#about-close {
+  margin-top: 16px;
+  padding: 9px 18px;
+  font: inherit;
+  color: #fff;
+  background: var(--nuit);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------- Accessibilité mobile ---------- */
+@media (max-width: 620px) {
+  #topbar { flex-wrap: wrap; gap: 8px; }
+  #topbar h1 { font-size: 0.98rem; }
+  #search { order: 3; flex-basis: 100%; }
+  /* Le filtre passe sur sa propre ligne et occupe toute la largeur : à 375 px,
+     ses options ne tiendraient pas à côté du titre. À partir de quatre thèmes,
+     une seule rangée déborderait même en pleine largeur — d'où la grille 2×2,
+     qui reste juste quel que soit le nombre de thèmes chargés. */
+  #theme-filter {
+    order: 4;
+    flex-basis: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  /* display:block pour que la pastille occupe toute sa cellule de grille — en
+     flex, le libellé se réduisait à son texte et la cible visible ne
+     correspondait plus à la cible cliquable. */
+  .tf-opt { min-width: 0; display: block; }
+  .tf-opt span {
+    justify-content: center;
+    padding: 0 6px;
+    font-size: 0.78rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    line-height: 44px;
+    white-space: nowrap;
+  }
+  #panel, #results {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    max-height: 62vh;
+  }
+  #toast { bottom: 12px; }
+}
+
+/* #btn-about, #p-close, #r-close, #p-retour et .nb-item font déjà 44 px de haut
+   en permanence : la requête tactile ne complète plus que le confort. */
+@media (pointer: coarse) {
+  #search { padding: 11px 10px; }
+  .actions button, .actions a { padding: 12px 10px; }
+  .tf-opt span { padding: 0 14px; }
+  /* 46 px de haut par résultat : trois lignes de texte + marges. */
+  .r-item { padding: 10px 8px; min-height: 46px; }
+}

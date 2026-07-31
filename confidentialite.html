@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Politique de confidentialité — Patrimoine de France</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#1d3557">
+  <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./icons/favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+  <header><h1>Politique de confidentialité</h1></header>
+  <main>
+    <p class="maj">Application « Patrimoine de France » — version provisoire,
+      dernière mise à jour : 31 juillet 2026. Cette politique sera complétée
+      lorsque l'application sera fonctionnelle ; elle décrit dès à présent les
+      engagements qui régissent sa conception.</p>
+
+    <h2>Résumé</h2>
+    <p>Cette application ne collecte, ne stocke et ne transmet <strong>aucune donnée personnelle</strong>.
+      Elle ne contient ni compte utilisateur, ni publicité, ni outil de mesure d'audience, ni traceur.</p>
+
+    <h2>Géolocalisation (optionnelle)</h2>
+    <p>La fonction « Me localiser » n'est activée que lorsque vous appuyez sur le bouton dédié et que
+      vous accordez l'autorisation demandée par votre appareil. L'autorisation n'est jamais demandée
+      à l'ouverture de l'application. Votre position est alors comparée
+      <strong>localement, sur votre appareil</strong>, aux coordonnées des sites embarquées dans
+      l'application, afin d'afficher le site le plus proche et les distances à vol d'oiseau.
+      Votre position n'est jamais enregistrée ni envoyée à un serveur, ni au développeur, ni à des
+      tiers. Vous pouvez retirer l'autorisation à tout moment dans les réglages de votre appareil ;
+      l'application reste entièrement utilisable sans géolocalisation.</p>
+
+    <h2>Fonds de carte</h2>
+    <p>Pour afficher le fond de carte, l'application télécharge des tuiles cartographiques auprès
+      du service public <a href="https://openfreemap.org" rel="noopener">OpenFreeMap</a>
+      (données © contributeurs OpenStreetMap). Ce service n'utilise ni clé d'accès, ni compte,
+      ni cookie ; comme pour tout chargement web, son serveur voit passer votre adresse IP.
+      Aucune autre requête réseau n'est émise : les fiches des sites, les photographies, les cours
+      d'eau et les étiquettes géographiques sont embarqués dans l'application.</p>
+
+    <h2>Lien « Itinéraire »</h2>
+    <p>Chaque fiche proposera un lien facultatif ouvrant votre application de cartographie
+      (par exemple Google Maps) pour calculer un itinéraire vers le site. Ce lien ne s'ouvre
+      que si vous l'activez ; le service tiers applique alors sa propre politique de
+      confidentialité.</p>
+
+    <h2>Données stockées sur l'appareil</h2>
+    <p>L'application utilise le <em>Cache Storage</em> du navigateur (via un service worker) pour
+      fonctionner hors connexion. Deux catégories de fichiers y sont conservées, séparément :</p>
+    <ul>
+      <li><strong>L'interface et les fiches</strong> (HTML, CSS, JavaScript, les 584 fiches, les
+        cours d'eau) : mises en cache automatiquement dès la première visite, pour permettre une
+        ouverture complète hors connexion.</li>
+      <li><strong>Les photographies</strong> : mises en cache <strong>progressivement</strong>, une
+        à une, uniquement lorsque vous consultez la fiche correspondante. Les 337 photographies ne
+        sont donc <strong>pas toutes disponibles hors ligne dès la première visite</strong> — seules
+        celles déjà ouvertes le sont.</li>
+    </ul>
+    <p>Ce cache ne contient que des fichiers publics de l'application elle-même : aucune donnée
+      personnelle, aucune information sur vos consultations n'y est ajoutée ni transmise. Il peut
+      être supprimé à tout moment depuis les réglages de votre navigateur (Effacer les données de
+      navigation → Images et fichiers en cache) ou en désinstallant l'application.</p>
+    <p>La géolocalisation n'est ni suivie, ni conservée dans ce cache, ni dans aucun autre stockage :
+      elle n'est jamais enregistrée ni envoyée à un serveur (voir « Géolocalisation » ci-dessus).</p>
+
+    <h2>Vos droits</h2>
+    <p>L'application ne traitant aucune donnée personnelle, aucune demande d'accès, de rectification
+      ou de suppression n'est nécessaire. Pour toute question relative à cette politique :</p>
+    <p><strong>Contact :</strong> <a href="mailto:cristo67apps@gmail.com">cristo67apps@gmail.com</a></p>
+
+    <a class="retour" href="index.html">← Retour à la carte</a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- `frame-ancestors` est volontairement absent : le navigateur l'ignore dans
+       une CSP délivrée par <meta> et signale l'erreur en console. Il exige un
+       en-tête HTTP. Voir la note technique du README. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; manifest-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Patrimoine de France — carte interactive des châteaux, cathédrales, églises et sites templiers de France. 584 fiches, hors ligne, sans collecte de données.">
+  <title>Patrimoine de France — châssis</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="theme-color" content="#1d3557">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./icons/favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header id="topbar">
+    <h1>Patrimoine de France</h1>
+    <input id="search" list="site-list" type="search" placeholder="Rechercher un site, une commune, un département…"
+           autocomplete="off" aria-label="Rechercher un site du patrimoine">
+    <datalist id="site-list"></datalist>
+    <button id="btn-about" type="button" aria-label="À propos et confidentialité">ⓘ</button>
+    <!-- Options construites par js/app.js depuis le registre des thèmes :
+         aucun thème n'est écrit dans ce fichier. -->
+    <fieldset id="theme-filter">
+      <legend class="visually-hidden">Thèmes affichés</legend>
+    </fieldset>
+  </header>
+
+  <div id="map" role="application" aria-label="Carte du patrimoine de France"></div>
+
+  <aside id="panel" hidden aria-live="polite">
+    <!-- En-tête sticky : reste visible en permanence pendant le défilement
+         d'une fiche longue, y compris sur smartphone (cf. retour utilisateur :
+         le bouton de fermeture disparaissait en défilant). -->
+    <div id="p-header">
+      <button id="p-close" type="button" aria-label="Fermer la fiche et revenir à la carte">← Carte</button>
+      <!-- Visible uniquement quand la fiche a été ouverte depuis une liste. -->
+      <button id="p-retour" type="button" hidden>↩ Retour aux résultats</button>
+    </div>
+    <p id="p-cat">
+      <span id="p-chip"></span>
+      <span id="p-theme"></span>
+      <span id="p-cat-txt"></span>
+      <span id="p-top" hidden>★ incontournable</span>
+    </p>
+    <h2 id="p-nom"></h2>
+    <p id="p-lieu"></p>
+    <!-- Absente si la fiche n'a pas de photo (247/584) : pas de cadre vide, pas
+         de pictogramme générique. Dimensions réservées via width/height sur
+         l'img pour ne pas déplacer la mise en page pendant le chargement. -->
+    <figure id="p-figure" hidden>
+      <button id="p-figure-btn" type="button" aria-label="Agrandir la photographie">
+        <img id="p-figure-img" width="620" height="230" alt="" loading="lazy" decoding="async">
+      </button>
+      <figcaption id="p-figure-caption"></figcaption>
+    </figure>
+    <p><span id="p-badge" class="badge"></span></p>
+    <p id="p-locate-note" hidden></p>
+    <dl><dt>Époque</dt><dd id="p-epoque"></dd></dl>
+    <!-- Affichés dès que la fiche porte le champ, quel que soit son thème. -->
+    <div id="p-arch-bloc" hidden>
+      <h3>Architectes et maîtres d'œuvre</h3>
+      <p id="p-arch"></p>
+    </div>
+    <h3>Histoire</h3>
+    <p id="p-hist"></p>
+    <div id="p-roles-bloc" hidden>
+      <h3>Rôles historiques</h3>
+      <p id="p-roles"></p>
+    </div>
+    <h3>État actuel</h3>
+    <p id="p-etat"></p>
+    <h3>Visite</h3>
+    <p id="p-visite"></p>
+    <p id="p-note" hidden></p>
+    <!-- Renvoi explicite : même identifiant historique dans un autre thème.
+         Jamais déclenché sur la seule proximité géographique. -->
+    <div id="p-renvoi" hidden role="complementary" aria-labelledby="p-renvoi-titre">
+      <h3 id="p-renvoi-titre">Ce lieu est également présenté dans un autre thème</h3>
+      <ul id="p-renvoi-liste"></ul>
+    </div>
+    <div id="p-nearby" hidden>
+      <h3>Autres sites à proximité</h3>
+      <ol id="p-nearby-list"></ol>
+    </div>
+    <div class="actions">
+      <button id="p-zoom" type="button">Zoomer sur le site</button>
+      <a id="p-route" href="#" target="_blank" rel="noopener">Itinéraire ↗</a>
+    </div>
+  </aside>
+
+  <section id="results" hidden role="region" aria-labelledby="r-title">
+    <button id="r-close" type="button" aria-label="Fermer la liste des résultats">✕</button>
+    <h2 id="r-title"></h2>
+    <ol id="r-list"></ol>
+  </section>
+
+  <div id="toast" role="status" hidden></div>
+
+  <!-- Bandeau de mise à jour du service worker : jamais de rechargement
+       automatique, seulement sur ce clic explicite. -->
+  <div id="maj-bandeau" role="status" hidden>
+    <span>Nouvelle version disponible</span>
+    <button id="maj-btn" type="button">Mettre à jour</button>
+  </div>
+
+  <dialog id="about" aria-labelledby="about-title">
+    <h2 id="about-title">À propos</h2>
+    <p><strong>Patrimoine de France</strong> — version <span id="app-version"></span>.</p>
+    <p id="corpus-info"><strong><span id="corpus-nb"></span> fiches</strong> chargées —
+      <span id="corpus-liste"></span>.</p>
+    <p class="avert">⚠️ Version de développement. Les trois corpus sont intégrés, avec
+      337 photographies et vues anciennes, un mode hors ligne fonctionnel et une identité
+      graphique complète. Restent à venir les typologies et leurs plans, les chronologies,
+      ainsi que la publication (GitHub Pages, paquet Android).</p>
+    <p class="avert">🇫🇷 L'application est limitée au <strong>patrimoine français</strong>.
+      Les sites templiers d'Espagne, du Portugal, de Belgique, d'Allemagne et du
+      Royaume-Uni ne sont pas présentés ici.</p>
+
+    <h3>Où suis-je ?</h3>
+    <p>Pour savoir près de quel site vous vous trouvez, appuyez sur le bouton
+      <strong>⊕ en haut à droite de la carte</strong>. L'autorisation de localisation
+      n'est demandée qu'à ce moment-là, jamais à l'ouverture de l'application.
+      Si rien ne se passe, c'est que la localisation a déjà été refusée pour ce site :
+      appuyez sur l'icône à gauche de l'adresse (cadenas ou ⓘ) → Autorisations →
+      Position → Autoriser, puis rechargez la page.</p>
+    <p id="geo-etat">État de l'autorisation sur cet appareil : <strong id="geo-etat-val">…</strong></p>
+
+    <h3>Confidentialité</h3>
+    <p>L'application ne collecte aucune donnée personnelle. La géolocalisation est optionnelle
+      et traitée uniquement sur votre appareil.
+      <a href="confidentialite.html">Politique de confidentialité complète</a></p>
+
+    <h3>Sources des données</h3>
+    <ul>
+      <li>Fiches des châteaux et des édifices religieux : synthèse documentaire (Wikidata,
+        Wikipédia, bases Mérimée/POP du ministère de la Culture, Centre des monuments
+        nationaux, offices de tourisme) — vérifiez horaires et accès avant toute visite,
+        en particulier les horaires d'offices</li>
+      <li>Fiches des sites templiers : sélection documentée ; les traditions et attributions
+        contestées sont signalées fiche par fiche par un avertissement historiographique</li>
+      <li>Localisation : coordonnées Wikidata (P625), OpenStreetMap/Nominatim, rattachement
+        administratif geo.api.gouv.fr. Certaines fiches sont situées au bourg de la commune,
+        ce qui est indiqué dans la fiche</li>
+      <li>Cours d'eau : Natural Earth (domaine public)</li>
+      <li>Fond de carte : OpenFreeMap © OpenMapTiles — données © contributeurs OpenStreetMap (ODbL)</li>
+      <li>Photographies : 337 images sous licences libres ou domaine public — voir la
+        <a href="credits-photographiques.html">page des crédits photographiques</a></li>
+    </ul>
+    <button id="about-close" type="button">Fermer</button>
+  </dialog>
+
+  <!-- Agrandissement d'une photographie. Les fichiers disponibles mesurent
+       480 ou 620 px de large : ce dialogue ne prétend pas afficher une image
+       en haute définition, seulement à sa taille réelle, sans recadrage. -->
+  <dialog id="dialogue-photo" aria-labelledby="dialogue-photo-titre">
+    <h2 id="dialogue-photo-titre" class="visually-hidden">Photographie en grand</h2>
+    <button id="dialogue-photo-close" type="button" aria-label="Fermer la photographie">✕</button>
+    <img id="dialogue-photo-img" alt="">
+    <p id="dialogue-photo-credit"></p>
+  </dialog>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/maplibre/maplibre-gl.js"></script>
+  <script src="vendor/maplibre/leaflet-maplibre-gl.js"></script>
+  <script src="js/themes.js"></script>
+  <!-- Chaque corpus s'enregistre auprès de PATRIMOINE (js/themes.js) : ajouter un
+       thème = ajouter une ligne ici, sans toucher à js/app.js. -->
+  <script src="js/data/chateaux-fr.js"></script>
+  <script src="js/data/religieux-fr.js"></script>
+  <script src="js/data/templiers-fr.js"></script>
+  <!-- Relations patrimoniales déclarées à la main : deux fiches décrivant le
+       même monument. Sans rapport avec la résolution des URL ambiguës. -->
+  <script src="js/relations.js"></script>
+  <script src="js/geographie-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
