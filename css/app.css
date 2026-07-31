@@ -186,7 +186,11 @@ body {
   position: absolute;
   left: 12px;
   bottom: 24px;
-  z-index: 900;
+  /* Au-dessus de .leaflet-top/.leaflet-bottom (z-index Leaflet natif : 1000),
+     sans quoi l'attribution Leaflet/OpenFreeMap — ancrée en bas à droite de la
+     carte — se dessine par-dessus les boutons de fin de fiche (cf. retour
+     smartphone réel). Elle reste visible dès que la fiche se ferme. */
+  z-index: 1050;
   width: min(380px, calc(100vw - 24px));
   max-height: min(70vh, 640px);
   padding: 14px 16px 16px;
@@ -534,7 +538,8 @@ body {
   position: absolute;
   left: 12px;
   bottom: 24px;
-  z-index: 900;
+  /* Même raison que #panel : au-dessus des contrôles Leaflet (z-index 1000). */
+  z-index: 1050;
   width: min(400px, calc(100vw - 24px));
   max-height: min(70vh, 640px);
   padding: 12px 14px 14px;
@@ -755,39 +760,46 @@ body {
 
 /* ---------- Accessibilité mobile ---------- */
 @media (max-width: 620px) {
-  #topbar { flex-wrap: wrap; gap: 8px; }
-  #topbar h1 { font-size: 0.98rem; }
-  #search { order: 3; flex-basis: 100%; }
-  /* Le filtre passe sur sa propre ligne et occupe toute la largeur : à 375 px,
-     ses options ne tiendraient pas à côté du titre. À partir de quatre thèmes,
-     une seule rangée déborderait même en pleine largeur — d'où la grille 2×2,
-     qui reste juste quel que soit le nombre de thèmes chargés. */
+  /* Bloc supérieur compact : la carte doit rester la zone dominante de l'écran
+     (retour smartphone réel : le bloc titre + recherche + thèmes prenait plus
+     de 45 % de la hauteur visible sur un écran ≈ 360×800). Chaque rangée
+     (titre, recherche, thèmes) est resserrée sans supprimer aucune fonction. */
+  #topbar { flex-wrap: wrap; gap: 6px; padding: 6px 10px; padding-top: max(6px, env(safe-area-inset-top)); }
+  #topbar h1 { font-size: 0.92rem; }
+  #search { order: 3; flex-basis: 100%; min-height: 44px; padding: 0 10px; }
+  /* Une seule rangée compacte, défilable horizontalement, plutôt que la grille
+     2×2 précédente : elle économise à elle seule la hauteur d'une rangée
+     entière (~44 px) sans réduire les cibles tactiles ni cacher un thème dans
+     un menu. Les quatre thèmes restent tous visibles ou atteignables d'un
+     glissement, le thème sélectionné restant repéré par sa pastille. */
   #theme-filter {
     order: 4;
     flex-basis: 100%;
     min-width: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  /* display:block pour que la pastille occupe toute sa cellule de grille — en
-     flex, le libellé se réduisait à son texte et la cible visible ne
-     correspondait plus à la cible cliquable. */
-  .tf-opt { min-width: 0; display: block; }
+  #theme-filter::-webkit-scrollbar { display: none; }
+  .tf-opt { min-width: 0; flex: 0 0 auto; display: block; }
   .tf-opt span {
     justify-content: center;
-    padding: 0 6px;
+    padding: 0 12px;
     font-size: 0.78rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
-    line-height: 44px;
+    line-height: 40px;
     white-space: nowrap;
   }
   #panel, #results {
     left: 8px;
     right: 8px;
-    bottom: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom, 8px));
     width: auto;
     max-height: 62vh;
   }
