@@ -46,7 +46,8 @@ PATRIMOINE.enregistrer({
       hist: "Village du causse du Larzac développé autour d'un château élevé par les Templiers de Sainte-Eulalie, au cœur du vaste domaine agropastoral que l'ordre exploitait sur le plateau. Après 1312, les Hospitaliers prennent la suite et dotent le bourg de ses remparts (1439-1445).",
       etat: "Cité médiévale remarquablement conservée : enceinte complète avec tours, ruelles, hôtels caussenards, église Saint-Christol, ruines du château templier. Classée parmi « Les Plus Beaux Villages de France », au sein du périmètre UNESCO Causses et Cévennes.",
       vis: "payant",
-      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison."
+      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison.",
+      photo: { fichier: "couvertoirade.webp", auteur: "Gourdain~commonswiki (présumé)", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Chateau_couvertoirade.JPG" }
     },
     {
       id: "tpl:sainte-eulalie-cernon",
@@ -64,7 +65,8 @@ PATRIMOINE.enregistrer({
       hist: "Chef-lieu des possessions templières du Larzac à partir du milieu du XIIe siècle, Sainte-Eulalie devint l'une des commanderies les plus riches d'Occident grâce à l'élevage ovin et aux dépendances de La Cavalerie et de La Couvertoirade. Les Hospitaliers lui succédèrent jusqu'à la Révolution.",
       etat: "Ensemble exceptionnel : commanderie avec cour et logis, chapelle romane, village fortifié aux enceintes hospitalières du XVe siècle, place à fontaine. L'un des sites templiers les plus complets de France.",
       vis: "payant",
-      visNote: "Commanderie ouverte à la visite (parcours scénographié, visites guidées, animations estivales) ; village en accès libre. Billets combinés avec les autres sites du Larzac."
+      visNote: "Commanderie ouverte à la visite (parcours scénographié, visites guidées, animations estivales) ; village en accès libre. Billets combinés avec les autres sites du Larzac.",
+      photo: { fichier: "sainte-eulalie-cernon.webp", auteur: "Tylwyth Eldar", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Sainte-Eulalie-de-Cernon_-_Commanderie_02.jpg" }
     },
     {
       id: "tpl:la-cavalerie",
@@ -81,7 +83,8 @@ PATRIMOINE.enregistrer({
       hist: "Bourg fondé par les Templiers de Sainte-Eulalie sur le passage de la route du Larzac ; son nom rappelle la vocation équestre et militaire de l'ordre. Fortifié par les Hospitaliers au XVe siècle face aux routiers de la guerre de Cent Ans.",
       etat: "Remparts restaurés avec tours rondes et portes, front bâti médiéval, église reconstruite. Le village moderne s'est développé autour de l'enceinte.",
       vis: "payant",
-      visNote: "Accès libre au village ; chemin de ronde et espace d'interprétation payants (accueil touristique du village)."
+      visNote: "Accès libre au village ; chemin de ronde et espace d'interprétation payants (accueil touristique du village).",
+      photo: { fichier: "la-cavalerie.webp", auteur: "Daniel VILLAFRUELA.", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:La_Cavalerie-Porte_de_Maison-Place_des_Templiers-30120623.jpg" }
     },
     {
       id: "tpl:viala-pas-de-jaux",
@@ -98,7 +101,8 @@ PATRIMOINE.enregistrer({
       hist: "Grange templière dépendant de Sainte-Eulalie, le hameau reçut des Hospitaliers en 1430 une imposante tour-grenier refuge de près de 30 mètres, où les habitants abritaient récoltes et bétail en cas de danger.",
       etat: "Tour restaurée, l'une des plus hautes du Rouergue, accolée à un logis ; panorama sur le causse depuis la terrasse sommitale.",
       vis: "payant",
-      visNote: "Visite de la tour en saison (circuit du Larzac templier et hospitalier) ; village en accès libre."
+      visNote: "Visite de la tour en saison (circuit du Larzac templier et hospitalier) ; village en accès libre.",
+      photo: { fichier: "viala-pas-de-jaux.webp", auteur: "Thérèse Gaigé", licence: "CC0", source: "https://commons.wikimedia.org/wiki/File:Tour_du_Viala-du-Pas-de-Jaux_(12)_-_11.jpg" }
     },
     {
       id: "tpl:saint-jean-alcas",
@@ -116,7 +120,8 @@ PATRIMOINE.enregistrer({
       etat: "Enceinte quadrangulaire intacte, ruelles couvertes, maisons à baies moulurées, église Saint-Jean-Baptiste.",
       vis: "libre",
       visNote: "Fort en accès libre ; maison d'accueil et visites guidées en saison.",
-      note: "Fondation cistercienne et non templière : le site est inclus dans le circuit touristique du Larzac templier et hospitalier, d'où sa présence ici."
+      note: "Fondation cistercienne et non templière : le site est inclus dans le circuit touristique du Larzac templier et hospitalier, d'où sa présence ici.",
+      photo: { fichier: "saint-jean-alcas.webp", auteur: "Daniel Villafruela", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Saint_Jean_d%27Alcas-Maison_(15%C2%B0_s)-20120623.jpg" }
     },
     {
       id: "tpl:montsaunes",
@@ -134,7 +139,8 @@ PATRIMOINE.enregistrer({
       hist: "Chef-lieu d'une des plus puissantes commanderies de Gascogne, contrôlant routes pyrénéennes et hospices. L'église Saint-Christophe, en brique et pierre, servait de chapelle à la communauté des frères.",
       etat: "Église classée conservant un ensemble rarissime de peintures murales du XIIIe siècle : damiers, étoiles, motifs géométriques et figures, qui intriguent chercheurs et amateurs. Les autres bâtiments ont disparu.",
       vis: "libre",
-      visNote: "Extérieur en accès libre ; l'intérieur s'ouvre lors de permanences estivales, de visites de groupe ou sur demande en mairie."
+      visNote: "Extérieur en accès libre ; l'intérieur s'ouvre lors de permanences estivales, de visites de groupe ou sur demande en mairie.",
+      photo: { fichier: "montsaunes.webp", auteur: "Didier Descouens", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Montsaun%C3%A8s_-_Eglise_Saint-Christophe_des_Templiers_-_Fa%C3%A7ade.jpg" }
     },
     {
       id: "tpl:vaour",
@@ -151,7 +157,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie majeure du Quercy-Albigeois, enrichie par de nombreuses donations ; elle administrait granges, moulins et églises entre Aveyron et Tarn avant de passer aux Hospitaliers.",
       etat: "Ruines imposantes classées : donjon-logis, salle voûtée, pans de l'enceinte dominant la campagne. Site aménagé pour la promenade.",
       vis: "libre",
-      visNote: "Ruines en accès libre toute l'année ; panneaux d'interprétation sur place."
+      visNote: "Ruines en accès libre toute l'année ; panneaux d'interprétation sur place.",
+      photo: { fichier: "vaour.webp", auteur: "Chris06", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_de_Vaour_(3).jpg" }
     },
     {
       id: "tpl:lacapelle-livron",
@@ -168,7 +175,8 @@ PATRIMOINE.enregistrer({
       hist: "Maison templière dépendant de Vaour, établie au-dessus des gorges de la Bonnette ; les Hospitaliers en firent après 1312 une commanderie prospère qui subsista jusqu'à la Révolution.",
       etat: "Village conservant l'ancienne chapelle fortifiée devenue église paroissiale, un pigeonnier et des bâtiments de la commanderie remaniés en ferme.",
       vis: "exterieur",
-      visNote: "Village et abords en accès libre ; bâtiments de la commanderie privés, visibles de l'extérieur."
+      visNote: "Village et abords en accès libre ; bâtiments de la commanderie privés, visibles de l'extérieur.",
+      photo: { fichier: "lacapelle-livron.webp", auteur: "Antoine Garnier", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Lacapelle-Livron_-_Ancienne_commanderie_des_Templiers_-_08.jpg" }
     },
     {
       id: "tpl:montricoux",
@@ -185,7 +193,8 @@ PATRIMOINE.enregistrer({
       hist: "Les Templiers tenaient à Montricoux une maison importante des bords de l'Aveyron ; le puissant donjon carré qui domine le village en est l'héritage, intégré ensuite au château seigneurial.",
       etat: "Donjon conservé accolé au château (aujourd'hui espace muséal privé), village à maisons à colombages, église au clocher toulousain.",
       vis: "exterieur",
-      visNote: "Donjon visible depuis le village ; accès intérieur selon l'ouverture du château-musée (se renseigner localement)."
+      visNote: "Donjon visible depuis le village ; accès intérieur selon l'ouverture du château-musée (se renseigner localement).",
+      photo: { fichier: "montricoux.webp", auteur: "Thérèse Gaigé", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Donjon_du_ch%C3%A2teau_de_Montricoux.JPG" }
     },
     {
       id: "tpl:la-ville-dieu-du-temple",
@@ -219,7 +228,8 @@ PATRIMOINE.enregistrer({
       hist: "Maison mère des Templiers du Roussillon, à la tête d'un immense temporel viticole et agricole entre Perpignan et les Albères ; le procès des Templiers roussillonnais s'y référa longuement.",
       etat: "De l'ensemble subsiste surtout la chapelle Sainte-Marie (fin XIIe), transformée en bâtiment agricole au sein d'un domaine viticole ; ruines et pans de murs dans la végétation.",
       vis: "prive",
-      visNote: "Propriété privée (domaine viticole) : pas de visite ; vue lointaine possible depuis les chemins voisins."
+      visNote: "Propriété privée (domaine viticole) : pas de visite ; vue lointaine possible depuis les chemins voisins.",
+      photo: { fichier: "mas-deu.webp", auteur: "Palauenc05", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Mas-deu-chapelle.jpg" }
     },
     {
       id: "tpl:douzens",
@@ -289,7 +299,8 @@ PATRIMOINE.enregistrer({
       etat: "Bâtiments restaurés parmi les mieux conservés de la cité ; intérieurs médiévaux (charpentes, baies, peintures).",
       vis: "payant",
       visNote: "Monument privé ouvert à la visite selon saison (billetterie sur place) ; extérieurs visibles librement dans la rue Gambetta.",
-      note: "L'attribution templière de l'édifice relève en partie de la tradition : la maison du Temple de Figeac est attestée, son emplacement exact reste discuté."
+      note: "L'attribution templière de l'édifice relève en partie de la tradition : la maison du Temple de Figeac est attestée, son emplacement exact reste discuté.",
+      photo: { fichier: "figeac.webp", auteur: "Krzysztof Golik", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_des_Templiers_in_Figeac_02.jpg" }
     },
     {
       id: "tpl:soulomes",
@@ -306,7 +317,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie du causse de Gramat dépendant du réseau quercynois de l'ordre, passée ensuite aux Hospitaliers qui en firent un centre paroissial.",
       etat: "Église Sainte-Marie-Madeleine (ancienne chapelle de la commanderie) ornée de peintures murales des XVe-XVIe siècles ; logis remaniés dans le hameau.",
       vis: "libre",
-      visNote: "Église généralement ouverte en journée ; panneaux d'interprétation dans le village."
+      visNote: "Église généralement ouverte en journée ; panneaux d'interprétation dans le village.",
+      photo: { fichier: "soulomes.webp", auteur: "Michel Chanaud", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:SOULOMES_(Lot)_-_Eglise_Sainte-Marie-Madeleine_(vue_Nord-Ouest).jpg" }
     },
     {
       id: "tpl:toulouse",
@@ -341,7 +353,8 @@ PATRIMOINE.enregistrer({
       etat: "Chapelle classée au clocher-mur pyrénéen caractéristique, restaurée ; cadre montagnard superbe près de Piau-Engaly.",
       vis: "evenement",
       visNote: "Extérieur en accès libre toute l'année ; intérieur ouvert en été et lors de visites accompagnées (vallée d'Aure).",
-      note: "Fondation très probablement hospitalière : l'appellation « des Templiers », ancrée localement, n'est pas confirmée par les sources."
+      note: "Fondation très probablement hospitalière : l'appellation « des Templiers », ancrée localement, n'est pas confirmée par les sources.",
+      photo: { fichier: "aragnouet.webp", auteur: "Père Igor", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Aragnouet_chapelle_templi%C3%A8re.JPG" }
     },
     {
       id: "tpl:luz-saint-sauveur",
@@ -359,7 +372,8 @@ PATRIMOINE.enregistrer({
       etat: "Remarquable ensemble fortifié complet : enceinte, tours, portail roman ; petit musée d'art religieux.",
       vis: "libre",
       visNote: "Accès libre en journée (édifice paroissial) ; visites commentées en saison.",
-      note: "Fortification hospitalière et non templière : l'appellation « église des Templiers » est une tradition locale tenace."
+      note: "Fortification hospitalière et non templière : l'appellation « église des Templiers » est une tradition locale tenace.",
+      photo: { fichier: "luz-saint-sauveur.webp", auteur: "Moahim", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:2019_-_%C3%89glise_des_Templiers_de_Luz-Saint-Sauveur.jpg" }
     },
 
     /* ================= PROVENCE-ALPES-CÔTE D'AZUR ================= */
@@ -379,7 +393,8 @@ PATRIMOINE.enregistrer({
       hist: "Première grande commanderie de Provence et maison mère régionale, fondée sur donation en 1136 ; elle élevait chevaux et mulets pour l'ordre et administrait un riche territoire de l'Enclave des Papes.",
       etat: "Le village s'inscrit toujours dans le quadrilatère fortifié de la commanderie : enceinte, tours d'angle, beffroi, maison templière. Aujourd'hui capitale de la truffe noire.",
       vis: "libre",
-      visNote: "Village et enceinte en accès libre ; espace muséal et visites guidées selon saison (marché aux truffes l'hiver, messe de la truffe en janvier)."
+      visNote: "Village et enceinte en accès libre ; espace muséal et visites guidées selon saison (marché aux truffes l'hiver, messe de la truffe en janvier).",
+      photo: { fichier: "richerenches.webp", auteur: "TRANOS APOSTOLOS", licence: "CC BY 3.0", source: "https://commons.wikimedia.org/wiki/File:Richerenches_2012._La_Commanderie_des_Templiers_-_panoramio_(6).jpg" }
     },
     {
       id: "tpl:roaix",
@@ -396,7 +411,8 @@ PATRIMOINE.enregistrer({
       hist: "Avec Richerenches, l'une des plus anciennes implantations templières de Provence, sur la rive de l'Ouvèze ; centre d'un domaine viticole et agricole.",
       etat: "Vestiges du château-commanderie (tour, corps de logis, chapelle remaniée) dans le vieux village perché.",
       vis: "exterieur",
-      visNote: "Vieux village en accès libre ; bâtiments de la commanderie privés, visibles de l'extérieur."
+      visNote: "Vieux village en accès libre ; bâtiments de la commanderie privés, visibles de l'extérieur.",
+      photo: { fichier: "roaix.webp", auteur: "Marianne Casamance", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Roaix_-_ancienne_commanderie.JPG" }
     },
     {
       id: "tpl:le-ruou",
@@ -413,7 +429,8 @@ PATRIMOINE.enregistrer({
       hist: "La plus puissante commanderie de Provence orientale au XIIIe siècle : ses possessions s'étendaient sur près de trente communes du Var, avec granges et maisons annexes (Lorgues, Montfort, Hyères…).",
       etat: "Vestiges (chapelle, salles voûtées, murs) intégrés à un domaine du vallon du Ruou, aujourd'hui occupé par un établissement d'hôtellerie de plein air.",
       vis: "exterieur",
-      visNote: "Domaine privé : vestiges visibles pour l'essentiel depuis les abords ; se renseigner sur place pour l'accès."
+      visNote: "Domaine privé : vestiges visibles pour l'essentiel depuis les abords ; se renseigner sur place pour l'accès.",
+      photo: { fichier: "le-ruou.webp", auteur: "Edouard-rainaut", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_du_Ruou_-_Chapelle.JPG" }
     },
     {
       id: "tpl:montfort-sur-argens",
@@ -430,7 +447,8 @@ PATRIMOINE.enregistrer({
       hist: "Castrum donné aux Templiers du Ruou par Alphonse II d'Aragon ; l'ordre y tint une maison forte contrôlant la moyenne vallée de l'Argens.",
       etat: "Château massif à tours carrées dominant le village viticole ; restauration progressive portée par la commune et les associations.",
       vis: "evenement",
-      visNote: "Extérieur en accès libre ; intérieurs ouverts lors de visites et manifestations ponctuelles (Journées du patrimoine, animations communales)."
+      visNote: "Extérieur en accès libre ; intérieurs ouverts lors de visites et manifestations ponctuelles (Journées du patrimoine, animations communales).",
+      photo: { fichier: "montfort-sur-argens.webp", auteur: "SombreSanglier", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Chateau_Montfort-sur-Argens_7308.JPG" }
     },
     {
       id: "tpl:hyeres",
@@ -447,7 +465,8 @@ PATRIMOINE.enregistrer({
       hist: "Vestige de la maison du Temple d'Hyères, port d'embarquement vers l'Orient : la chapelle Saint-Blaise, dite tour des Templiers, en était l'édifice religieux et défensif.",
       etat: "Tour-chapelle restaurée au cœur de la vieille ville (place Massillon) : salle voûtée, terrasse ; expositions municipales.",
       vis: "libre",
-      visNote: "Entrée libre aux heures d'ouverture (expositions temporaires de la Ville) ; fermetures hebdomadaires possibles."
+      visNote: "Entrée libre aux heures d'ouverture (expositions temporaires de la Ville) ; fermetures hebdomadaires possibles.",
+      photo: { fichier: "hyeres.webp", auteur: "Gzen92", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Tour_des_Templiers_(Hy%C3%A8res).jpg" }
     },
     {
       id: "tpl:biot",
@@ -501,7 +520,8 @@ PATRIMOINE.enregistrer({
       hist: "Fondée vers 1140 dans la plaine de Berrias, Jalès est réputée l'une des plus anciennes commanderies conservées de France ; passée aux Hospitaliers, elle fut aussi, en 1790-1792, le théâtre des « camps de Jalès » contre-révolutionnaires.",
       etat: "Quadrilatère complet autour de sa cour : logis, galeries, cave voûtée romane, tour ; longtemps siège d'un laboratoire du CNRS, animée aujourd'hui par l'association Act'Jalès.",
       vis: "evenement",
-      visNote: "Visites guidées et animations en été (mardis-vendredis en haute saison), concerts et Journées du patrimoine ; extérieurs visibles toute l'année."
+      visNote: "Visites guidées et animations en été (mardis-vendredis en haute saison), concerts et Journées du patrimoine ; extérieurs visibles toute l'année.",
+      photo: { fichier: "jales.webp", auteur: "GFreihalter", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Berrias-et-Casteljau_(07)_Commanderie_de_Jal%C3%A8s_352.jpg" }
     },
     {
       id: "tpl:ydes",
@@ -571,7 +591,8 @@ PATRIMOINE.enregistrer({
       hist: "Première commanderie templière de Bourgogne, fondée du vivant même d'Hugues de Payns sur le haut plateau châtillonnais ; elle essaima dans toute la région.",
       etat: "La chapelle, remaniée, sert d'église paroissiale ; les autres vestiges ont beaucoup souffert — jusqu'à un dynamitage de 1958 par un chercheur de trésor.",
       vis: "libre",
-      visNote: "Église et village en accès libre ; vestiges épars."
+      visNote: "Église et village en accès libre ; vestiges épars.",
+      photo: { fichier: "bure-les-templiers.webp", auteur: "GO69", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Bure-les-Templiers_(21)_%C3%89glise_Saint-Julien_-_Ext%C3%A9rieur_-_06.jpg" }
     },
     {
       id: "tpl:epailly",
@@ -589,7 +610,8 @@ PATRIMOINE.enregistrer({
       hist: "Établie par le comte de Bar-sur-Seine pour les Templiers, Épailly devint l'une des commanderies majeures entre Champagne et Bourgogne ; l'inventaire dressé en 1308 lors du procès en détaille les richesses.",
       etat: "Exceptionnelle chapelle gothique du XIIIe siècle (chantier de restauration soutenu par la Sauvegarde de l'Art français), granges à charpentes remarquables, tour, logis et fossés — le tout en propriété privée.",
       vis: "evenement",
-      visNote: "Domaine privé ouvert lors des Journées du patrimoine et de visites organisées par les associations de sauvegarde."
+      visNote: "Domaine privé ouvert lors des Journées du patrimoine et de visites organisées par les associations de sauvegarde.",
+      photo: { fichier: "epailly.webp", auteur: "AJ Marshall", licence: "CC BY 4.0", source: "https://commons.wikimedia.org/wiki/File:Former_Templar_Commanderie_at_%C3%89pailly_in_Burgundy.jpg" }
     },
     {
       id: "tpl:coulours",
@@ -606,7 +628,8 @@ PATRIMOINE.enregistrer({
       hist: "Maison précoce du Temple en pays d'Othe, devenue chef-lieu d'une baillie regroupant granges et forges ; le village s'est développé autour d'elle.",
       etat: "Chapelle et bâtiments subsistants intégrés à des propriétés agricoles ; trame de l'enclos encore lisible.",
       vis: "exterieur",
-      visNote: "Village en accès libre ; bâtiments privés visibles de l'extérieur."
+      visNote: "Village en accès libre ; bâtiments privés visibles de l'extérieur.",
+      photo: { fichier: "coulours.webp", auteur: "Robin Chubret", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Coulours,_commanderie_01.jpg" }
     },
     {
       id: "tpl:molay",
@@ -680,7 +703,8 @@ PATRIMOINE.enregistrer({
       hist: "Riche commanderie champenoise fondée grâce aux comtes de Bar-sur-Seine, dont les possessions s'étendaient jusqu'aux portes de Troyes ; passée aux Hospitaliers après le procès.",
       etat: "L'un des ensembles templiers les mieux conservés du nord de la France : chapelle du début du XIIIe siècle aux proportions parfaites, logis et communs restaurés par le Département de l'Aube.",
       vis: "evenement",
-      visNote: "Ouvertures saisonnières, visites guidées et manifestations culturelles organisées par le Département (se renseigner auprès de l'office de tourisme de la Côte des Bar)."
+      visNote: "Ouvertures saisonnières, visites guidées et manifestations culturelles organisées par le Département (se renseigner auprès de l'office de tourisme de la Côte des Bar).",
+      photo: { fichier: "avalleur.webp", auteur: "Peter Potrowl", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Bar-sur-Seine_-_Commanderie_d%27Avalleur_-_11.jpg" }
     },
     {
       id: "tpl:la-neuville-au-temple",
@@ -715,7 +739,8 @@ PATRIMOINE.enregistrer({
       hist: "Chapelle octogonale de la maison du Temple de Metz, seule rotonde templière conservée en France avec celle de Laon ; la commanderie fut ensuite absorbée par la citadelle.",
       etat: "Édifice roman restauré, orné de peintures murales (fonds médiévaux et restitutions de 1900) ; il se dresse dans le quartier de l'Esplanade, près de l'Arsenal.",
       vis: "evenement",
-      visNote: "Entrée libre lors des ouvertures estivales et expositions ; extérieur visible toute l'année."
+      visNote: "Entrée libre lors des ouvertures estivales et expositions ; extérieur visible toute l'année.",
+      photo: { fichier: "metz.webp", auteur: "Remi Mathis", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Metz_-_chapelle_des_Templiers_02.JPG" }
     },
     {
       id: "tpl:libdeau",
@@ -732,7 +757,8 @@ PATRIMOINE.enregistrer({
       hist: "Chapelle gothique de la commanderie de Libdeau, attestée dès la fin du XIIe siècle sur la route de Toul à Nancy ; seule chapelle templière lorraine à conserver ses voûtes d'ogives.",
       etat: "Sauvée de la ruine par une association qui la restaure depuis 2012 (soutien Fondation du patrimoine et Sauvegarde de l'Art français) ; chantier en cours.",
       vis: "evenement",
-      visNote: "Visites lors des Journées du patrimoine et des rendez-vous de l'association Libdeau — chapelle templière."
+      visNote: "Visites lors des Journées du patrimoine et des rendez-vous de l'association Libdeau — chapelle templière.",
+      photo: { fichier: "libdeau.webp", auteur: "Marc Baronnet", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:2018-09-09_MB_Chapelle_des_Templiers_de_Libdeau_1.jpg" }
     },
     {
       id: "tpl:xugney",
@@ -749,7 +775,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie fondée sur les terres du comté de Vaudémont entre deuxième et troisième croisade ; centre agricole passé aux Hospitaliers jusqu'à la Révolution.",
       etat: "Chapelle romane Saint-Jean-Baptiste classée, remarquablement sobre, au sein d'une ferme qui perpétue la vocation rurale du site.",
       vis: "exterieur",
-      visNote: "Chapelle dans une exploitation privée : extérieur visible, intérieur lors d'ouvertures ponctuelles (Journées du patrimoine)."
+      visNote: "Chapelle dans une exploitation privée : extérieur visible, intérieur lors d'ouvertures ponctuelles (Journées du patrimoine).",
+      photo: { fichier: "xugney.webp", auteur: "Rauenstein", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Xugney,_Chapelle_Saint-Jean-Baptiste_1.jpg" }
     },
     {
       id: "tpl:marbotte",
@@ -786,7 +813,8 @@ PATRIMOINE.enregistrer({
       hist: "Maison cheftaine de France et centre financier de l'ordre : véritable ville fortifiée au nord du Marais, avec donjon (la tour du Temple), église et enclos privilégié. Prison de Louis XVI en 1792, la tour fut rasée en 1808. Jacques de Molay périt sur le bûcher non loin, à la pointe de l'île de la Cité (1314).",
       etat: "Rien ne subsiste en élévation : le square du Temple, le Carreau du Temple et les rues du quartier (rue du Temple, rue Vieille-du-Temple…) dessinent encore l'emprise de l'enclos.",
       vis: "memoire",
-      visNote: "Square et quartier en accès libre ; visites guidées « sur les traces des Templiers » proposées dans le Marais."
+      visNote: "Square et quartier en accès libre ; visites guidées « sur les traces des Templiers » proposées dans le Marais.",
+      photo: { fichier: "paris-temple.webp", auteur: "Chabe01", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Panneau_Histoire_Paris_Enclos_Temple_%26_Plaque_Rue_Dupetit_Thouars_-_Paris_III_(FR75)_-_2026-04-18_-_1.jpg" }
     },
     {
       id: "tpl:la-villedieu-elancourt",
@@ -803,7 +831,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie rurale aux portes de Paris, première étape des pèlerins partant vers Chartres et Compostelle ; sécularisée après la Révolution.",
       etat: "Chapelle du XIIIe siècle en meulière classée (1926) et bâtiment des gardes restaurés ; le site abrite aujourd'hui « la Comm@nderie », équipement culturel et numérique de Saint-Quentin-en-Yvelines.",
       vis: "libre",
-      visNote: "Chapelle ouverte gratuitement les mercredis et samedis après-midi (hors jours fériés) ; parc et extérieurs en accès libre."
+      visNote: "Chapelle ouverte gratuitement les mercredis et samedis après-midi (hors jours fériés) ; parc et extérieurs en accès libre.",
+      photo: { fichier: "la-villedieu-elancourt.webp", auteur: "Fitamant", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_des_gardes_-_commanderie_de_la_Villedieu_%C3%A0_%C3%89lancourt.JPG" }
     },
     {
       id: "tpl:coulommiers",
@@ -821,7 +850,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie briarde fondée vers 1173, active jusqu'au procès puis passée aux Hospitaliers ; sauvée de la démolition au XXe siècle par des chantiers de bénévoles.",
       etat: "Ensemble le mieux conservé au nord de la Loire : chapelle Sainte-Anne, salle capitulaire, logis, pigeonnier et jardin d'inspiration médiévale de 4 000 m².",
       vis: "payant",
-      visNote: "Ouvert de mars à octobre (mercredis et vendredis après-midi, week-ends) ; visites guidées par l'association des Amis de la Commanderie."
+      visNote: "Ouvert de mars à octobre (mercredis et vendredis après-midi, week-ends) ; visites guidées par l'association des Amis de la Commanderie.",
+      photo: { fichier: "coulommiers.webp", auteur: "Tangopaso", licence: "Public domain", source: "https://commons.wikimedia.org/wiki/File:Pigeonnier_de_la_Commanderie_des_Templiers_(Coulommiers).jpg" }
     },
     {
       id: "tpl:chevru",
@@ -838,7 +868,8 @@ PATRIMOINE.enregistrer({
       hist: "Maison du Temple de la Brie voisine de Coulommiers, devenue ferme seigneuriale après la dévolution aux Hospitaliers.",
       etat: "Bâtiments et chapelle remaniés au sein d'une exploitation agricole privée (ferme de la Commanderie).",
       vis: "exterieur",
-      visNote: "Propriété privée : visible de l'extérieur depuis la voie publique."
+      visNote: "Propriété privée : visible de l'extérieur depuis la voie publique.",
+      photo: { fichier: "chevru.webp", auteur: "Anthony Rauchen", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_de_Chevru.jpg" }
     },
 
     /* ================= CENTRE-VAL DE LOIRE ================= */
@@ -858,7 +889,8 @@ PATRIMOINE.enregistrer({
       hist: "Fondée vers 1130 dans le Perche, sur un chemin de Compostelle, Arville forma des frères et administra un vaste domaine ; les Hospitaliers l'occupèrent ensuite jusqu'à la Révolution.",
       etat: "L'un des ensembles templiers les plus complets de France : chapelle, porterie à colombages, grange dîmière, colombier, jardins ; musée des ordres militaires entièrement renouvelé (2025).",
       vis: "payant",
-      visNote: "Visite libre ou guidée du domaine, du jardin et du musée (audioguides) ; compter environ deux heures. Fermeture hivernale partielle."
+      visNote: "Visite libre ou guidée du domaine, du jardin et du musée (audioguides) ; compter environ deux heures. Fermeture hivernale partielle.",
+      photo: { fichier: "arville.webp", auteur: "T.COUILLAUD", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_d%27arville.JPG" }
     },
     {
       id: "tpl:sours",
@@ -894,7 +926,8 @@ PATRIMOINE.enregistrer({
       etat: "Forteresse royale restaurée dominant la Vienne ; la tour de Coudray conserve des graffiti que la tradition attribue aux Templiers prisonniers.",
       vis: "payant",
       visNote: "Monument ouvert toute l'année (billetterie, visites et parcours scénographiés) ; tour de Coudray accessible dans le circuit.",
-      note: "La détention de 1308 est un fait documenté ; l'attribution des graffiti de la tour de Coudray aux Templiers reste en revanche débattue."
+      note: "La détention de 1308 est un fait documenté ; l'attribution des graffiti de la tour de Coudray aux Templiers reste en revanche débattue.",
+      photo: { fichier: "chinon.webp", auteur: "Fab5669", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Chinon_-_forteresse_royale_07.jpg" }
     },
 
     /* ================= HAUTS-DE-FRANCE ================= */
@@ -914,7 +947,8 @@ PATRIMOINE.enregistrer({
       hist: "Chapelle octogonale de la commanderie de Laon, édifiée dès les premières décennies de l'ordre sur la montagne couronnée ; avec Metz, l'unique rotonde templière conservée en France.",
       etat: "Édifice roman intact dans le jardin du musée d'Art et d'Archéologie du Pays de Laon, à deux pas de la cathédrale.",
       vis: "libre",
-      visNote: "Jardin du musée en accès libre aux heures d'ouverture ; l'intérieur de la chapelle se visite avec le musée."
+      visNote: "Jardin du musée en accès libre aux heures d'ouverture ; l'intérieur de la chapelle se visite avec le musée.",
+      photo: { fichier: "laon.webp", auteur: "Claude Shoshany", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Laon_Chapelle_des_Templiers.JPG" }
     },
     {
       id: "tpl:mont-de-soissons",
@@ -931,7 +965,8 @@ PATRIMOINE.enregistrer({
       hist: "Commanderie du Soissonnais devenue ferme après la dévolution ; ses bâtiments du XIIIe siècle ont traversé guerres et remaniements.",
       etat: "Remarquable ferme-commanderie privée : chapelle, logis et grange du XIIIe siècle inscrits aux Monuments historiques.",
       vis: "exterieur",
-      visNote: "Exploitation privée : visible de l'extérieur ; ouvertures exceptionnelles (Journées du patrimoine)."
+      visNote: "Exploitation privée : visible de l'extérieur ; ouvertures exceptionnelles (Journées du patrimoine).",
+      photo: { fichier: "mont-de-soissons.webp", auteur: "Pascal3012", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_serches_(3).JPG" }
     },
     {
       id: "tpl:neuilly-sous-clermont",
@@ -948,7 +983,8 @@ PATRIMOINE.enregistrer({
       hist: "Offerte à l'ordre par Raoul de Clermont en 1168, la maison du Temple exploitait vignes et vergers du Clermontois ; elle passa aux Hospitaliers puis à l'ordre de Malte.",
       etat: "Logis médiéval, cellier et murs d'enclos classés, au sein d'une propriété privée rue de la Commanderie.",
       vis: "exterieur",
-      visNote: "Propriété privée : extérieurs visibles depuis la rue ; ouvertures exceptionnelles."
+      visNote: "Propriété privée : extérieurs visibles depuis la rue ; ouvertures exceptionnelles.",
+      photo: { fichier: "neuilly-sous-clermont.webp", auteur: "Benjism89", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Neuilly-sous-Clermont_-_Commanderie_-_1.JPG" }
     },
     {
       id: "tpl:templemars",
@@ -984,7 +1020,8 @@ PATRIMOINE.enregistrer({
       hist: "Henri II Plantagenêt donna son domaine de Sainte-Vaubourg aux Templiers en 1173 ; la commanderie, enrichie de biens jusqu'à Rouen et Caudebec, fut l'une des plus importantes de Normandie.",
       etat: "Grange dîmière, vestiges de la chapelle, cellier voûté et puits subsistent dans une propriété privée dominant la Seine.",
       vis: "evenement",
-      visNote: "Propriété privée ; ouvertures lors des Journées du patrimoine."
+      visNote: "Propriété privée ; ouvertures lors des Journées du patrimoine.",
+      photo: { fichier: "sainte-vaubourg.webp", auteur: "MAILLARDJL", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Grange_d%C3%AEmi%C3%A8re_de_la_commanderie_de_Sainte-Vaubourg_01.jpg" }
     },
     {
       id: "tpl:bretteville-le-rabet",
@@ -1020,7 +1057,8 @@ PATRIMOINE.enregistrer({
       etat: "Donjon sur motte, enceinte flanquée de tours et tour du Prisonnier conservés dans le parc public au cœur de la ville.",
       vis: "payant",
       visNote: "Parc en accès libre ; visites guidées du donjon et de la tour du Prisonnier en saison (office de tourisme).",
-      note: "La garde templière de 1158 est historique ; le « trésor de Gisors » et l'attribution des graffiti aux Templiers relèvent de la légende."
+      note: "La garde templière de 1158 est historique ; le « trésor de Gisors » et l'attribution des graffiti aux Templiers relèvent de la légende.",
+      photo: { fichier: "gisors.webp", auteur: "Vsovinsky", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_de_Gisors.JPG" }
     },
 
     /* ================= BRETAGNE ================= */
@@ -1039,7 +1077,8 @@ PATRIMOINE.enregistrer({
       hist: "Aumônerie templière attestée dès le XIIe siècle — l'enquête de 1182 sur les biens de l'ordre en Bretagne y fut en partie menée ; le hameau du Temple en garde le nom.",
       etat: "Vestiges très modestes (chapelle remaniée, croix, toponymes) dans la campagne des Landes de Lanvaux.",
       vis: "memoire",
-      visNote: "Hameau et chemins en accès libre."
+      visNote: "Hameau et chemins en accès libre.",
+      photo: { fichier: "carentoir.webp", auteur: "Pymouss", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Carentoir_-_Chapelle_Saint-Jean-Baptiste,_Le_Temple_01.JPG" }
     },
     {
       id: "tpl:brelevenez",
@@ -1057,7 +1096,8 @@ PATRIMOINE.enregistrer({
       etat: "Bel édifice roman et gothique restauré, crypte, panorama sur Lannion.",
       vis: "libre",
       visNote: "Église ouverte en journée ; accès libre.",
-      note: "Fondation templière traditionnelle mais non prouvée : les Hospitaliers sont mieux attestés dans le Trégor."
+      note: "Fondation templière traditionnelle mais non prouvée : les Hospitaliers sont mieux attestés dans le Trégor.",
+      photo: { fichier: "brelevenez.webp", auteur: "Philippe Alès", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Br%C3%A9levenez,_%C3%A9glise,Lannion.jpg" }
     },
 
     /* ================= PAYS DE LA LOIRE ================= */
@@ -1076,7 +1116,8 @@ PATRIMOINE.enregistrer({
       hist: "La plus ancienne commanderie du Poitou, fondée vers 1130 aux marches du marais breton ; elle relevait ensuite des Hospitaliers.",
       etat: "Chapelle romane à chevet plat restaurée (classée en 1995) et logis remaniés, animés par une association locale.",
       vis: "evenement",
-      visNote: "Visites lors d'ouvertures associatives et des Journées du patrimoine ; extérieurs visibles."
+      visNote: "Visites lors d'ouvertures associatives et des Journées du patrimoine ; extérieurs visibles.",
+      photo: { fichier: "coudrie.webp", auteur: "Melutopia", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_de_Coudrie_Challans.jpg" }
     },
 
     /* ================= NOUVELLE-AQUITAINE ================= */
@@ -1096,7 +1137,8 @@ PATRIMOINE.enregistrer({
       hist: "Chapelle du Dognon, vestige d'une maison du Temple angoumoisine, célèbre dans toute l'Europe pour ses fresques : on y voit des chevaliers croisés charger les troupes de Nur al-Din — écho de la victoire de la Bocquée (1163), au pied du krak des Chevaliers.",
       etat: "Chapelle classée, fresques du mur nord préservées ; l'un des rares témoignages peints de l'idéal militaire de l'ordre.",
       vis: "reservation",
-      visNote: "Visite sur réservation auprès de l'office de tourisme (secteur Blanzac / Coteaux-du-Blanzacais)."
+      visNote: "Visite sur réservation auprès de l'office de tourisme (secteur Blanzac / Coteaux-du-Blanzacais).",
+      photo: { fichier: "cressac.webp", auteur: "JLPC", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Cressac-Saint-Genis_16_Chapelle_Templiers_fa%C3%A7ade_2013.jpg" }
     },
     {
       id: "tpl:les-epeaux",
@@ -1148,7 +1190,8 @@ PATRIMOINE.enregistrer({
       hist: "Première maison du Temple du Périgord avec Les Andrivaux, au cœur de la vallée de la Vézère ; le village en garde une empreinte forte.",
       etat: "Église fortifiée Saint-Pantaléon, croix sculptée du XVe siècle à l'entrée du bourg, maisons anciennes ; cadre superbe entre falaises et rivière.",
       vis: "libre",
-      visNote: "Village et église en accès libre (vallée de la Vézère, proche des sites préhistoriques)."
+      visNote: "Village et église en accès libre (vallée de la Vézère, proche des sites préhistoriques).",
+      photo: { fichier: "sergeac.webp", auteur: "Père Igor", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Sergeac_%C3%A9glise_(2).jpg" }
     },
     {
       id: "tpl:andrivaux",
@@ -1165,7 +1208,8 @@ PATRIMOINE.enregistrer({
       hist: "Avec Sergeac, la plus importante maison templière du Périgord, établie dans les bois au nord de Périgueux ; devenue commanderie hospitalière après 1312.",
       etat: "Chapelle et bâtiments remaniés dans un hameau privé.",
       vis: "exterieur",
-      visNote: "Extérieurs visibles depuis les chemins ; propriété privée."
+      visNote: "Extérieurs visibles depuis les chemins ; propriété privée.",
+      photo: { fichier: "andrivaux.webp", auteur: "Père Igor", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Chancelade_Andrivaux.JPG" }
     },
     {
       id: "tpl:domme",
@@ -1184,7 +1228,8 @@ PATRIMOINE.enregistrer({
       etat: "Porte fortifiée à deux tours remarquablement conservée ; bastide parmi les plus beaux villages de France, panorama célèbre sur la vallée de la Dordogne.",
       vis: "payant",
       visNote: "Graffiti visibles uniquement en visite guidée (office de tourisme de Domme) ; village en accès libre.",
-      note: "L'attribution des graffiti aux Templiers, popularisée au XXe siècle, est aujourd'hui débattue par les historiens ; l'emprisonnement de 1307 à Domme reste plausible mais mal documenté."
+      note: "L'attribution des graffiti aux Templiers, popularisée au XXe siècle, est aujourd'hui débattue par les historiens ; l'emprisonnement de 1307 à Domme reste plausible mais mal documenté.",
+      photo: { fichier: "domme.webp", auteur: "Krzysztof Golik", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Porte_des_Tours_in_Domme_06.jpg" }
     },
     {
       id: "tpl:magrigne",
@@ -1201,7 +1246,8 @@ PATRIMOINE.enregistrer({
       hist: "Chapelle Sainte-Quitterie de la maison du Temple de Magrigne, en pays bourgeais ; passée aux Hospitaliers après le concile de Vienne (1312).",
       etat: "La plus complète des chapelles templières et hospitalières de Gironde : nef unique en berceau brisé, chevet plat, clocher-mur élégant ; classée dès 1921.",
       vis: "libre",
-      visNote: "Extérieur en accès libre ; intérieur visible par la grille et lors d'ouvertures ponctuelles (Journées du patrimoine)."
+      visNote: "Extérieur en accès libre ; intérieur visible par la grille et lors d'ouvertures ponctuelles (Journées du patrimoine).",
+      photo: { fichier: "magrigne.webp", auteur: "William Ellison", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:St_Laurent_d%27Arce_chapelle_de_Magrigne_4.jpg" }
     },
     {
       id: "tpl:marcenais",
@@ -1218,7 +1264,8 @@ PATRIMOINE.enregistrer({
       hist: "Église Notre-Dame, ancienne chapelle d'une maison du Temple du Fronsadais mentionnée au XIIe siècle, fortifiée par la suite.",
       etat: "Édifice roman restauré servant d'église paroissiale, clocher fortifié.",
       vis: "libre",
-      visNote: "Ouverte selon offices et permanences ; extérieur en accès libre."
+      visNote: "Ouverte selon offices et permanences ; extérieur en accès libre.",
+      photo: { fichier: "marcenais.webp", auteur: "William Ellison", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Marcenais_%C3%A9glise_templi%C3%A8re_4.JPG" }
     },
     {
       id: "tpl:le-temple-sur-lot",
@@ -1235,7 +1282,8 @@ PATRIMOINE.enregistrer({
       hist: "Bourg né d'une maison du Temple des bords du Lot ; les Hospitaliers y élevèrent à la fin du Moyen Âge l'imposante « maison forte » de brique qui domine toujours le village.",
       etat: "Grande commanderie de brique (XVe siècle sur emprise templière) restaurée, halle et bourg ; base nautique voisine.",
       vis: "exterieur",
-      visNote: "Extérieurs et village en accès libre ; intérieurs ouverts lors de manifestations."
+      visNote: "Extérieurs et village en accès libre ; intérieurs ouverts lors de manifestations.",
+      photo: { fichier: "le-temple-sur-lot.webp", auteur: "Paternel 1", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_du_Temple-sur-Lot.JPG" }
     },
     {
       id: "tpl:paulhac",
@@ -1253,7 +1301,8 @@ PATRIMOINE.enregistrer({
       hist: "Chef-lieu d'une baillie templière de la Marche dont dépendait Blaudeix ; modèle du gothique limousin qui inspira les chapelles voisines (Blaudeix, Chamberaud, Charrières).",
       etat: "Chapelle Saint-Fiacre classée, ornée de peintures murales du XIIIe siècle (chevaliers, saints) ; bâtiments ruraux remaniés autour.",
       vis: "evenement",
-      visNote: "Chapelle ouverte en saison et lors de visites accompagnées (se renseigner en mairie de Fursac / office de tourisme)."
+      visNote: "Chapelle ouverte en saison et lors de visites accompagnées (se renseigner en mairie de Fursac / office de tourisme).",
+      photo: { fichier: "paulhac.webp", auteur: "Accrochoc", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Paulhac_chapelleStFiacre_(1).JPG" }
     },
     {
       id: "tpl:blaudeix",
