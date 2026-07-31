@@ -695,6 +695,13 @@ body {
   border-radius: 8px;
   box-shadow: var(--ombre);
 }
+/* Un sélecteur d'ID en display:flex l'emporte toujours sur la règle native
+   du navigateur [hidden] { display: none } (l'origine "auteur" prime sur
+   l'origine "user agent" quelle que soit la spécificité) : sans cette règle
+   explicite, #maj-bandeau restait visible en permanence dès que son attribut
+   `hidden` était posé par js/app.js — l'élément lui-même s'affichait bien
+   caché côté DOM (hiddenProp true), mais jamais à l'écran. */
+#maj-bandeau[hidden] { display: none; }
 #maj-btn {
   min-height: 44px;
   min-width: 44px;
