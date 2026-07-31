@@ -1034,52 +1034,85 @@
   const majBtn = el('maj-btn');
   const majTexte = el('maj-texte');
   let rechargementDemande = false;
-  /* Verrou posé au premier clic : ignore tout clic supplémentaire et toute
-   * proposition de mise à jour concurrente (plusieurs 'updatefound' ne
-   * doivent jamais réarmer un bouton déjà cliqué). C'est la cause du bandeau
-   * qui restait affiché : le clic désactivait bien le bouton, mais rien
-   * n'empêchait un appel ultérieur à proposerMiseAJour() — ni ne signalait à
-   * l'utilisateur qu'un clic avait déjà été pris en compte pendant les
-   * quelques secondes d'activation réelle. */
-  let updateEnCours = false;
+  let miseAJourEnCours = false;
   let delaiSecours = null;
+  /* Référence vivante à l'enregistrement, jamais au seul worker capturé au
+   * moment de l'affichage : entre l'apparition du bandeau et le clic réel de
+   * l'utilisateur (des secondes, parfois des minutes sur un vrai téléphone),
+   * ce worker peut avoir cessé d'être "waiting" (déjà activé par un autre
+   * onglet, ou redevenu "redundant"). Un postMessage envoyé à un worker qui
+   * n'est plus waiting ne produit ni effet ni erreur : c'est ce qui laissait
+   * le bandeau affiché indéfiniment malgré des clics répétés. On revérifie
+   * donc l'état réel (registration.waiting) à chaque étape plutôt que de
+   * se fier à une référence figée. */
+  let registrationRef = null;
 
-  function proposerMiseAJour(worker) {
-    if (updateEnCours) return;
+  function masquerBandeau() {
+    majBandeau.hidden = true;
+    majBtn.onclick = null;
+    if (delaiSecours) { window.clearTimeout(delaiSecours); delaiSecours = null; }
+  }
+
+  function afficherPropositionMiseAJour() {
+    if (miseAJourEnCours) return;
     majTexte.textContent = 'Nouvelle version disponible';
     majBtn.disabled = false;
     majBtn.textContent = 'Mettre à jour';
     majBandeau.hidden = false;
-    majBtn.onclick = () => {
-      if (updateEnCours) return;
-      updateEnCours = true;
-      majBtn.disabled = true;
-      majBtn.textContent = 'Mise à jour…';
-      majTexte.textContent = 'Mise à jour en cours…';
-      /* L'écouteur global 'controllerchange' est déjà en place depuis le
-       * chargement de la page (voir plus bas) : il est donc bien installé
-       * avant cet envoi, jamais après. */
-      worker.postMessage('SKIP_WAITING');
-      /* Garde-fou : si aucune activation réelle ne survient (worker déjà
-       * périmé, échec silencieux), ne pas laisser le bandeau indéfiniment
-       * dans un état « en cours » sans retour ni possibilité de réessayer. */
-      delaiSecours = window.setTimeout(() => {
+    majBtn.onclick = declencherMiseAJour;
+  }
+
+  function declencherMiseAJour() {
+    if (miseAJourEnCours) return;
+    /* Rien à activer : aucune erreur, pas de rechargement, on masque. */
+    if (!registrationRef || !registrationRef.waiting) {
+      masquerBandeau();
+      return;
+    }
+    miseAJourEnCours = true;
+    majBtn.disabled = true;
+    majBtn.textContent = 'Mise à jour…';
+    majTexte.textContent = 'Mise à jour en cours…';
+    /* L'écouteur global 'controllerchange' est déjà en place depuis le
+     * chargement de la page (voir plus bas) : il est donc bien installé
+     * avant cet envoi, jamais après. */
+    registrationRef.waiting.postMessage('SKIP_WAITING');
+    /* Garde-fou : si controllerchange ne survient pas, on revérifie l'état
+     * réel avant de conclure à un échec — jamais de rechargement en boucle,
+     * jamais un message d'erreur trompeur si l'activation a en fait eu lieu
+     * sans que ce client en soit informé. */
+    delaiSecours = window.setTimeout(() => {
+      if (rechargementDemande) return;
+      registrationRef.update().catch(() => {}).then(() => {
         if (rechargementDemande) return;
-        updateEnCours = false;
-        majTexte.textContent = 'La mise à jour n’a pas pu s’activer. Réessayez, ou fermez les autres onglets ouverts sur cette application.';
-        majBtn.disabled = false;
-        majBtn.textContent = 'Réessayer';
-      }, 10000);
-    };
+        if (registrationRef.waiting) {
+          miseAJourEnCours = false;
+          afficherPropositionMiseAJour();
+        } else if (registrationRef.active) {
+          rechargementDemande = true;
+          window.location.reload();
+        } else {
+          miseAJourEnCours = false;
+          majTexte.textContent = 'La mise à jour n’a pas pu s’activer. Réessayez.';
+          majBtn.disabled = false;
+          majBtn.textContent = 'Réessayer';
+        }
+      });
+    }, 10000);
   }
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js', { scope: './' })
         .then((registration) => {
+          registrationRef = registration;
           /* Un enregistrement en attente au chargement (onglet ouvert lors
-           * d'un déploiement précédent) doit aussi proposer la mise à jour. */
-          if (registration.waiting) proposerMiseAJour(registration.waiting);
+           * d'un déploiement précédent) doit aussi proposer la mise à jour —
+           * mais seulement s'il existe déjà un contrôleur : sur la toute
+           * première installation, aucun bandeau ne doit apparaître. */
+          if (registration.waiting && navigator.serviceWorker.controller) {
+            afficherPropositionMiseAJour();
+          }
           registration.addEventListener('updatefound', () => {
             const worker = registration.installing;
             if (!worker) return;
@@ -1087,7 +1120,7 @@
               /* `controller` déjà défini = ce n'est pas la toute première
                * installation, mais une mise à jour d'un SW déjà actif. */
               if (worker.state === 'installed' && navigator.serviceWorker.controller) {
-                proposerMiseAJour(worker);
+                afficherPropositionMiseAJour();
               }
             });
           });
@@ -1104,6 +1137,33 @@
         if (delaiSecours) window.clearTimeout(delaiSecours);
         window.location.reload();
       });
+    });
+
+    /* Sur mobile, Android/Chrome peut geler l'exécution JS d'un onglet mis en
+     * arrière-plan (bfcache, gestionnaire d'applications) : un minuteur en
+     * cours (délaiSecours) ou un état affiché avant la mise en veille peuvent
+     * ne plus refléter la réalité au retour au premier plan. On revérifie
+     * alors explicitement registration.waiting plutôt que de faire confiance
+     * à l'état déjà affiché — cause plausible d'un bandeau qui semble
+     * « bloqué » alors que la mise à jour a en fait déjà eu lieu ou échoué
+     * pendant que l'onglet était inactif. */
+    function resynchroniserBandeau() {
+      if (!registrationRef || miseAJourEnCours) return;
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        if (!reg) return;
+        registrationRef = reg;
+        if (reg.waiting && navigator.serviceWorker.controller) {
+          afficherPropositionMiseAJour();
+        } else if (!majBandeau.hidden) {
+          masquerBandeau();
+        }
+      });
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resynchroniserBandeau();
+    });
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) resynchroniserBandeau();
     });
   }
 
