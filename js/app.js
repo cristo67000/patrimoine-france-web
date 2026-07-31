@@ -1032,13 +1032,44 @@
    * première installation — seulement à une mise à jour ultérieure. */
   const majBandeau = el('maj-bandeau');
   const majBtn = el('maj-btn');
+  const majTexte = el('maj-texte');
   let rechargementDemande = false;
+  /* Verrou posé au premier clic : ignore tout clic supplémentaire et toute
+   * proposition de mise à jour concurrente (plusieurs 'updatefound' ne
+   * doivent jamais réarmer un bouton déjà cliqué). C'est la cause du bandeau
+   * qui restait affiché : le clic désactivait bien le bouton, mais rien
+   * n'empêchait un appel ultérieur à proposerMiseAJour() — ni ne signalait à
+   * l'utilisateur qu'un clic avait déjà été pris en compte pendant les
+   * quelques secondes d'activation réelle. */
+  let updateEnCours = false;
+  let delaiSecours = null;
 
   function proposerMiseAJour(worker) {
+    if (updateEnCours) return;
+    majTexte.textContent = 'Nouvelle version disponible';
+    majBtn.disabled = false;
+    majBtn.textContent = 'Mettre à jour';
     majBandeau.hidden = false;
     majBtn.onclick = () => {
+      if (updateEnCours) return;
+      updateEnCours = true;
       majBtn.disabled = true;
+      majBtn.textContent = 'Mise à jour…';
+      majTexte.textContent = 'Mise à jour en cours…';
+      /* L'écouteur global 'controllerchange' est déjà en place depuis le
+       * chargement de la page (voir plus bas) : il est donc bien installé
+       * avant cet envoi, jamais après. */
       worker.postMessage('SKIP_WAITING');
+      /* Garde-fou : si aucune activation réelle ne survient (worker déjà
+       * périmé, échec silencieux), ne pas laisser le bandeau indéfiniment
+       * dans un état « en cours » sans retour ni possibilité de réessayer. */
+      delaiSecours = window.setTimeout(() => {
+        if (rechargementDemande) return;
+        updateEnCours = false;
+        majTexte.textContent = 'La mise à jour n’a pas pu s’activer. Réessayez, ou fermez les autres onglets ouverts sur cette application.';
+        majBtn.disabled = false;
+        majBtn.textContent = 'Réessayer';
+      }, 10000);
     };
   }
 
@@ -1064,10 +1095,13 @@
         .catch((err) => console.error('Échec de l’enregistrement du service worker :', err));
 
       /* Un seul rechargement, déclenché uniquement par le clic sur
-       * « Mettre à jour » (jamais automatique, jamais en boucle). */
+       * « Mettre à jour » (jamais automatique, jamais en boucle). Installé
+       * dès le chargement de la page, donc toujours en place avant qu'un
+       * SKIP_WAITING ne soit envoyé, quel que soit le moment du clic. */
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (rechargementDemande) return;
         rechargementDemande = true;
+        if (delaiSecours) window.clearTimeout(delaiSecours);
         window.location.reload();
       });
     });
