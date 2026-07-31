@@ -1,4 +1,8 @@
+# Normalise les fins de ligne : LF dans le dépôt, quel que soit le poste de travail
 * text=auto eol=lf
-*.png binary
-*.jpg binary
+
+# Binaires : ne jamais convertir
+*.png  binary
+*.jpg  binary
+*.jpeg binary
 *.webp binary
