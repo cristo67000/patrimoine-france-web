@@ -141,9 +141,92 @@
     return null;
   }
 
-  function majURL(s) {
-    const q = '?theme=' + encodeURIComponent(s.theme) + '&site=' + encodeURIComponent(s.legacyId);
-    window.history.replaceState(null, '', q);
+  /* ---------- Historique de navigation (bouton Retour Android) ----------
+   * Une Trusted Web Activity n'est pas une WebView : le bouton et le geste
+   * Retour d'Android agissent sur l'historique du navigateur, exactement comme
+   * la flèche Retour de Chrome. Les quatre vues de l'application y sont donc
+   * représentées explicitement, en API web pure (pushState / replaceState /
+   * popstate), sans aucun code natif.
+   *
+   * Le champ `n` d'un état est le nombre d'entrées de l'application situées
+   * SOUS l'entrée courante. C'est la seule garantie qu'un history.go(-n) ne
+   * quittera pas le site : il est toujours calculé à partir de l'état
+   * réellement en place (actuel.n + 1 à chaque empilement), jamais déduit de
+   * la vue visée — un lien profond ouvert dans un onglet ordinaire commence à
+   * n = 0 et ne doit pas laisser croire qu'une carte l'attend en dessous.
+   *
+   * Deux familles de fonctions, volontairement séparées :
+   *   - allerVers() / realignerEtat() modifient l'historique et ne rendent rien ;
+   *   - rendreEtat() rend l'interface depuis un état et ne touche jamais à
+   *     l'historique (protégé par enRenduHistorique).
+   */
+  const APP_HISTORIQUE = 'patrimoine-france';
+  let enRenduHistorique = false;
+  let focusRetourResultats = null;
+
+  function etatCourant() {
+    const e = window.history.state;
+    return e && e.app === APP_HISTORIQUE ? e : null;
+  }
+  function profondeurCourante() {
+    const e = etatCourant();
+    return e ? e.n : 0;
+  }
+
+  /* L'URL est déduite de l'état, jamais l'inverse. Les paramètres étrangers à
+   * la navigation (aujourd'hui le seul ?pos= du mode développement) sont
+   * conservés tels quels. */
+  function urlPourEtat(etat) {
+    const p = new URLSearchParams(window.location.search);
+    p.delete('theme');
+    p.delete('site');
+    const s = etat.site ? SITES.find((x) => x.id === etat.site) : null;
+    if (s) { p.set('theme', s.theme); p.set('site', s.legacyId); }
+    const q = p.toString();
+    return window.location.pathname + (q ? '?' + q : '');
+  }
+
+  function allerVers(vue, site, origine) {
+    if (enRenduHistorique) return;
+    const actuel = etatCourant();
+    const vueActuelle = actuel ? actuel.vue : null;
+    let empiler;
+    if (!actuel) empiler = false;
+    else if (vue === 'photo') empiler = vueActuelle !== 'photo';
+    else if (vue === vueActuelle) empiler = false;
+    else if (vue === 'results') empiler = vueActuelle === 'map';
+    else if (vue === 'fiche') empiler = vueActuelle === 'map' || vueActuelle === 'results';
+    else empiler = false;
+    /* Même vue rejouée (même fiche rouverte, nouvelle recherche) : on remplace,
+     * en conservant l'origine physique de l'entrée déjà en place. */
+    const org = (!empiler && actuel && vue === vueActuelle)
+      ? actuel.origine
+      : (origine || (actuel ? actuel.origine : 'map'));
+    const etat = {
+      app: APP_HISTORIQUE,
+      vue,
+      site: site || null,
+      origine: org,
+      n: actuel ? (empiler ? actuel.n + 1 : actuel.n) : 0
+    };
+    const url = urlPourEtat(etat);
+    if (empiler) window.history.pushState(etat, '', url);
+    else window.history.replaceState(etat, '', url);
+  }
+
+  /* Vue fermée par un mécanisme qui n'est pas une navigation (changement de
+   * filtre de thèmes) : l'état affiché doit rester cohérent, sans créer ni
+   * consommer d'entrée. La profondeur physique est donc conservée telle quelle. */
+  function realignerEtat(vue, site) {
+    const actuel = etatCourant();
+    const etat = {
+      app: APP_HISTORIQUE,
+      vue,
+      site: site || null,
+      origine: actuel ? actuel.origine : 'map',
+      n: actuel ? actuel.n : 0
+    };
+    window.history.replaceState(etat, '', urlPourEtat(etat));
   }
 
   /* ---------- Marqueurs ----------
@@ -289,14 +372,16 @@
     majDatalist();
     majControleCouches();
 
-    /* Une fiche ou une liste devenue hors filtre ne doit pas rester à l'écran. */
+    /* Une fiche ou une liste devenue hors filtre ne doit pas rester à l'écran.
+     * Changer de thème n'est pas une navigation : on réaligne l'état affiché
+     * sans jamais créer ni consommer d'entrée d'historique. */
     if (selectedId) {
       const s = SITES.find((x) => x.id === selectedId);
-      if (s && !themeVisible(s)) fermerPanneau();
+      if (s && !themeVisible(s)) { fermerPanneau(); realignerEtat('map', null); }
     }
     if (!results.hidden && dernierResultat) {
       const restants = dernierResultat.liste.filter((x) => themeVisible(x.e.s));
-      if (!restants.length) fermerResultats();
+      if (!restants.length) { fermerResultats(); realignerEtat('map', null); }
       else afficherResultats(dernierResultat.requete, restants, dernierResultat.titre);
     }
   }
@@ -344,18 +429,6 @@
    * l'élément capturé n'est pas pertinent et la restitution est ignorée. */
   let elementDeclencheur = null;
 
-  /* Ne retire theme et site de l'URL que sur une fermeture explicite ; les
-   * autres paramètres éventuels (aucun aujourd'hui hors mode debug ?pos=) ne
-   * sont jamais touchés. */
-  function nettoyerURL() {
-    const p = new URLSearchParams(window.location.search);
-    if (!p.has('theme') && !p.has('site')) return;
-    p.delete('theme');
-    p.delete('site');
-    const q = p.toString();
-    window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : ''));
-  }
-
   function setPinSelected(id, on) {
     const m = markersById[id];
     if (!m) return;
@@ -365,11 +438,14 @@
     if (pin) pin.classList.toggle('pin-sel', on);
   }
 
+  /* Fermeture d'interface pure : ne touche jamais à l'historique, pour rester
+   * appelable aussi bien par un rendu d'état (popstate) que par le filtre de
+   * thèmes. Le retour vers la carte demandé par l'utilisateur passe par
+   * fermerFicheVersCarte(). */
   function fermerPanneau() {
     panel.hidden = true;
     retourListe = null;
     if (selectedId) { setPinSelected(selectedId, false); selectedId = null; }
-    nettoyerURL();
     /* Restitution du focus « lorsque cela est possible » : l'élément qui a
      * ouvert la fiche doit encore exister et être focusable (un marqueur de
      * carte ne l'est jamais, cf. elementDeclencheur ci-dessus). */
@@ -457,19 +533,47 @@
     dialogueImg.alt = figImg.alt;
     construireCredit(photoCourante, dialogueCredit);
     dialoguePhoto.showModal();
+    allerVers('photo', photoCourante.id);
   }
-  function fermerPhoto() {
-    dialoguePhoto.close();
+  /* Fermeture d'interface pure : referme le dialogue, nettoie l'image et rend
+   * le focus. Ne touche pas à l'historique — appelée aussi bien par le rendu
+   * d'un état que par la fermeture de secours ci-dessous. Idempotente : le
+   * retrait de l'attribut src sert aussi de marqueur « déjà nettoyé ». */
+  function fermerPhotoUI() {
+    if (dialoguePhoto.open) dialoguePhoto.close();
     dialogueImg.removeAttribute('src');
-    if (dernierFocusPhoto) dernierFocusPhoto.focus();
+    if (dernierFocusPhoto) { dernierFocusPhoto.focus(); dernierFocusPhoto = null; }
+  }
+
+  /* Intention de l'utilisateur (bouton ✕, Échap) : reculer d'un cran, ce qui
+   * referme la photo et laisse la fiche ouverte, exactement comme le Retour
+   * Android. Jamais de history.back() aveugle : sans entrée applicative en
+   * dessous (n = 0), on referme directement et on réaligne l'état. */
+  function fermerPhoto() {
+    const e = etatCourant();
+    if (e && e.vue === 'photo' && e.n > 0) { window.history.go(-1); return; }
+    fermerPhotoUI();
+    realignerEtat('fiche', selectedId);
   }
   figBtn.addEventListener('click', ouvrirPhoto);
   el('dialogue-photo-close').addEventListener('click', fermerPhoto);
-  /* <dialog> ferme déjà sur Échap nativement ; on n'intercepte que pour
-   * restituer le focus, qui ne fait pas partie du comportement natif. */
+  /* Échap : <dialog> émet `cancel` (annulable) avant de se refermer. On reprend
+   * la main pour que la touche suive le même chemin que le Retour Android,
+   * plutôt que de fermer le dialogue en laissant l'historique sur « photo ». */
+  dialoguePhoto.addEventListener('cancel', (ev) => {
+    ev.preventDefault();
+    fermerPhoto();
+  });
+  /* Filet de sécurité pour toute fermeture qui n'aurait pas transité par les
+   * deux chemins ci-dessus. La présence de l'attribut src prouve que le
+   * nettoyage n'a pas déjà eu lieu : sans ce garde-fou, une fermeture déjà
+   * traitée reculerait une seconde fois dans l'historique. */
   dialoguePhoto.addEventListener('close', () => {
+    if (!dialogueImg.hasAttribute('src')) return;
     dialogueImg.removeAttribute('src');
-    if (dernierFocusPhoto) dernierFocusPhoto.focus();
+    if (dernierFocusPhoto) { dernierFocusPhoto.focus(); dernierFocusPhoto = null; }
+    const e = etatCourant();
+    if (e && e.vue === 'photo' && e.n > 0) window.history.go(-1);
   });
 
   function selectSite(id, opts) {
@@ -608,20 +712,54 @@
     el('p-zoom').onclick = () => selectSite(id, { zoom: true });
     panel.hidden = false;
     panel.scrollTop = 0;
-    majURL(s);
+    allerVers('fiche', id, retour ? 'results' : 'map');
   }
-  el('p-close').addEventListener('click', fermerPanneau);
 
-  /* Restitution de la liste : même requête, même ordre, même titre, et le focus
-   * rendu au résultat d'où l'on venait. */
-  el('p-retour').addEventListener('click', () => {
-    if (!retourListe) return;
-    const cible = retourListe.focusId;
-    afficherResultats(retourListe.requete, retourListe.liste, retourListe.titre);
-    const idx = retourListe.liste.findIndex((x) => x.e.s.id === cible);
+  /* « ← Carte » : revient DIRECTEMENT à la carte, en consommant les entrées de
+   * l'application empilées au-dessus d'elle — donc la liste de résultats aussi
+   * quand la fiche en venait. Retour ne doit pas rouvrir ensuite la fiche qu'on
+   * vient de fermer : c'est pourquoi on recule dans l'historique au lieu
+   * d'empiler une entrée « carte » supplémentaire.
+   * n = 0 signifie qu'aucune entrée de l'application n'est en dessous (lien
+   * profond ouvert dans un onglet ordinaire) : surtout pas de history.back()
+   * aveugle, qui ferait quitter le site. */
+  function fermerFicheVersCarte() {
+    const n = profondeurCourante();
+    if (n > 0) { window.history.go(-n); return; }
+    fermerResultats();
+    fermerPanneau();
+    realignerEtat('map', null);
+  }
+  el('p-close').addEventListener('click', fermerFicheVersCarte);
+
+  /* Restitution du focus dans la liste rendue : appelée aussi bien par le
+   * bouton « Retour aux résultats » que par le rendu d'un état d'historique,
+   * la remontée étant alors asynchrone (popstate). */
+  function appliquerFocusResultats() {
+    const cible = focusRetourResultats;
+    focusRetourResultats = null;
+    if (!cible || !dernierResultat) return;
+    const idx = dernierResultat.liste.findIndex((x) => x.e.s.id === cible);
     const boutons = el('r-list').querySelectorAll('.r-item');
     const btn = idx >= 0 ? boutons[idx] : boutons[0];
     if (btn) { btn.focus(); btn.classList.add('r-item-vu'); }
+  }
+
+  /* Restitution de la liste : même requête, même ordre, même titre, et le focus
+   * rendu au résultat d'où l'on venait. Distinct de « ← Carte » : on ne remonte
+   * que d'un cran, vers la liste réellement empilée sous la fiche. */
+  el('p-retour').addEventListener('click', () => {
+    if (!retourListe) return;
+    focusRetourResultats = retourListe.focusId;
+    const e = etatCourant();
+    if (e && e.vue === 'fiche' && e.origine === 'results' && e.n > 0) {
+      window.history.go(-1);
+      return;
+    }
+    /* Aucune entrée « résultats » sous la fiche (liste reconstituée après un
+     * lien profond) : on rend la liste et on aligne l'historique. */
+    afficherResultats(retourListe.requete, retourListe.liste, retourListe.titre);
+    appliquerFocusResultats();
   });
 
   /* ---------- Recherche ----------
@@ -808,6 +946,7 @@
     });
     results.hidden = false;
     results.scrollTop = 0;
+    allerVers('results', null, 'map');
   }
 
   /* Panneau de choix pour un identifiant historique porté par plusieurs thèmes.
@@ -826,11 +965,18 @@
     toast('Ancien lien sans thème : plusieurs sites portent l’identifiant « ' + legacyId +' ».');
   }
 
-  el('r-close').addEventListener('click', () => {
+  /* Fermeture de la liste par l'utilisateur : équivalente au Retour Android
+   * depuis les résultats. `dernierResultat` n'est plus effacé, pour que le
+   * bouton Avancer puisse restituer la liste ; il n'est de toute façon lu que
+   * lorsque le panneau est visible. */
+  function fermerResultatsVersCarte() {
+    const n = profondeurCourante();
+    if (n > 0) { window.history.go(-n); search.focus(); return; }
     fermerResultats();
-    dernierResultat = null;
+    realignerEtat('map', null);
     search.focus();
-  });
+  }
+  el('r-close').addEventListener('click', fermerResultatsVersCarte);
 
   /* Échap ferme la liste, puis la fiche. Les dialogues « À propos » et
    * « Photographie » gèrent eux-mêmes leur touche Échap (comportement natif de
@@ -839,8 +985,8 @@
    * agrandie, en plus de l'image. */
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || about.open || dialoguePhoto.open) return;
-    if (!results.hidden) { fermerResultats(); search.focus(); return; }
-    if (!panel.hidden) fermerPanneau();
+    if (!results.hidden) { fermerResultatsVersCarte(); return; }
+    if (!panel.hidden) fermerFicheVersCarte();
   });
 
   function runSearch() {
@@ -1019,11 +1165,87 @@
       erreursRelations.join('\n  '));
   }
 
+  /* Rend l'interface depuis un état d'historique. Ne modifie JAMAIS
+   * l'historique : pas de pushState, pas de replaceState, pas de back() — ce
+   * qui exclut toute boucle. Les fonctions d'interface appelées ici sont les
+   * mêmes que celles des boutons, neutralisées par enRenduHistorique. */
+  function rendreEtat(etat) {
+    const e = (etat && etat.app === APP_HISTORIQUE)
+      ? etat
+      : { vue: 'map', site: null, origine: 'map', n: 0 };
+    enRenduHistorique = true;
+    try {
+      if (dialoguePhoto.open && e.vue !== 'photo') fermerPhotoUI();
+      if (e.vue === 'fiche' || e.vue === 'photo') {
+        const s = e.site ? SITES.find((x) => x.id === e.site) : null;
+        if (s) {
+          /* Pas de zoom : le Retour restitue la fiche, pas un déplacement de
+           * carte que l'utilisateur n'a pas demandé. */
+          selectSite(s.id, { depuisListe: e.origine === 'results' });
+          if (e.vue === 'photo' && !dialoguePhoto.open) ouvrirPhoto();
+          return;
+        }
+        fermerResultats();
+        fermerPanneau();
+        return;
+      }
+      if (e.vue === 'results') {
+        fermerPanneau();
+        if (dernierResultat) {
+          afficherResultats(dernierResultat.requete, dernierResultat.liste, dernierResultat.titre);
+          appliquerFocusResultats();
+        } else {
+          fermerResultats();
+        }
+        return;
+      }
+      fermerResultats();
+      fermerPanneau();
+    } finally {
+      enRenduHistorique = false;
+    }
+  }
+  window.addEventListener('popstate', (ev) => rendreEtat(ev.state));
+
   /* Ouverture depuis l'URL. Un identifiant historique porté par plusieurs
-   * thèmes n'ouvre rien : il présente un choix. */
+   * thèmes n'ouvre rien : il présente un choix.
+   *
+   * Deux situations distinguées, et une seule méthode de distinction :
+   * l'application est-elle affichée dans sa propre fenêtre (PWA installée,
+   * Trusted Web Activity) ou dans un onglet ordinaire ?
+   *   - display-mode standalone / fullscreen / minimal-ui, ou navigator.standalone
+   *     (iOS) : aucune histoire externe à préserver, on synthétise donc une
+   *     entrée « carte » sous la fiche pour que le Retour Android ferme la
+   *     fiche au lieu de quitter l'application ;
+   *   - onglet ordinaire venu d'un autre site (history.length > 1) : l'entrée
+   *     initiale reste la fiche elle-même (n = 0), et le Retour rend la main au
+   *     site précédent. Un onglet neuf (history.length <= 1) n'a rien à
+   *     préserver et reçoit la même entrée « carte » que la PWA installée. */
   const cible = lireURL();
-  if (cible && cible.ambigu) afficherAmbiguite(cible.legacyId, cible.ambigu);
-  else if (cible && markersById[cible.id]) selectSite(cible.id, { zoom: true });
+  const enFenetreDediee = ['standalone', 'fullscreen', 'minimal-ui']
+    .some((m) => window.matchMedia('(display-mode: ' + m + ')').matches) ||
+    window.navigator.standalone === true;
+  const syntheseCarte = enFenetreDediee || window.history.length <= 1;
+  const etatCarte = { app: APP_HISTORIQUE, vue: 'map', site: null, origine: 'map', n: 0 };
+
+  function ouvrirCibleInitiale() {
+    if (cible && cible.ambigu) afficherAmbiguite(cible.legacyId, cible.ambigu);
+    else if (cible && markersById[cible.id]) selectSite(cible.id, { zoom: true });
+  }
+
+  if (cible && !syntheseCarte) {
+    enRenduHistorique = true;
+    ouvrirCibleInitiale();
+    enRenduHistorique = false;
+    const vue = !panel.hidden ? 'fiche' : (!results.hidden ? 'results' : 'map');
+    window.history.replaceState(
+      { app: APP_HISTORIQUE, vue, site: selectedId, origine: 'map', n: 0 },
+      '', window.location.pathname + window.location.search
+    );
+  } else {
+    window.history.replaceState(etatCarte, '', urlPourEtat(etatCarte));
+    ouvrirCibleInitiale();
+  }
 
   /* ---------- Service worker : enregistrement et mise à jour ----------
    * Chemin et portée relatifs (« ./sw.js », pas « /sw.js ») : compatibles
