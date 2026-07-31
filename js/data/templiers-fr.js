@@ -46,8 +46,7 @@ PATRIMOINE.enregistrer({
       hist: "Village du causse du Larzac développé autour d'un château élevé par les Templiers de Sainte-Eulalie, au cœur du vaste domaine agropastoral que l'ordre exploitait sur le plateau. Après 1312, les Hospitaliers prennent la suite et dotent le bourg de ses remparts (1439-1445).",
       etat: "Cité médiévale remarquablement conservée : enceinte complète avec tours, ruelles, hôtels caussenards, église Saint-Christol, ruines du château templier. Classée parmi « Les Plus Beaux Villages de France », au sein du périmètre UNESCO Causses et Cévennes.",
       vis: "payant",
-      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison.",
-      photo: { fichier: "couvertoirade.webp", auteur: "Gourdain~commonswiki (présumé)", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Chateau_couvertoirade.JPG" }
+      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison."
     },
     {
       id: "tpl:sainte-eulalie-cernon",
