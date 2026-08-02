@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.cristo67000.patrimoinedefrance",
+      "sha256_cert_fingerprints": [
+        "7C:BA:62:8D:E4:4F:20:6F:A4:14:29:D7:3C:38:D9:B4:E0:73:F7:84:6C:FA:E3:D7:8C:48:94:12:0E:94:8C:95"
+      ]
+    }
+  }
+]
