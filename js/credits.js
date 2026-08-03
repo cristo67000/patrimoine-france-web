@@ -69,22 +69,40 @@
     theme.textContent = nomTheme(THEMES[s.theme]);
     li.appendChild(theme);
 
+    /* Même point de décision que la fiche : PATRIMOINE.creditPhoto. Cette page
+     * dupliquait auparavant la règle « titre ou date => vue ancienne », et
+     * produisait un lien de source vide pour une photographie personnelle. */
     const meta = document.createElement('div');
     meta.className = 'c-meta';
-    const estVue = !!(p.titre || p.date);
-    meta.appendChild(document.createTextNode(
-      (estVue ? 'Vue ancienne' + (p.date ? ' (' + p.date + ')' : '') : 'Photographie') +
-      ' — ' + p.auteur + ' — ' + p.licence + ' · '));
-    const lien = document.createElement('a');
-    lien.href = p.source;
-    lien.target = '_blank';
-    lien.rel = 'noopener noreferrer';
-    lien.textContent = 'Wikimedia Commons ↗';
-    meta.appendChild(lien);
-    if (p.titre) {
+    const credit = PATRIMOINE.creditPhoto(p);
+    credit.lignes.forEach((l) => {
+      const ligne = document.createElement('span');
+      ligne.className = 'c-ligne';
+      if (l.href) {
+        const a = document.createElement('a');
+        a.href = l.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = l.texte;
+        ligne.appendChild(a);
+      } else {
+        ligne.textContent = l.texte;
+      }
+      if (l.suite) {
+        ligne.appendChild(document.createTextNode(' · '));
+        const a = document.createElement('a');
+        a.href = l.suite.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = l.suite.texte;
+        ligne.appendChild(a);
+      }
+      meta.appendChild(ligne);
+    });
+    if (credit.titre) {
       const titre = document.createElement('span');
       titre.className = 'c-titre';
-      titre.textContent = ' « ' + p.titre + ' »';
+      titre.textContent = ' « ' + credit.titre + ' »';
       meta.appendChild(titre);
     }
     li.appendChild(meta);

@@ -57,6 +57,84 @@ const PATRIMOINE = {
     }
     this.corpus.push(c);
     return c;
+  },
+
+  /* ---------- Nature d'une illustration ----------
+   * Point de décision UNIQUE, partagé par la fiche (js/app.js) et la page des
+   * crédits (js/credits.js), qui divergeaient auparavant.
+   *
+   * `typeIllustration` fait foi quand il est présent. En son absence :
+   *   · une photographie personnelle est, par construction, une prise de vue
+   *     récente ;
+   *   · sinon, seul `date` — le millésime de l'ŒUVRE, que portent les 52 vues
+   *     anciennes du corpus châteaux — désigne un document ancien.
+   *
+   * Ni `titre` ni `datePrise` ne prouvent quoi que ce soit : une photographie
+   * moderne peut porter les deux. La règle précédente, qui basculait en « Vue
+   * ancienne » dès qu'un `titre` existait, affichait la photographie
+   * personnelle de Quéribus (2024) comme une gravure d'Ancien Régime.
+   */
+  TYPES_ILLUSTRATION: {
+    'photographie-moderne': { ancien: false, libelle: 'Photographie' },
+    'photographie-ancienne': { ancien: true, libelle: 'Photographie ancienne' },
+    'gravure': { ancien: true, libelle: 'Gravure' },
+    'dessin': { ancien: true, libelle: 'Dessin' },
+    'plan': { ancien: true, libelle: 'Plan' },
+    'carte-postale': { ancien: true, libelle: 'Carte postale' },
+    'vue-aerienne-historique': { ancien: true, libelle: 'Vue aérienne ancienne' }
+  },
+
+  classerIllustration(p) {
+    if (!p) return { ancien: false, libelle: 'Photographie' };
+    const declare = this.TYPES_ILLUSTRATION[p.typeIllustration];
+    if (declare) return declare;
+    if (p.origine === 'personnelle') return this.TYPES_ILLUSTRATION['photographie-moderne'];
+    /* Repli rétrocompatible : « Vue ancienne » reste le libellé historique des
+     * 52 fiches qui ne portent pas encore `typeIllustration`. */
+    if (p.date) return { ancien: true, libelle: 'Vue ancienne' };
+    return this.TYPES_ILLUSTRATION['photographie-moderne'];
+  },
+
+  /* Description du crédit à afficher, indépendante de tout rendu : la fiche et
+   * la page des crédits en construisent leur DOM par createElement/textContent.
+   *
+   * Renvoie une liste de lignes { texte, href? }. Une illustration externe tient
+   * sur une seule ligne, comme aujourd'hui pour les 385 crédits existants ; une
+   * photographie personnelle en occupe plusieurs, faute de page source à citer.
+   */
+  creditPhoto(p) {
+    const nature = this.classerIllustration(p);
+    const perso = p.origine === 'personnelle';
+    const lignes = [];
+
+    if (perso) {
+      lignes.push({ texte: 'Photographie : ' + p.auteur });
+      if (p.datePrise) {
+        const d = new Date(p.datePrise + 'T00:00:00');
+        lignes.push({ texte: 'Date : ' + (isNaN(d.getTime()) ? p.datePrise
+          : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })) });
+      }
+      const collection = p.sourceLibelle && p.sourceLibelle !== 'Photographie personnelle'
+        ? p.sourceLibelle : 'Collection personnelle';
+      /* « Tous droits réservés » n'ouvre aucun droit : afficher un lien de
+       * licence serait trompeur. La mention tient alors sur la même ligne. */
+      if (/^tous droits réservés$/i.test(String(p.licence || '').trim())) {
+        lignes.push({ texte: collection + ' — ' + p.licence });
+      } else {
+        lignes.push({ texte: collection });
+        lignes.push({ texte: 'Licence : ' + p.licence, href: p.licenceUrl || null });
+      }
+    } else {
+      lignes.push({
+        texte: (nature.ancien
+          ? nature.libelle + (p.date ? ' (' + p.date + ')' : '')
+          : '📷') + ' ' + p.auteur + ' — ' + p.licence,
+        /* Le lien de source suit sur la MÊME ligne, séparé par « · ». */
+        suite: p.source ? { href: p.source, texte: 'Wikimedia Commons ↗' } : null
+      });
+    }
+
+    return { nature, perso, lignes, titre: p.titre || null };
   }
 };
 

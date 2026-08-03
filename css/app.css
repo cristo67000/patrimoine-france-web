@@ -370,6 +370,9 @@ body {
   color: var(--gris);
 }
 #p-figure-caption a { color: inherit; text-decoration: underline; }
+/* Une illustration externe tient sur une ligne ; une photographie personnelle
+   en occupe plusieurs (photographe, date, collection, licence). */
+.credit-ligne { display: block; }
 .credit-titre { font-style: italic; }
 
 /* ---------- Dialogue d'agrandissement ---------- */

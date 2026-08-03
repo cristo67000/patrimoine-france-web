@@ -47,7 +47,15 @@ PATRIMOINE.enregistrer({
       hist: "Forteresse bâtie sur une coulée basaltique dominant la vallée de la Couze Chambon, agrandie au XIVe siècle par Guillaume de Murol, fin diplomate qui la dota d'une enceinte polygonale remarquable. Remaniée à la Renaissance, elle servit de garnison puis échappa de peu au démantèlement.",
       etat: "Imposante forteresse conservée sur sa butte, avec enceinte, terrasses d'artillerie, chapelle et salles restituées. L'un des châteaux forts les plus visités d'Auvergne.",
       vis: "payant",
-      visNote: "Ouvert toute l'année ; visites animées et troupes médiévales en saison (billetterie sur place et en ligne)."
+      visNote: "Ouvert toute l'année ; visites animées et troupes médiévales en saison (billetterie sur place et en ligne).",
+      photo: {
+        fichier: "murol.webp",
+        auteur: "PIERRE ANDRE LECLERCQ",
+        licence: "CC BY-SA 4.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Murol_et_son_Ch%C3%A2teau_(3).JPG",
+        licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
     },
     {
       id: "cha:anjony",
@@ -1029,7 +1037,15 @@ PATRIMOINE.enregistrer({
       hist: "Bijou de la première Renaissance bâti sur une île de l'Indre par Gilles Berthelot, financier de François Ier, et surtout par son épouse Philippe Lesbahy qui dirigea le chantier — avant que la disgrâce ne chasse le couple et que le roi ne confisque le château.",
       etat: "« Diamant taillé à facettes serti par l'Indre » (Balzac) : escalier d'honneur ouvert, salles remeublées, miroir d'eau restauré et parc paysager romantique. Géré par le Centre des monuments nationaux.",
       vis: "payant",
-      visNote: "Ouvert toute l'année ; le village d'Azay et la vallée de l'Indre complètent agréablement la visite."
+      visNote: "Ouvert toute l'année ; le village d'Azay et la vallée de l'Indre complètent agréablement la visite.",
+      photo: {
+        fichier: "azay-le-rideau.webp",
+        auteur: "Patrick S. from BAZIEGE, FRANCE",
+        licence: "CC BY 2.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_d%27Azay_le_rideau_(20795508904).jpg",
+        licenceUrl: "https://creativecommons.org/licenses/by/2.0/"
+      }
     },
     {
       id: "cha:villandry",
@@ -1107,7 +1123,15 @@ PATRIMOINE.enregistrer({
       etat: "Trois châteaux juxtaposés (fort Saint-Georges, château du Milieu, fort du Coudray) restaurés par le Département : logis royaux scénographiés, tours, remparts panoramiques sur la ville et la Vienne.",
       vis: "payant",
       visNote: "Ouvert toute l'année ; ascenseur depuis la ville, tablettes de réalité augmentée incluses.",
-      note: "L'attribution des graffitis de la tour du Coudray aux Templiers emprisonnés reste débattue par les historiens."
+      note: "L'attribution des graffitis de la tour du Coudray aux Templiers emprisonnés reste débattue par les historiens.",
+      photo: {
+        fichier: "chinon.webp",
+        auteur: "M.herrick",
+        licence: "CC BY-SA 3.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Forteresse_royale_de_Chinon_(37).jpg",
+        licenceUrl: "https://creativecommons.org/licenses/by-sa/3.0/"
+      }
     },
     {
       id: "cha:loches",
@@ -2030,7 +2054,14 @@ PATRIMOINE.enregistrer({
       hist: "« Clé du duché de Lorraine » : principale forteresse des ducs, perchée sur une butte dominant la vallée de la Moselle, elle figurait avec son chardon sur leurs armes. Démantelée sur ordre de Richelieu en 1633, elle domina longtemps toute la région.",
       etat: "Vastes ruines sur la butte (tours, courtines, poterne), progressivement dégagées et consolidées par une association ; panorama sur la vallée de la Moselle et le pays messin.",
       vis: "libre",
-      visNote: "Ruines en accès libre toute l'année ; chantiers et visites guidées organisés par l'association de sauvegarde en saison."
+      visNote: "Ruines en accès libre toute l'année ; chantiers et visites guidées organisés par l'association de sauvegarde en saison.",
+      photo: {
+        fichier: "preny.webp",
+        auteur: "Aimelaime",
+        licence: "Public domain",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Chateau_Preny.jpg"
+      }
     },
     {
       id: "cha:cons-la-grandville",
@@ -2072,7 +2103,15 @@ PATRIMOINE.enregistrer({
       etat: "Silhouette de conte complète (huit tours, double enceinte, salle des Preuses, chapelle) au-dessus du village et de la forêt de Compiègne ; nombreux tournages, du « Bossu » à la série « Merlin ».",
       vis: "payant",
       visNote: "Centre des monuments nationaux ; ouvert toute l'année sauf certains jours fériés.",
-      note: "Reconstruction du XIXe siècle assumée : Pierrefonds montre le Moyen Âge rêvé par Viollet-le-Duc plus que l'état médiéval d'origine."
+      note: "Reconstruction du XIXe siècle assumée : Pierrefonds montre le Moyen Âge rêvé par Viollet-le-Duc plus que l'état médiéval d'origine.",
+      photo: {
+        fichier: "pierrefonds.webp",
+        auteur: "Jebulon",
+        licence: "CC0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_de_Pierrefonds_exterior_Oise.jpg",
+        licenceUrl: "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
     },
     {
       id: "cha:coucy",
@@ -2325,7 +2364,15 @@ PATRIMOINE.enregistrer({
       hist: "Chef-d'œuvre commandé par Nicolas Fouquet, surintendant des finances, à Le Vau, Le Brun et Le Nôtre réunis pour la première fois. La fête somptueuse du 17 août 1661 précipita sa chute : Louis XIV, jaloux, le fit arrêter et embaucha l'équipe pour Versailles.",
       etat: "Prototype accompli du grand style français : dôme, décors de Le Brun, jardins à perspectives ralenties et anamorphoses ; propriété privée entretenue avec un soin exceptionnel.",
       vis: "payant",
-      visNote: "Ouvert de mars à début novembre et pendant les fêtes ; soirées aux 2 000 chandelles les samedis d'été."
+      visNote: "Ouvert de mars à début novembre et pendant les fêtes ; soirées aux 2 000 chandelles les samedis d'été.",
+      photo: {
+        fichier: "vaux-le-vicomte.webp",
+        auteur: "Jean-Pol GRANDMONT",
+        licence: "CC BY 4.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:0_Jardins_et_ch%C3%A2teau_de_Vaux-le-Vicomte_(6).JPG",
+        licenceUrl: "https://creativecommons.org/licenses/by/4.0/"
+      }
     },
     {
       id: "cha:ecouen",
@@ -3259,7 +3306,15 @@ PATRIMOINE.enregistrer({
       hist: "Fort elliptique bâti en pleine mer entre Aix et Oléron pour protéger l'arsenal de Rochefort des flottes anglaises. Chantier réputé impossible — « il serait plus aisé de saisir la lune avec les dents », aurait dit Vauban —, il fut achevé après un demi-siècle, au moment où l'artillerie le rendait déjà inutile.",
       etat: "Vaisseau de pierre de 68 m sur 31 dressé sur un banc de sable, restauré dans les années 1990 ; mondialement connu grâce au jeu télévisé tourné sur place depuis 1990.",
       vis: "exterieur",
-      visNote: "Intérieur fermé au public (plateau de tournage) ; approche possible par les vedettes touristiques au départ de La Rochelle, Fouras ou Oléron."
+      visNote: "Intérieur fermé au public (plateau de tournage) ; approche possible par les vedettes touristiques au départ de La Rochelle, Fouras ou Oléron.",
+      photo: {
+        fichier: "fort-boyard.webp",
+        auteur: "ERIC  SALARD",
+        licence: "CC BY-SA 2.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Fort_Boyard_(51269094270).jpg",
+        licenceUrl: "https://creativecommons.org/licenses/by-sa/2.0/"
+      }
     },
     {
       id: "cha:villandraut",
@@ -3278,7 +3333,15 @@ PATRIMOINE.enregistrer({
       hist: "Palais-forteresse bâti par Bertrand de Got, devenu le pape Clément V, dans son village natal : l'archétype des « châteaux clémentins » du Bordelais, qui marient le plan philippien régulier au confort d'une résidence pontificale.",
       etat: "Quadrilatère à six tours et douves sèches taillées dans le roc, sans donjon, ouvert par de larges fenêtres à meneaux ; ruines consolidées gérées par une association, scénographie sur la papauté d'Avignon.",
       vis: "payant",
-      visNote: "Ouvert de février à décembre selon la saison ; animations et chantiers de bénévoles."
+      visNote: "Ouvert de février à décembre selon la saison ; animations et chantiers de bénévoles.",
+      photo: {
+        fichier: "villandraut.webp",
+        auteur: "Fanfwah",
+        licence: "CC BY-SA 4.0",
+        typeIllustration: "photographie-moderne",
+        source: "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_de_Villandraut_03.jpg",
+        licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
     },
     {
       id: "cha:pons",
@@ -3420,7 +3483,20 @@ PATRIMOINE.enregistrer({
       hist: "Dernier bastion de la résistance occitane après Montségur, tombé en 1255 ; perché sur un piton à 728 m, il devint l'une des « cinq fils de Carcassonne » gardant la frontière avec l'Aragon jusqu'au XVIIe siècle.",
       etat: "Donjon polygonal à salle gothique à pilier palmier accroché au sommet du roc, dominant les Corbières et le Roussillon jusqu'à la Méditerranée ; sentier depuis le col, curé de Cucugnan popularisé par Daudet en contrebas.",
       vis: "payant",
-      visNote: "Ouvert toute l'année (météo permettant) ; billet couplé possible avec Peyrepertuse, montée exposée au vent."
+      visNote: "Ouvert toute l'année (météo permettant) ; billet couplé possible avec Peyrepertuse, montée exposée au vent.",
+      photo: {
+        fichier: "queribus.webp",
+        titre: "Vue du château de Quéribus",
+        auteur: "Cristo67000",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        typeIllustration: "photographie-moderne",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2024-08-29",
+        legende: "Le château de Quéribus dominant le massif des Corbières, construit sur une crête rocheuse à Cucugnan",
+        alt: "Château de Quéribus dominant le massif des Corbières sur une crête rocheuse à Cucugnan",
+        modifications: "Redimensionnement a 960 px, conversion WebP, suppression des metadonnees"
+      }
     },
     {
       id: "cha:puilaurens",

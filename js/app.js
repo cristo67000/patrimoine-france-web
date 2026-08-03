@@ -457,10 +457,15 @@
   }
 
   /* ---------- Photographie ----------
-   * Schéma commun aux trois thèmes : photo: { fichier, auteur, licence, source,
-   * titre?, date? }. titre et date sont facultatifs (seul le corpus châteaux
-   * les fournit, pour ses 52 vues anciennes) : absents, ils ne sont jamais
-   * affichés à leur place ni remplacés par une valeur inventée.
+   * Schéma commun aux trois thèmes : photo: { fichier, auteur, licence,
+   * source?, titre?, date?, typeIllustration?, origine?, datePrise?, legende?,
+   * alt?, licenceUrl?, sourceLibelle?, modifications? }. Tous les champs après
+   * `licence` sont facultatifs : absents, ils ne sont jamais affichés à leur
+   * place ni remplacés par une valeur inventée.
+   *
+   * `source` n'est obligatoire que pour une illustration externe. Une
+   * photographie personnelle (origine: "personnelle") n'a pas de page source à
+   * citer : aucun lien vide ne doit être produit pour elle.
    *
    * Une fiche sans `photo` (247 sur 584) n'affiche RIEN : pas de cadre vide, pas
    * de pictogramme générique, pas de message. Le bloc <figure> reste hidden.
@@ -475,27 +480,45 @@
   let photoCourante = null;   /* { s, credit } pour le dialogue d'agrandissement */
 
   /* Un même texte de crédit sert à la fiche et au dialogue : une seule
-   * construction, jamais dupliquée en deux endroits divergents. */
+   * construction, jamais dupliquée en deux endroits divergents.
+   *
+   * La NATURE de l'illustration et le contenu du crédit viennent de
+   * PATRIMOINE.creditPhoto (js/themes.js), partagé avec la page des crédits.
+   * Ici on ne fait que poser le DOM. */
   function construireCredit(s, conteneur) {
     conteneur.textContent = '';
     const p = s.photo;
-    const estVue = !!(p.titre || p.date);
-    const intro = document.createElement('span');
-    intro.className = 'credit-intro';
-    intro.textContent = estVue
-      ? 'Vue ancienne' + (p.date ? ' (' + p.date + ')' : '') + ' — ' + p.auteur + ' — ' + p.licence + ' · '
-      : '📷 ' + p.auteur + ' — ' + p.licence + ' · ';
-    conteneur.appendChild(intro);
-    const lien = document.createElement('a');
-    lien.href = p.source;
-    lien.target = '_blank';
-    lien.rel = 'noopener noreferrer';
-    lien.textContent = 'Wikimedia Commons ↗';
-    conteneur.appendChild(lien);
-    if (p.titre) {
+    const credit = PATRIMOINE.creditPhoto(p);
+
+    credit.lignes.forEach((l) => {
+      const ligne = document.createElement('span');
+      ligne.className = 'credit-ligne';
+      if (l.href) {
+        const a = document.createElement('a');
+        a.href = l.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = l.texte;
+        ligne.appendChild(a);
+      } else {
+        ligne.textContent = l.texte;
+      }
+      if (l.suite) {
+        ligne.appendChild(document.createTextNode(' · '));
+        const a = document.createElement('a');
+        a.href = l.suite.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = l.suite.texte;
+        ligne.appendChild(a);
+      }
+      conteneur.appendChild(ligne);
+    });
+
+    if (credit.titre) {
       const titre = document.createElement('span');
       titre.className = 'credit-titre';
-      titre.textContent = ' « ' + p.titre + ' »';
+      titre.textContent = ' « ' + credit.titre + ' »';
       conteneur.appendChild(titre);
     }
   }
@@ -508,9 +531,11 @@
       return;
     }
     const p = s.photo;
-    const estVue = !!(p.titre || p.date);
+    const nature = PATRIMOINE.classerIllustration(p);
     figImg.src = 'img/' + theme(s).prefixe + '/' + p.fichier;
-    figImg.alt = estVue ? 'Vue ancienne de ' + s.nom : s.nom;
+    /* Un `alt` rédigé dans la fiche décrit toujours mieux l'image qu'un libellé
+     * calculé : il prime. À défaut, on retombe sur le nom du monument. */
+    figImg.alt = p.alt || (nature.ancien ? nature.libelle + ' de ' + s.nom : s.nom);
     /* Échec de chargement (image pas encore en cache hors ligne, par exemple) :
      * masquer tout le bloc, sans icône cassée ni erreur JS. onerror se
      * désarme lui-même pour ne pas boucler si src est retouché ailleurs. */

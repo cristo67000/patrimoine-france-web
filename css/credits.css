@@ -80,6 +80,9 @@
   line-height: 1.4;
   color: #5a626a;
 }
+/* Voir .credit-ligne dans css/app.css : même besoin, un crédit personnel
+   s'affiche sur plusieurs lignes faute de page source à citer. */
+.c-ligne { display: block; }
 .c-titre { font-style: italic; }
 
 @media (max-width: 480px) {
