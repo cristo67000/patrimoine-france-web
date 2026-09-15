@@ -16,9 +16,9 @@
  * natif du navigateur (voir README, section « Fond de carte hors connexion »).
  */
 
-const CACHE_VERSION = 10;
+const CACHE_VERSION = 11;
 const SHELL_CACHE = 'patrimoine-shell-v' + CACHE_VERSION;
-const IMAGES_CACHE = 'patrimoine-images-v1';
+const IMAGES_CACHE = 'patrimoine-images-v2';
 
 /* Liste exhaustive des ressources essentielles. cache.addAll() rejette
  * l'installation entière si l'une d'elles est absente ou répond en erreur :

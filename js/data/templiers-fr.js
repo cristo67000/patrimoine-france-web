@@ -46,7 +46,17 @@ PATRIMOINE.enregistrer({
       hist: "Village du causse du Larzac développé autour d'un château élevé par les Templiers de Sainte-Eulalie, au cœur du vaste domaine agropastoral que l'ordre exploitait sur le plateau. Après 1312, les Hospitaliers prennent la suite et dotent le bourg de ses remparts (1439-1445).",
       etat: "Cité médiévale remarquablement conservée : enceinte complète avec tours, ruelles, hôtels caussenards, église Saint-Christol, ruines du château templier. Classée parmi « Les Plus Beaux Villages de France », au sein du périmètre UNESCO Causses et Cévennes.",
       vis: "payant",
-      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison."
+      visNote: "Village en accès libre toute l'année ; billet pour le chemin de ronde des remparts et visites guidées (point accueil du Larzac templier et hospitalier). Boutiques et artisans en saison.",
+      photo: {
+        fichier: "couvertoirade.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2026-09-05",
+        alt: "Vue du village depuis les remparts : toits en lauze au premier plan, tour ronde crénelée à gauche, clocher carré au centre et château templier en pierre plus sombre à droite",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
     {
       id: "tpl:sainte-eulalie-cernon",
@@ -101,7 +111,16 @@ PATRIMOINE.enregistrer({
       etat: "Tour restaurée, l'une des plus hautes du Rouergue, accolée à un logis ; panorama sur le causse depuis la terrasse sommitale.",
       vis: "payant",
       visNote: "Visite de la tour en saison (circuit du Larzac templier et hospitalier) ; village en accès libre.",
-      photo: { fichier: "viala-pas-de-jaux.webp", auteur: "Thérèse Gaigé", licence: "CC0", source: "https://commons.wikimedia.org/wiki/File:Tour_du_Viala-du-Pas-de-Jaux_(12)_-_11.jpg" }
+      photo: {
+        fichier: "viala-pas-de-jaux.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2026-09-02",
+        alt: "Tour fortifiée du Viala-du-Pas-de-Jaux, haute construction rectangulaire en pierre reliée à un long logis, avec une tour ronde à gauche, sous un ciel bleu.",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
     {
       id: "tpl:saint-jean-alcas",
