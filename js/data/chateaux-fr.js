@@ -3969,7 +3969,17 @@ PATRIMOINE.enregistrer({
       hist: "Vaste forteresse des barons de Sévérac, l'une des plus puissantes du Rouergue, transformée au XVIIe siècle en résidence d'apparat par les Arpajon avant d'être ruinée à la Révolution. Elle verrouillait la route du Languedoc vers l'Auvergne.",
       etat: "Ruines majestueuses et logis restaurés dominant le causse, cour d'honneur à galeries, souterrains ; village médiéval classé à ses pieds, panorama sur l'Aubrac et les gorges du Tarn.",
       vis: "payant",
-      visNote: "Ouvert d'avril à début novembre ; visites guidées et animations médiévales en saison."
+      visNote: "Ouvert d'avril à début novembre ; visites guidées et animations médiévales en saison.",
+      photo: {
+        fichier: "severac.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2026-09-10",
+        alt: "Vue générale du château de Sévérac, avec ses tours et son enceinte dominant un versant boisé sous un ciel nuageux.",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
 
     /* ================= PAYS DE LA LOIRE ================= */
