@@ -1723,7 +1723,16 @@ PATRIMOINE.enregistrer({
       hist: "« L'Œil de l'Alsace » : forteresse des évêques de Strasbourg juchée sur trois rochers de grès dominant la trouée de Saverne, passage stratégique entre Alsace et Lorraine. Un pont vertigineux relie les blocs sommitaux.",
       etat: "Ruines spectaculaires reliées par le « pont du Diable » entre les rochers, chapelle romane, table d'orientation ; panorama immense sur la plaine d'Alsace et les Vosges. Restaurant dans l'ancien corps de garde.",
       vis: "libre",
-      visNote: "Accès libre toute l'année (montée en voiture puis à pied) ; prudence sur les escaliers taillés dans le rocher."
+      visNote: "Accès libre toute l'année (montée en voiture puis à pied) ; prudence sur les escaliers taillés dans le rocher.",
+      photo: {
+        fichier: "haut-barr.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        alt: "Vue en contre-plongée de la chapelle romane et du rocher du château du Haut-Barr, à Saverne, surmontés des drapeaux européen, français et alsacien.",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
     {
       id: "cha:saverne",

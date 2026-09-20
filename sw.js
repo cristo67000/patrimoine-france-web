@@ -16,7 +16,7 @@
  * natif du navigateur (voir README, section « Fond de carte hors connexion »).
  */
 
-const CACHE_VERSION = 12;
+const CACHE_VERSION = 13;
 const SHELL_CACHE = 'patrimoine-shell-v' + CACHE_VERSION;
 const IMAGES_CACHE = 'patrimoine-images-v2';
 
