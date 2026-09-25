@@ -1627,7 +1627,17 @@ PATRIMOINE.enregistrer({
       hist: "Burg Meinsberg, élevé par Arnold VI de Sierck aux confins de la Lorraine, du Luxembourg et de l'Allemagne. Son surnom vient du duc de Marlborough (« Malbrouck s'en va-t-en guerre ») qui y établit son quartier général en 1705 sans livrer bataille.",
       etat: "Château quadrangulaire à quatre tours restauré de 1989 à 1998 par le Département de la Moselle, accueillant expositions et manifestations culturelles dans un cadre médiéval complet.",
       vis: "payant",
-      visNote: "Ouvert en saison avec une programmation annuelle d'expositions ; vérifier le calendrier avant la visite (fermetures possibles entre deux accrochages)."
+      visNote: "Ouvert en saison avec une programmation annuelle d'expositions ; vérifier le calendrier avant la visite (fermetures possibles entre deux accrochages).",
+      photo: {
+        fichier: "malbrouck.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2019-04-20",
+        alt: "vue de la cour du Château avec une fusée faisant partie de l'exposition temporaire sur Hergé (2019)",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
     {
       id: "cha:sedan",
