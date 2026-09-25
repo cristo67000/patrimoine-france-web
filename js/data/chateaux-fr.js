@@ -3592,7 +3592,17 @@ PATRIMOINE.enregistrer({
       etat: "Enceinte polygonale épurée au sommet du pog, aux orientations solsticiales qui nourrissent bien des interprétations ; village et musée archéologique en contrebas. Ascension raide et mythique.",
       vis: "payant",
       visNote: "Ouvert de février à décembre (météo permettant) ; 20 à 40 min de montée exigeante, billet au musée du village.",
-      note: "Le château actuel est postérieur au bûcher de 1244 : les cathares n'ont pas connu ces murs. L'orientation « solaire » alimente des théories ésotériques non étayées."
+      note: "Le château actuel est postérieur au bûcher de 1244 : les cathares n'ont pas connu ces murs. L'orientation « solaire » alimente des théories ésotériques non étayées.",
+      photo: {
+        fichier: "montsegur.webp",
+        auteur: "Cristo6772",
+        licence: "Tous droits réservés",
+        origine: "personnelle",
+        sourceLibelle: "Photographie personnelle",
+        datePrise: "2024-08-24",
+        alt: "Vue d’ensemble des ruines du château de Montségur dressées sur leur éperon rocheux, en Ariège",
+        modifications: "Redimensionnement à 960 px, conversion WebP, suppression des métadonnées"
+      }
     },
     {
       id: "cha:foix",
