@@ -1,10 +1,15 @@
 'use strict';
 /*
- * Corpus « Châteaux de France » — 229 fiches.
+ * Corpus « Châteaux de France » — corpus de référence de Patrimoine de France.
  *
- * FICHIER GÉNÉRÉ — ne pas éditer à la main. Toute correction éditoriale doit être
- * faite dans le dépôt d'origine cristo67000/chateaux-de-france, puis remigrée par
- * tools/migrations/chateaux/migrer-chateaux.js (voir le README de ce dossier).
+ * CORPUS DE RÉFÉRENCE — ne pas le recréer depuis les anciens dépôts. Il est issu
+ * de la migration historique de juillet 2026 (229 fiches, depuis le dépôt
+ * d'origine cristo67000/chateaux-de-france) et a reçu depuis des photographies
+ * et des enrichissements qui n'existent pas dans ce dépôt d'origine.
+ *
+ * En cas de perte ou de corruption, le restaurer depuis Git. Nouvelles fiches et
+ * enrichissements : tools/fiches/ (lots sous lots/). Photographies :
+ * tools/photos/.
  *
  * Identifiants : `id` interne composite « cha:<legacyId> » ; `legacyId` conserve
  * l'identifiant historique, seul à paraître dans l'URL publique
@@ -14,10 +19,11 @@
  *
  * `typo` et `chrono` sont conservés bien que le châssis ne les affiche pas encore.
  *
- * `photo` fusionne la table js/vues.js du dépôt d'origine (52 vues anciennes),
- * renommée vers le schéma unifié commun aux trois thèmes : fichier, auteur,
- * licence, source, titre, date. C'est le seul des trois corpus à fournir titre
- * et date, la source les documentant pour ces gravures et cartes postales.
+ * `photo` a d'abord fusionné la table js/vues.js du dépôt d'origine (52 vues
+ * anciennes), renommée vers le schéma unifié commun aux trois thèmes : fichier,
+ * auteur, licence, source, titre, date. C'est le seul des trois corpus à fournir
+ * titre et date, la source les documentant pour ces gravures et cartes postales.
+ * Les photographies ajoutées depuis portent des champs propres à leur origine.
  *
  * Le corpus s'enregistre lui-même auprès du registre PATRIMOINE (js/themes.js) :
  * aucune constante globale n'est laissée derrière lui, et le châssis n'a pas à

@@ -283,11 +283,14 @@
 
   /* ---------- Filtre de thèmes ----------
    * Construit depuis THEMES_ORDRE : aucun thème n'est écrit ici ni dans le HTML.
+   * Seuls les thèmes dont le corpus compte au moins une fiche sont proposés
+   * (PATRIMOINE.themesAvecFiches) : un thème encore vide n'a pas de bouton, et
+   * le sien apparaît de lui-même avec la première fiche.
    * Un groupe de boutons radio — accessible au clavier nativement (flèches),
    * et confortable au doigt grâce aux cibles de 44 px du CSS.
    */
-  const themesVisibles = new Set(THEMES_ORDRE.filter((t) => THEMES[t]));
-  const THEMES_CHARGES = THEMES_ORDRE.filter((t) => CORPUS.some((c) => c.theme === t));
+  const THEMES_CHARGES = PATRIMOINE.themesAvecFiches();
+  const themesVisibles = new Set(THEMES_CHARGES);
 
   function themeVisible(s) { return themesVisibles.has(s.theme); }
   function sitesVisibles() { return SITES.filter(themeVisible); }
@@ -311,6 +314,10 @@
       inp.value = o.v;
       inp.checked = o.v === '*';
       inp.addEventListener('change', () => { if (inp.checked) appliquerFiltre(o.v); });
+      /* Rangée défilante : le bouton radio est invisible, le navigateur ne
+       * ramène donc pas de lui-même le libellé en vue quand les flèches
+       * déplacent la sélection vers un thème masqué au bord. */
+      inp.addEventListener('focus', () => lab.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
       const txt = document.createElement('span');
       txt.textContent = o.lbl;
       if (o.c) txt.style.setProperty('--tf-c', o.c);
@@ -1168,10 +1175,12 @@
   el('about-close').addEventListener('click', () => about.close());
   el('app-version').textContent = APP.version;
 
-  /* Corpus effectivement chargés : effectifs réels, jamais un nombre écrit en dur. */
+  /* Corpus effectivement chargés : effectifs réels, jamais un nombre écrit en dur.
+   * Comme le filtre de thèmes, la liste ne présente que les corpus renseignés :
+   * un thème encore vide n'y figure pas et y apparaît avec sa première fiche. */
   el('corpus-nb').textContent = SITES.length.toLocaleString('fr-FR');
-  el('corpus-liste').textContent = CORPUS
-    .map((c) => nomTheme(THEMES[c.theme]) + ' (' + c.sites.length.toLocaleString('fr-FR') + ')')
+  el('corpus-liste').textContent = PATRIMOINE.themesAvecFiches()
+    .map((t) => nomTheme(THEMES[t]) + ' (' + CORPUS.find((c) => c.theme === t).sites.length.toLocaleString('fr-FR') + ')')
     .join(', ');
 
   /* ---------- Démarrage ---------- */

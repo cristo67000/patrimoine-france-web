@@ -1,16 +1,20 @@
 'use strict';
 /*
- * Corpus « Sites templiers de France » — 70 fiches.
+ * Corpus « Sites templiers de France » — corpus de référence de Patrimoine de
+ * France.
  *
- * FICHIER GÉNÉRÉ — ne pas éditer à la main. Toute correction éditoriale doit être
- * faite dans le dépôt d'origine cristo67000/sites-templiers, puis remigrée par
- * tools/migrations/templiers/migrer-templiers.js (voir le README de ce dossier).
+ * CORPUS DE RÉFÉRENCE — ne pas le recréer depuis les anciens dépôts. Il est issu
+ * de la migration historique de juillet 2026 (70 fiches, depuis le dépôt
+ * d'origine cristo67000/sites-templiers) et a reçu depuis des photographies et
+ * des enrichissements qui n'existent pas dans ce dépôt d'origine.
  *
- * PÉRIMÈTRE FRANÇAIS. La source js/sites-fr.js est un registre multipays
- * (fr, es, pt, be, de, uk) ; seul TEMPLAR_DATA.pays.fr.sites est migré, parce que
- * l'application est limitée au patrimoine français. Les registres étrangers sont
- * conservés intacts dans le dépôt d'origine ; ils sont vides à ce jour, et la
- * migration s'interrompt si l'un d'eux devient non vide.
+ * En cas de perte ou de corruption, le restaurer depuis Git. Nouvelles fiches et
+ * enrichissements : tools/fiches/ (lots sous lots/). Photographies :
+ * tools/photos/.
+ *
+ * PÉRIMÈTRE FRANÇAIS. L'application est limitée au patrimoine français. La
+ * source js/sites-fr.js était un registre multipays (fr, es, pt, be, de, uk) :
+ * lors de la migration initiale, seul TEMPLAR_DATA.pays.fr.sites a été repris.
  *
  * Identifiants : `id` interne composite « tpl:<legacyId> » ; `legacyId` conserve
  * l'identifiant historique, seul à paraître dans l'URL publique

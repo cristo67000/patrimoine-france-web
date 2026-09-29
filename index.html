@@ -8,7 +8,7 @@
        en-tête HTTP. Voir la note technique du README. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self' https://tiles.openfreemap.org; worker-src 'self' blob:; child-src 'self' blob:; manifest-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Patrimoine de France — carte interactive des châteaux, cathédrales, églises et sites templiers de France. 584 fiches, hors ligne, sans collecte de données.">
+  <meta name="description" content="Patrimoine de France — carte interactive des châteaux, cathédrales, églises, sites templiers et du patrimoine civil et militaire de France. 587 fiches, hors ligne, sans collecte de données.">
   <title>Patrimoine de France — châssis</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="theme-color" content="#1d3557">
@@ -53,7 +53,7 @@
     </p>
     <h2 id="p-nom"></h2>
     <p id="p-lieu"></p>
-    <!-- Absente si la fiche n'a pas de photo (247/584) : pas de cadre vide, pas
+    <!-- Absente si la fiche n'a pas de photo (185/587 en septembre 2026) : pas de cadre vide, pas
          de pictogramme générique. Dimensions réservées via width/height sur
          l'img pour ne pas déplacer la mise en page pendant le chargement. -->
     <figure id="p-figure" hidden>
@@ -117,9 +117,8 @@
     <p><strong>Patrimoine de France</strong> — version <span id="app-version"></span>.</p>
     <p id="corpus-info"><strong><span id="corpus-nb"></span> fiches</strong> chargées —
       <span id="corpus-liste"></span>.</p>
-    <p class="avert">⚠️ Version de développement. Les trois corpus sont intégrés, avec
-      385 photographies et vues anciennes, un mode hors ligne fonctionnel et une identité
-      graphique complète. Restent à venir les typologies et leurs plans, les chronologies,
+    <p class="avert">⚠️ Version de développement. Les corpus renseignés sont intégrés directement à l’application.
+      Restent à venir les typologies et leurs plans, les chronologies,
       ainsi que la publication (GitHub Pages, paquet Android).</p>
     <p class="avert">🇫🇷 L'application est limitée au <strong>patrimoine français</strong>.
       Les sites templiers d'Espagne, du Portugal, de Belgique, d'Allemagne et du
@@ -152,8 +151,8 @@
         ce qui est indiqué dans la fiche</li>
       <li>Cours d'eau : Natural Earth (domaine public)</li>
       <li>Fond de carte : OpenFreeMap © OpenMapTiles — données © contributeurs OpenStreetMap (ODbL)</li>
-      <li>Photographies : 385 images sous licences libres ou domaine public — voir la
-        <a href="credits-photographiques.html">page des crédits photographiques</a></li>
+      <li>Photographies et vues anciennes : licences et crédits détaillés sur la page
+        <a href="credits-photographiques.html">Crédits photographiques</a>.</li>
     </ul>
     <button id="about-close" type="button">Fermer</button>
   </dialog>
@@ -177,6 +176,8 @@
   <script src="js/data/chateaux-fr.js"></script>
   <script src="js/data/religieux-fr.js"></script>
   <script src="js/data/templiers-fr.js"></script>
+  <script src="js/data/civil-fr.js"></script>
+  <script src="js/data/militaire-fr.js"></script>
   <!-- Relations patrimoniales déclarées à la main : deux fiches décrivant le
        même monument. Sans rapport avec la résolution des URL ambiguës. -->
   <script src="js/relations.js"></script>

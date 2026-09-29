@@ -1,11 +1,17 @@
 'use strict';
 /*
- * Corpus « Cathédrales et édifices religieux » — 285 fiches.
+ * Corpus « Cathédrales et édifices religieux » — corpus de référence de
+ * Patrimoine de France.
  *
- * FICHIER GÉNÉRÉ — ne pas éditer à la main. Toute correction éditoriale doit être
- * faite dans le dépôt d'origine cristo67000/cathedrales-eglises-france, puis
- * remigrée par tools/migrations/religieux/migrer-religieux.js (voir le README de
- * ce dossier).
+ * CORPUS DE RÉFÉRENCE — ne pas le recréer depuis les anciens dépôts. Il est issu
+ * de la migration historique de juillet 2026 (285 fiches, depuis le dépôt
+ * d'origine cristo67000/cathedrales-eglises-france). Les enrichissements
+ * postérieurs (fiches, photographies, corrections) s'y ajoutent directement et
+ * n'existent pas dans ce dépôt d'origine.
+ *
+ * En cas de perte ou de corruption, le restaurer depuis Git. Nouvelles fiches et
+ * enrichissements : tools/fiches/ (lots sous lots/). Photographies :
+ * tools/photos/.
  *
  * Identifiants : `id` interne composite « rel:<legacyId> » ; `legacyId` conserve
  * l'identifiant historique, seul à paraître dans l'URL publique

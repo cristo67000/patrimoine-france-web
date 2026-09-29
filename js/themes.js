@@ -10,7 +10,9 @@
  *   id       clé du registre, reprise dans le champ `theme` des fiches et dans
  *            le paramètre d'URL `?theme=`
  *   nom      libellé affiché
- *   prefixe  préfixe de l'identifiant interne composite « <prefixe>:<legacyId> »
+ *   nomCourt libellé court facultatif (filtre, listes de résultats) ; à défaut, `nom`
+ *   prefixe  préfixe de l'identifiant interne composite « <prefixe>:<legacyId> »,
+ *            et nom du dossier des photographies img/<prefixe>/
  *   accent   couleur d'accent du thème (provisoire à ce stade)
  *   glyphe   SVG par défaut de l'épingle, embarqué (aucune ressource distante)
  *   cats     catégories du thème : clé -> { nom, pluriel, c, ordre, glyphe? }
@@ -28,9 +30,13 @@
  * religieux. Sans préfixe, les classes CSS et les groupes de calques entreraient
  * en collision dès le deuxième corpus chargé.
  *
- * ÉTAPE 4 : deux thèmes, « chateaux » et « religieux », avec leurs quatre
- * catégories chacun. Le thème « templiers » viendra plus tard ; les couleurs et
- * glyphes restent provisoires jusqu'à l'étape 8 (identité visuelle).
+ * Le corpus d'un thème est, par convention, js/data/<id>-fr.js : l'outillage
+ * (tools/fiches/, tools/photos/) le déduit de cette clé, sans table séparée.
+ *
+ * Cinq thèmes, dans l'ordre de THEMES_ORDRE : châteaux, édifices religieux,
+ * sites templiers, patrimoine civil et urbain, patrimoine militaire. Un thème
+ * dont le corpus ne compte encore aucune fiche n'est pas proposé dans le
+ * filtre (voir PATRIMOINE.themesAvecFiches).
  */
 
 /* ---------- Registre des corpus ----------
@@ -57,6 +63,14 @@ const PATRIMOINE = {
     }
     this.corpus.push(c);
     return c;
+  },
+
+  /* Thèmes à proposer dans le filtre : ceux dont le corpus enregistré compte au
+   * moins une fiche, dans l'ordre de THEMES_ORDRE. Un thème déclaré mais encore
+   * vide reste invisible, et apparaît de lui-même avec sa première fiche : il
+   * n'y a aucune liste de thèmes visibles à tenir. */
+  themesAvecFiches() {
+    return THEMES_ORDRE.filter((t) => this.corpus.some((c) => c.theme === t && c.sites.length > 0));
   },
 
   /* ---------- Nature d'une illustration ----------
@@ -157,6 +171,31 @@ const G_CROIX = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.4 3h5.2
 const G_COMMANDERIE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l9-6 9 6v11h-6.5v-4.5a2.5 2.5 0 0 0-5 0V21Z"/><path d="M11.1 6.2h1.8v1.9h1.9v1.8h-1.9v1.9h-1.8V9.9H9.2V8.1h1.9Z" fill="#fff" opacity=".9"/></svg>';
 const G_CHAPELLE_TPL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.1 2h1.8v1.7h1.7v1.8h-1.7v2.4L19 12.4V21h-4.3v-3.2a2.7 2.7 0 0 0-5.4 0V21H5v-8.6l6.1-4.5V5.5H9.4V3.7h1.7Z"/></svg>';
 const G_ENCEINTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21V8h3V5h3v3h8V5h3v3h3v13h-6v-4.5a3 3 0 0 0-6 0V21Z"/><path d="M11.2 10.4h1.6v1.7h1.7v1.6h-1.7v1.7h-1.6v-1.7H9.5v-1.6h1.7Z" fill="#fff" opacity=".85"/></svg>';
+/* Thème civil : une rangée de maisons pour la place ou l'ensemble urbain, un
+ * hôtel de ville à beffroi et horloge pour l'édifice public, un hôtel à
+ * cheminées pour la demeure, des sheds et une cheminée d'usine pour le
+ * patrimoine industriel, une tour à lanterne et faisceaux pour le phare ou feu
+ * maritime, une tour à calotte et quatre ailes en X pour le moulin, une tour
+ * effilée portant une plateforme à garde-corps pour la tour ou le belvédère
+ * d'observation. Ouvertures évidées (fill-rule="evenodd") : le glyphe reste
+ * d'une seule couleur, quelle que soit celle de l'épingle. Les ailes du moulin
+ * forment un second tracé, en règle par défaut (nonzero), pour rester pleines
+ * là où elles recouvrent la tour. */
+const G_PLACE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M2 21v-8l3-3 3 3v-3l4-4 4 4v3l3-3 3 3v8Zm8.5 0v-4h3v4ZM4 15h2v2H4Zm14 0h2v2h-2Zm-7-5h2v2h-2Z"/></svg>';
+const G_MAIRIE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 21V11h6V7l3-4 3 4v4h6v10h-7v-4h-4v4Zm9-14.2a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 1 0 0-2.4ZM5 13h2v2H5Zm12 0h2v2h-2Z"/></svg>';
+const G_DEMEURE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 21V11l2-4h3V4h2v3h4V4h2v3h3l2 4v10h-7v-4h-4v4Zm3-8h2v2H6Zm10 0h2v2h-2Z"/></svg>';
+const G_USINE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M2 21V11l5 3v-3l5 3v-3l5 3V3h3v18Zm2.5-4h2v2h-2Zm5 0h2v2h-2Zm5 0h2v2h-2Z"/></svg>';
+const G_PHARE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2l2.2 2.6H9.8Zm-1.7 3h3.4v3h-3.4Zm0 1.5-6.8-2.2v4.4Zm3.4 0 6.8-2.2v4.4ZM8.6 8h6.8v1.4H8.6Zm1.4 1.4h4l1.9 10.6H8.1Zm1 10.6v-2.6a1 1 0 0 1 2 0V20ZM5 20h14v1.6H5Z"/></svg>';
+const G_MOULIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M8.2 21l1.7-11h4.2l1.7 11Zm1.2-11a2.6 2.6 0 0 1 5.2 0Zm1.4 11v-2.2a1.2 1.2 0 0 1 2.4 0V21Z"/><path d="M11.6 8.4 10.4 7.1 9.8 7.7 5.2 3.1 7.1 1.2 11.7 5.8 11.1 6.4 12.4 7.6ZM11.6 7.6 12.9 6.4 12.3 5.8 16.9 1.2 18.8 3.1 14.2 7.7 13.6 7.1 12.4 8.4ZM12.4 7.6 13.6 8.9 14.2 8.3 18.8 12.9 16.9 14.8 12.3 10.2 12.9 9.6 11.6 8.4ZM12.4 8.4 11.1 9.6 11.7 10.2 7.1 14.8 5.2 12.9 9.8 8.3 10.4 8.9 11.6 7.6ZM10.8 8a1.2 1.2 0 1 1 2.4 0a1.2 1.2 0 1 1-2.4 0Z"/></svg>';
+const G_BELVEDERE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6 3h12v4h1v1.6h-3.4L17 21H7l1.4-12.4H5V7h1Zm1.2 1.4V7h4.2V4.4Zm5.4 0V7h4.2V4.4ZM11.3 11h1.4v2.6h-1.4Zm-.5 10v-3a1.2 1.2 0 0 1 2.4 0v3Z"/></svg>';
+/* Thème militaire : une porte de ville entre deux tours crénelées pour
+ * l'enceinte, un fort bastionné en étoile pour le fort ou la citadelle, une
+ * cloche cuirassée à créneau de tir pour la Ligne Maginot, un blockhaus à
+ * antenne pour les autres ouvrages modernes. */
+const G_PORTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21V5h2v2h2V5h2v2h2v3h4V7h2V5h2v2h2V5h2v16h-7v-5a3 3 0 0 0-6 0v5Z"/></svg>';
+const G_BASTION = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.4l3.3 5.7 6.4 1.3-4.4 4.9.7 6.6-6-2.7-6 2.7.7-6.6-4.4-4.9 6.4-1.3Zm0 8.2a2 2 0 1 0 0 4 2 2 0 1 0 0-4Z"/></svg>';
+const G_CLOCHE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 21v-5h3v-2a6 6 0 0 1 12 0v2h3v5ZM8.5 12h7v1.6h-7Z"/></svg>';
+const G_BLOCKHAUS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M2 21l2.5-6H7v-3h10v3h2.5L22 21ZM9 16.5h6v1.6H9Z"/><path d="M11.3 12V4h1.4v8Z"/></svg>';
 
 const THEMES = {
   chateaux: {
@@ -254,13 +293,106 @@ const THEMES = {
         c: '#6b7078', ordre: 4, glyphe: G_CROIX
       }
     }
+  },
+
+  /* Patrimoine civil et urbain : le patrimoine industriel en est une
+   * catégorie, non un thème distinct. Famille ocre, framboise, vert et brique,
+   * à l'écart des couleurs des trois premiers thèmes ; bleu marine pour le
+   * phare, plus saturé que les bleus du thème religieux ; brun meunier pour le
+   * moulin, plus sombre et plus saturé que le brun du château fort ; violet
+   * pour la tour ou le belvédère d'observation, plus rouge que celui du
+   * château classique. */
+  civil: {
+    id: 'civil',
+    nom: 'Patrimoine civil et urbain',
+    nomCourt: 'Civil et urbain',
+    prefixe: 'civ',
+    accent: '#9a6a00',
+    glyphe: G_MAIRIE,
+    cats: {
+      'civ-urbain': {
+        nom: 'Place ou ensemble urbain',
+        pluriel: 'Places & ensembles urbains',
+        c: '#9a6a00', ordre: 1, glyphe: G_PLACE
+      },
+      'civ-public': {
+        nom: 'Édifice public',
+        pluriel: 'Édifices publics',
+        c: '#b03a6e', ordre: 2, glyphe: G_MAIRIE
+      },
+      'civ-demeure': {
+        nom: 'Demeure ou palais civil',
+        pluriel: 'Demeures & palais civils',
+        c: '#3d7a26', ordre: 3, glyphe: G_DEMEURE
+      },
+      'civ-industriel': {
+        nom: 'Patrimoine industriel',
+        pluriel: 'Patrimoine industriel',
+        c: '#a0442a', ordre: 4, glyphe: G_USINE
+      },
+      'civ-phare': {
+        nom: 'Phare ou feu maritime',
+        pluriel: 'Phares & feux maritimes',
+        c: '#005e9e', ordre: 5, glyphe: G_PHARE
+      },
+      'civ-moulin': {
+        /* Fonction meunière comme intérêt patrimonial principal (moulins à
+         * eau, à vent, à marée) ; un ensemble industriel plus général relève
+         * de civ-industriel. */
+        nom: 'Moulin et patrimoine meunier',
+        pluriel: 'Moulins & patrimoine meunier',
+        c: '#7a4a0e', ordre: 6, glyphe: G_MOULIN
+      },
+      'civ-belvedere': {
+        /* Tour ou belvédère dont l'observation du paysage est la fonction
+         * principale ; un édifice dont le belvédère n'est qu'un élément relève
+         * de sa propre catégorie. */
+        nom: 'Tour ou belvédère d’observation',
+        pluriel: 'Tours & belvédères d’observation',
+        c: '#7b3fa0', ordre: 7, glyphe: G_BELVEDERE
+      }
+    }
+  },
+
+  /* Patrimoine militaire : la Ligne Maginot en est une catégorie, non un thème
+   * distinct. Famille kaki, olive, acier et anthracite. */
+  militaire: {
+    id: 'militaire',
+    nom: 'Patrimoine militaire',
+    nomCourt: 'Militaire',
+    prefixe: 'mil',
+    accent: '#4b5a2b',
+    glyphe: G_BASTION,
+    cats: {
+      'mil-enceinte': {
+        nom: 'Enceinte ou porte fortifiée',
+        pluriel: 'Enceintes & portes fortifiées',
+        c: '#857a3a', ordre: 1, glyphe: G_PORTE
+      },
+      'mil-fort': {
+        nom: 'Fort ou citadelle',
+        pluriel: 'Forts & citadelles',
+        c: '#4b5a2b', ordre: 2, glyphe: G_BASTION
+      },
+      'mil-maginot': {
+        nom: 'Ouvrage de la Ligne Maginot',
+        pluriel: 'Ouvrages de la Ligne Maginot',
+        c: '#2d4459', ordre: 3, glyphe: G_CLOCHE
+      },
+      'mil-moderne': {
+        nom: 'Autre ouvrage militaire moderne',
+        pluriel: 'Autres ouvrages militaires modernes',
+        c: '#46464a', ordre: 4, glyphe: G_BLOCKHAUS
+      }
+    }
   }
 };
 
-/* Ordre d'affichage des thèmes ; sert aussi de thème par défaut (premier). */
-const THEMES_ORDRE = ['chateaux', 'religieux', 'templiers'];
+/* Ordre d'affichage des thèmes ; sert aussi de thème par défaut (premier).
+ * Les trois premiers gardent leur rang ; les thèmes ajoutés viennent à la fin. */
+const THEMES_ORDRE = ['chateaux', 'religieux', 'templiers', 'civil', 'militaire'];
 
-/* Conditions de visite : vocabulaire commun aux trois thèmes.
+/* Conditions de visite : vocabulaire commun à tous les thèmes.
  *
  * `memoire` n'est pas une condition d'accès mais l'absence de vestige à voir :
  * le lieu est libre d'accès, il n'y a simplement rien de monumental. D'où un

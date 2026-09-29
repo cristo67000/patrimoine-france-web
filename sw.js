@@ -16,7 +16,7 @@
  * natif du navigateur (voir README, section « Fond de carte hors connexion »).
  */
 
-const CACHE_VERSION = 15;
+const CACHE_VERSION = 16;
 const SHELL_CACHE = 'patrimoine-shell-v' + CACHE_VERSION;
 const IMAGES_CACHE = 'patrimoine-images-v2';
 
@@ -41,6 +41,8 @@ const PRECACHE_URLS = [
   './js/data/chateaux-fr.js',
   './js/data/religieux-fr.js',
   './js/data/templiers-fr.js',
+  './js/data/civil-fr.js',
+  './js/data/militaire-fr.js',
   './vendor/leaflet/leaflet.js',
   './vendor/maplibre/maplibre-gl.js',
   './vendor/maplibre/leaflet-maplibre-gl.js',
@@ -56,11 +58,13 @@ const PRECACHE_URLS = [
   './icons/favicon-16.png'
 ];
 
-/* Dossiers d'images locales éligibles au cache runtime. img/tpl/ est inclus
- * par anticipation : le dossier n'existe pas encore (corpus templier sans
- * photographie), mais la règle s'appliquera sans modification du code le
- * jour où il existera réellement. */
-const IMAGE_PATH_RE = /\/img\/(cha|rel|tpl)\//;
+/* Dossiers d'images locales éligibles au cache runtime : un par préfixe de
+ * thème du registre (js/themes.js), que le service worker ne charge pas. La
+ * liste est donc recopiée ici ; tools/coherence-themes.test.js vérifie qu'elle
+ * couvre chaque préfixe du registre. img/civ/ et img/mil/ sont inclus par
+ * anticipation : la règle s'appliquera sans modification le jour où leur
+ * première photographie existera. */
+const IMAGE_PATH_RE = /\/img\/(cha|rel|tpl|civ|mil)\//;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
