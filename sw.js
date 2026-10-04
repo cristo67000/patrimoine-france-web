@@ -16,7 +16,7 @@
  * natif du navigateur (voir README, section « Fond de carte hors connexion »).
  */
 
-const CACHE_VERSION = 16;
+const CACHE_VERSION = 17;
 const SHELL_CACHE = 'patrimoine-shell-v' + CACHE_VERSION;
 const IMAGES_CACHE = 'patrimoine-images-v2';
 
@@ -67,11 +67,20 @@ const PRECACHE_URLS = [
 const IMAGE_PATH_RE = /\/img\/(cha|rel|tpl|civ|mil)\//;
 
 self.addEventListener('install', (event) => {
+  /* cache: 'reload' : chaque ressource est relue sur le réseau, jamais dans
+   * le cache HTTP du navigateur (GitHub Pages : max-age=600), pour ne pas
+   * figer dans le nouveau cache un fichier de la version précédente. */
+  const requetes = PRECACHE_URLS.map((url) => new Request(url, { cache: 'reload' }));
   event.waitUntil(
-    caches.open(SHELL_CACHE).then((cache) => cache.addAll(PRECACHE_URLS))
+    caches.open(SHELL_CACHE)
+      .then((cache) => cache.addAll(requetes))
+      /* Activation automatique, mais seulement une fois le pré-cache
+       * complet : si addAll() échoue, l'installation échoue avec lui et
+       * l'ancien service worker reste en place, intact. En cas de succès,
+       * les pages ouvertes se rechargent une fois sur 'controllerchange'
+       * (js/app.js). */
+      .then(() => self.skipWaiting())
   );
-  /* Pas de skipWaiting() ici : un nouveau service worker reste en attente
-   * tant que l'utilisateur n'a pas validé la mise à jour (voir js/app.js). */
 });
 
 self.addEventListener('activate', (event) => {
@@ -88,6 +97,8 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+/* Conservé pour le bandeau « Mettre à jour » des clients v16 et antérieurs,
+ * qui l'envoient encore à un worker en attente. */
 self.addEventListener('message', (event) => {
   if (event.data === 'SKIP_WAITING') self.skipWaiting();
 });
