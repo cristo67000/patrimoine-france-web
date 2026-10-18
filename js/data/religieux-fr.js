@@ -3618,6 +3618,23 @@ PATRIMOINE.enregistrer({
       visNote: "Accès libre ; aître Saint-Maclou attenant, gratuit.",
       photo: { fichier: "rouen-saint-maclou.webp", auteur: "Alphaclem", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:St_Maclou.jpg" }
     },
+    {
+      id: "rel:vieille-eglise-saint-pierre-thaon",
+      legacyId: "vieille-eglise-saint-pierre-thaon",
+      theme: "religieux",
+      nom: "Vieille église Saint-Pierre de Thaon",
+      cat: "rel-eglise",
+      commune: "Thaon",
+      dept: "14 — Calvados",
+      region: "Normandie",
+      ll: [49.2657288, -0.4504046],
+      prec: "exact",
+      epoque: "XIe-XIIe siècles ; vestiges antérieurs",
+      hist: "Établie dans la vallée de la Mue, l'ancienne église Saint-Pierre conserve d'importantes parties d'architecture romane normande des XIe et XIIe siècles. Des fouilles archéologiques y ont mis en évidence des états antérieurs, notamment des sépultures du haut Moyen Âge. L'édifice, aujourd'hui désaffecté, présente une tour et des décors de modillons, chapiteaux et motifs géométriques.",
+      etat: "Ancienne église classée au titre des monuments historiques en 1840, d'après l'office de tourisme Caen la mer et la commune de Thaon.",
+      vis: "evenement",
+      visNote: "Visites intérieures estivales et lors d’événements patrimoniaux ; consulter les périodes d’ouverture."
+    },
 
     /* ================= NOUVELLE-AQUITAINE ================= */
     {
@@ -4259,6 +4276,23 @@ PATRIMOINE.enregistrer({
       vis: "libre",
       visNote: "Accès libre ; musée des Beaux-Arts et jardins attenants.",
       photo: { fichier: "limoges-cath.webp", auteur: "Tiston", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Abbaye_de_la_R%C3%A8gle_%C3%A0_Limoges.png" }
+    },
+    {
+      id: "rel:eglise-notre-dame-rioux",
+      legacyId: "eglise-notre-dame-rioux",
+      theme: "religieux",
+      nom: "Église Notre-Dame-de-l’Assomption de Rioux",
+      cat: "rel-eglise",
+      commune: "Rioux",
+      dept: "17 — Charente-Maritime",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.63588, -0.7109],
+      prec: "exact",
+      epoque: "XIIe siècle",
+      hist: "Église romane du XIIe siècle, Notre-Dame-de-l'Assomption de Rioux se distingue par le traitement sculpté de sa façade et de son abside. Les arcatures, chevrons et jeux d'appareil témoignent de la richesse ornementale de l'art roman saintongeais. Le portail et les reliefs du chevet en sont les principaux éléments architecturaux.",
+      etat: "Église classée au titre des monuments historiques le 22 mai 1903.",
+      vis: "libre",
+      visNote: "Accès annoncé libre et gratuit ; horaires d'ouverture à confirmer auprès de la mairie de Rioux, où la clé peut éventuellement être demandée."
     },
 
     /* ================= OCCITANIE ================= */
@@ -5028,6 +5062,40 @@ PATRIMOINE.enregistrer({
       visNote: "Accès libre ; musée Ingres Bourdelle à proximité.",
       photo: { fichier: "montauban-cath.webp", auteur: "Didier Descouens", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Cath%C3%A9drale_Notre_Dame_de_l%27Assomption_de_Montauban.jpg" }
     },
+    {
+      id: "rel:chapelle-saint-martin-fenollar",
+      legacyId: "chapelle-saint-martin-fenollar",
+      theme: "religieux",
+      nom: "Chapelle Saint-Martin-de-Fenollar",
+      cat: "rel-chapelle",
+      commune: "Maureillas-las-Illas",
+      dept: "66 — Pyrénées-Orientales",
+      region: "Occitanie",
+      ll: [42.50347, 2.82112],
+      prec: "exact",
+      epoque: "Moyen Âge ; peintures du début du XIIe siècle",
+      hist: "La chapelle Saint-Martin, dite de Fenollar ou del Fenouillar, est attestée par une charte de 844 sur un ancien itinéraire entre la Gaule et la péninsule Ibérique. L'édifice conserve un ensemble de peintures murales romanes du début du XIIe siècle. Le site associe ainsi une implantation ancienne à un décor médiéval d'un intérêt majeur.",
+      etat: "Chapelle et ancien enclos funéraire classés en 1967 (Mérimée).",
+      vis: "payant",
+      visNote: "Visite payante avec horaires saisonniers ; vérifier les horaires avant déplacement."
+    },
+    {
+      id: "rel:eglise-notre-dame-vals",
+      legacyId: "eglise-notre-dame-vals",
+      theme: "religieux",
+      nom: "Église Notre-Dame de Vals",
+      cat: "rel-eglise",
+      commune: "Vals",
+      dept: "09 — Ariège",
+      region: "Occitanie",
+      ll: [43.0958, 1.76142],
+      prec: "exact",
+      epoque: "XIe-XIVe siècles",
+      hist: "L'église Notre-Dame de Vals présente la particularité d'être aménagée en partie dans le rocher. Son noyau ancien remonte au XIe siècle ; une chapelle fut ajoutée au XIIe et le bâtiment transformé et unifié au XIVe siècle. L'édifice conserve un décor peint roman remarquable, étudié par le service régional de l'Inventaire.",
+      etat: "Église classée monument historique en 1910 ; protection complémentaire mentionnée pour un élément extérieur en 1959.",
+      vis: "libre",
+      visNote: "Visite libre de l’église ; horaires susceptibles de changer (réouverture après restauration en juillet 2025)."
+    },
 
     /* ================= PAYS DE LA LOIRE ================= */
     {
@@ -5772,6 +5840,23 @@ PATRIMOINE.enregistrer({
       vis: "libre",
       visNote: "Accès libre ; trésor visible en visite guidée en saison.",
       photo: { fichier: "apt-cath.webp", auteur: "Chabe01", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Cath%C3%A9drale_Ste_Anne_Apt_14.jpg" }
+    },
+    {
+      id: "rel:chapelle-saint-gabriel",
+      legacyId: "chapelle-saint-gabriel",
+      theme: "religieux",
+      nom: "Chapelle Saint-Gabriel",
+      cat: "rel-chapelle",
+      commune: "Tarascon",
+      dept: "13 — Bouches-du-Rhône",
+      region: "Provence-Alpes-Côte d'Azur",
+      ll: [43.76658, 4.69505],
+      prec: "exact",
+      epoque: "XIIe siècle",
+      hist: "Édifiée à la fin du XIIe siècle sur le secteur de l'antique Ernaginum, la chapelle Saint-Gabriel constitue un remarquable témoignage de l'art roman provençal. Sa façade est ornée d'un portail sculpté et d'un oculus encadré de symboles évangéliques. Une tour médiévale, distincte de la chapelle, se dresse plus haut sur le site.",
+      etat: "Chapelle et tour classées au titre des monuments historiques en 1840 (protection commune).",
+      vis: "evenement",
+      visNote: "Intérieur ouvert à certaines dates et sur demande ; se renseigner auprès de l'association de sauvegarde de la chapelle."
     }
   ]
 });

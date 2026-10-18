@@ -364,6 +364,24 @@ PATRIMOINE.enregistrer({
       vis: "payant",
       visNote: "Visites guidées d'avril à octobre ; dégustation des vins du domaine, arboretum et forêt en accès libre."
     },
+    {
+      id: "cha:chateau-rochebaron",
+      legacyId: "chateau-rochebaron",
+      theme: "chateaux",
+      nom: "Ruines du château fort de Rochebaron",
+      cat: "cha-ruine",
+      typo: "eperon",
+      commune: "Bas-en-Basset",
+      dept: "43 — Haute-Loire",
+      region: "Auvergne-Rhône-Alpes",
+      ll: [45.31567, 4.10006],
+      prec: "exact",
+      epoque: "XIVe-XVe siècles",
+      hist: "Établi sur une hauteur à Bas-en-Basset, Rochebaron est un ancien château fort dont l'architecture visible relève principalement des XIVe et XVe siècles. Le domaine a perdu progressivement sa fonction résidentielle et défensive. Parmi les vestiges se distinguent la tour des Prisonniers, la tour triangulaire, la chapelle et le bâtiment d'entrée.",
+      etat: "Ruines classées monuments historiques le 11 décembre 1951.",
+      vis: "payant",
+      visNote: "Visite payante selon calendrier ; accès à pied par un chemin d’environ vingt minutes."
+    },
 
     /* ================= BOURGOGNE-FRANCHE-COMTÉ ================= */
     {
@@ -923,6 +941,24 @@ PATRIMOINE.enregistrer({
       etat: "Vaisseau de granit posé sur un récif au milieu de la baie de Morlaix, restauré en 2006 ; casemates, plateforme d'artillerie, ancienne prison d'État (Blanqui y fut détenu).",
       vis: "payant",
       visNote: "Accessible uniquement par navette maritime de Carantec ou Plougasnou, d'avril à septembre ; traversée soumise aux marées et à la météo."
+    },
+    {
+      id: "cha:chateau-largoet",
+      legacyId: "chateau-largoet",
+      theme: "chateaux",
+      nom: "Château de Largoët (Largouët)",
+      cat: "cha-ruine",
+      typo: "gothique",
+      commune: "Elven",
+      dept: "56 — Morbihan",
+      region: "Bretagne",
+      ll: [47.72525, -2.61805],
+      prec: "exact",
+      epoque: "XIIe–XVe siècles",
+      hist: "L'ensemble fortifié de Largoët, également appelé Largouët ou tours d'Elven, conserve un grand donjon et divers vestiges entourés d'ouvrages défensifs. La protection patrimoniale porte sur la tour, les ruines, les douves, les restes de la chapelle, des bâtiments annexes et une partie du domaine. D'origine médiévale, la forteresse conserve des éléments issus de campagnes de construction différentes, notamment le donjon du XIVe siècle et la tour ronde du XVe siècle.",
+      etat: "Donjon classé en 1862 ; ensemble des ruines classé en 1932 ; autres parties inscrites en 2000.",
+      vis: "payant",
+      visNote: "Entrée payante, visite libre selon calendrier saisonnier du gestionnaire."
     },
 
     /* ================= CENTRE-VAL DE LOIRE ================= */
@@ -2106,6 +2142,24 @@ PATRIMOINE.enregistrer({
       etat: "Logis Renaissance à galerie et cheminées monumentales, chapelle, prieuré bénédictin voisin et haut-fourneau du XIXe siècle ; le domaine se visite et accueille un festival musical estival.",
       vis: "payant",
       visNote: "Visites guidées en été (juillet-août) et lors d'événements ; se renseigner sur les horaires avant de venir."
+    },
+    {
+      id: "cha:chateau-saint-ulrich-ribeauville",
+      legacyId: "chateau-saint-ulrich-ribeauville",
+      theme: "chateaux",
+      nom: "Château de Saint-Ulrich",
+      cat: "cha-ruine",
+      typo: "roman",
+      commune: "Ribeauvillé",
+      dept: "68 — Haut-Rhin",
+      region: "Grand Est",
+      ll: [48.20307, 7.30525],
+      prec: "exact",
+      epoque: "Milieu XIIe-XVIe siècles",
+      hist: "Le château de Saint-Ulrich domine Ribeauvillé et compte parmi les trois châteaux forts situés au-dessus de la ville. Son noyau roman, avec donjon carré et logis, remonte au XIIe siècle. Demeure des Ribeaupierre, il fut remanié à plusieurs reprises, avant de perdre sa fonction résidentielle puis de tomber progressivement en ruine après la guerre de Trente Ans. Des consolidations ont préservé ses principaux vestiges.",
+      etat: "Classement ancien au titre des monuments historiques, signalé en 1841 par l'Inventaire.",
+      vis: "libre",
+      visNote: "Accès libre à pied par le circuit des trois châteaux ; sentier de randonnée."
     },
 
     /* ================= HAUTS-DE-FRANCE ================= */
@@ -3444,6 +3498,24 @@ PATRIMOINE.enregistrer({
       vis: "payant",
       visNote: "Ouvert d'avril à début novembre ; sentiers panoramiques et hôtel des peintres à proximité.",
       photo: { fichier: "crozant.jpg", auteur: "Agence Rol. Agence photographique (commanditaire)", licence: "Public domain", source: "https://commons.wikimedia.org/wiki/File:6-7-31_(forteresse_de)_Crozant_-_btv1b532477002.jpg", titre: "6-7-31 (forteresse de) Crozant - btv1b532477002.jpg", date: "1931" }
+    },
+    {
+      id: "cha:chateau-ventadour-moustier",
+      legacyId: "chateau-ventadour-moustier",
+      theme: "chateaux",
+      nom: "Ruines du château de Ventadour",
+      cat: "cha-ruine",
+      typo: "eperon",
+      commune: "Moustier-Ventadour",
+      dept: "19 — Corrèze",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.39187, 2.11685],
+      prec: "exact",
+      epoque: "XIe siècle ; transformations XIIIe-XVe siècles",
+      hist: "Le château de Ventadour occupait un promontoire dominant les environs de Moustier-Ventadour. Développée du XIe au XVe siècle, la forteresse fut l'un des centres de la vicomté de Ventadour, liée à l'histoire des troubadours. Elle conserve aujourd'hui des murs d'enceinte, des tours, des accès fortifiés et les traces d'une chapelle et de bâtiments d'habitation.",
+      etat: "Ruines classées monuments historiques dès 1840.",
+      vis: "payant",
+      visNote: "Visite non guidée ou guidée pendant les périodes d'ouverture ; calendrier saisonnier publié par le site."
     },
 
     /* ================= OCCITANIE ================= */
