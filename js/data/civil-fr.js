@@ -72,6 +72,23 @@ PATRIMOINE.enregistrer({
       vis: "libre",
       visNote: "Pont piéton en accès libre toute l’année ; visites guidées distinctes possibles."
     },
+    {
+      id: "civ:phare-de-l-espiguette",
+      legacyId: "phare-de-l-espiguette",
+      theme: "civil",
+      nom: "Phare de l'Espiguette",
+      cat: "civ-phare",
+      commune: "Le Grau-du-Roi",
+      dept: "30 — Gard",
+      region: "Occitanie",
+      ll: [43.48767, 4.14181],
+      prec: "exact",
+      epoque: "XIXe siècle (1865-1869)",
+      hist: "Le phare de l'Espiguette, au Grau-du-Roi, forme un ensemble homogène construit de 1865 à 1869 sous la direction de l'ingénieur Charles Lenthéric et allumé en 1869. Sa tour carrée de 27 m, en pierre apparente à chaînes d'angle, s'élève au-dessus d'un bâtiment rectangulaire ; une cour close avec puits complète l'ensemble. Il témoigne du grand programme d'équipement des côtes conduit par le service des Phares et Balises.",
+      etat: "Tour, logements, cour, puits et clôture classés monument historique par arrêté du 9 octobre 2012 ; propriété de l'État.",
+      vis: "payant",
+      visNote: "Visite payante du phare et du musée toute l'année, du mercredi au lundi ; réservation conseillée."
+    },
 
     /* ================= GRAND EST ================= */
     {
@@ -137,6 +154,40 @@ PATRIMOINE.enregistrer({
       vis: "payant",
       visNote: "Visite payante du grand phare, distinct de l'ancienne tour et du musée installés sur le site."
     },
+    {
+      id: "civ:phare-de-chassiron",
+      legacyId: "phare-de-chassiron",
+      theme: "civil",
+      nom: "Phare de Chassiron",
+      cat: "civ-phare",
+      commune: "Saint-Denis-d'Oléron",
+      dept: "17 — Charente-Maritime",
+      region: "Nouvelle-Aquitaine",
+      ll: [46.04673, -1.41029],
+      prec: "exact",
+      epoque: "XIXe siècle (1834-1836)",
+      hist: "À l'extrémité nord de l'île d'Oléron, le phare de Chassiron fut construit de 1834 à 1836 sous la conduite de l'ingénieur Lescure Bellerive, pour remplacer une tour de 1685 qui signalait la passe menant à l'arsenal de Rochefort. Sa tour, ornée de trois bandes noires depuis 1936, compte 224 marches. Les anciens logements des gardiens, dans la rotonde basse, accueillent un musée entouré d'un jardin.",
+      etat: "Phare et dépendances classés monument historique par arrêté du 23 octobre 2012 ; propriété de l'État.",
+      vis: "payant",
+      visNote: "Visite payante du phare et du musée, toute l'année sauf le 1er janvier, le 25 décembre et une fermeture en janvier ; horaires saisonniers."
+    },
+    {
+      id: "civ:phare-de-la-coubre",
+      legacyId: "phare-de-la-coubre",
+      theme: "civil",
+      nom: "Phare de la Coubre",
+      cat: "civ-phare",
+      commune: "La Tremblade",
+      dept: "17 — Charente-Maritime",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.69605, -1.2337],
+      prec: "exact",
+      epoque: "Début XXe siècle (1904-1905)",
+      hist: "À la pointe de la Coubre, sur la côte Sauvage, plusieurs feux se succédèrent depuis la fin du XVIIe siècle face à l'avancée des dunes et à l'érosion. La tour actuelle, conçue par les ingénieurs Alexandre et Modelsky, fut commencée en décembre 1904 et allumée en octobre 1905 ; la tour précédente s'écroula en 1907. Haute de 64 m, elle est en béton, de plan cylindrique et du type dit « trompette ».",
+      etat: "Phare et dépendances inscrits monument historique par arrêté du 15 avril 2011 ; propriété de l'État. Une démolition à terme a été annoncée en 2026 selon la presse, sans date fixée.",
+      vis: "payant",
+      visNote: "Phare et écomusée ouverts au public en saison, accès payant ; horaires à vérifier."
+    },
 
     /* ================= NORMANDIE ================= */
     {
@@ -155,6 +206,23 @@ PATRIMOINE.enregistrer({
       etat: "Grand phare recensé par l'Inventaire général du patrimoine culturel, avec l'ancienne tour conservée à proximité.",
       vis: "payant",
       visNote: "Montée payante au phare selon calendrier ; fermeture possible en cas de vent fort ou d’orage."
+    },
+    {
+      id: "civ:phare-de-la-heve",
+      legacyId: "phare-de-la-heve",
+      theme: "civil",
+      nom: "Phare de la Hève",
+      cat: "civ-phare",
+      commune: "Sainte-Adresse",
+      dept: "76 — Seine-Maritime",
+      region: "Normandie",
+      ll: [49.51255, 0.06967],
+      prec: "exact",
+      epoque: "Milieu XXe siècle (1951-1952)",
+      hist: "Au cap de la Hève, les deux phares édifiés en 1775 furent détruits par les bombardements de 1944. Un phare unique fut reconstruit en 1951-1952 par l'architecte Henri Colboc : une tour octogonale en béton, enserrée par un bâtiment technique en pierre de taille et dotée d'un escalier suspendu en calcaire et d'un ascenseur. La maison du gardien et une remise complètent l'ensemble.",
+      etat: "Tour, bâtiment technique, maison du gardien et remise inscrits monument historique par arrêté du 24 novembre 2010 ; propriété de l'État.",
+      vis: "exterieur",
+      visNote: "Aucune visite intérieure signalée."
     },
 
     /* ================= BRETAGNE ================= */
@@ -192,6 +260,108 @@ PATRIMOINE.enregistrer({
       vis: "evenement",
       visNote: "Extérieur visible selon la marée ; visites intérieures surtout en été, à dates particulières ou sur rendez-vous pour groupes."
     },
+    {
+      id: "civ:phare-du-creach",
+      legacyId: "phare-du-creach",
+      theme: "civil",
+      nom: "Phare du Créac'h",
+      cat: "civ-phare",
+      commune: "Ouessant",
+      dept: "29 — Finistère",
+      region: "Bretagne",
+      ll: [48.45923, -5.12904],
+      prec: "exact",
+      epoque: "XIXe siècle (1863) ; bâtiments et lanterne 1937-1941",
+      hist: "Le phare du Créac'h fut demandé en 1857 par le conseil municipal d'Ouessant pour prévenir les dangers de l'écueil de la Jument ; l'avant-projet de l'ingénieur Maitrot de Varennes date de 1859. Sa tour tronconique repose sur un soubassement en granit de Kersanton. Ses bâtiments, agrandis lors de l'électrification de 1888, furent reconstruits en 1940-1941, et sa lanterne, présentée à l'Exposition universelle de 1937, en fit alors le phare le plus puissant du monde selon la notice Mérimée.",
+      etat: "Phare classé monument historique par arrêté du 23 mai 2011, avec ses annexes et son enclos ; propriété de l'État.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées : le musée des Phares et Balises, au pied du phare, a fermé en novembre 2023 pour rénovation, sans réouverture confirmée."
+    },
+    {
+      id: "civ:phare-de-la-jument",
+      legacyId: "phare-de-la-jument",
+      theme: "civil",
+      nom: "Phare de la Jument",
+      cat: "civ-phare",
+      commune: "Ouessant",
+      dept: "29 — Finistère",
+      region: "Bretagne",
+      ll: [48.42223, -5.13389],
+      prec: "exact",
+      epoque: "Début XXe siècle (1904-1911)",
+      hist: "Bâti en mer sur la roche Ar-Gazec, à l'entrée du passage du Fromveur au sud-ouest d'Ouessant, le phare de la Jument fut financé par un legs de Charles-Eugène Potron. Le projet fut approuvé en 1904 et le feu allumé le 15 octobre 1911. Automatisé, le phare fut quitté par ses gardiens en 1991. Les photographies de Jean Guichard, prises pendant la tempête du 21 décembre 1989, l'ont rendu célèbre.",
+      etat: "Inscrit monument historique en 2015, puis classé par arrêté du 20 avril 2017 ; propriété de l'État.",
+      vis: "exterieur",
+      visNote: "Phare en mer non ouvert au public ; visible seulement à distance."
+    },
+    {
+      id: "civ:phare-d-ar-men",
+      legacyId: "phare-d-ar-men",
+      theme: "civil",
+      nom: "Phare d'Ar-Men",
+      cat: "civ-phare",
+      commune: "Île-de-Sein",
+      dept: "29 — Finistère",
+      region: "Bretagne",
+      ll: [48.05013, -4.99777],
+      prec: "exact",
+      epoque: "XIXe siècle (1869-1881 ; achevé en 1897)",
+      hist: "Le phare d'Ar-Men se dresse sur une roche isolée, à l'extrémité ouest de la chaussée de Sein. Son chantier, engagé en 1869 selon la notice Mérimée sous l'autorité de l'ingénieur Léonce Reynaud, constitua un exploit technique et humain sur une roche exiguë. Mis en service en août 1881, l'ouvrage ne fut considéré comme abouti qu'en 1897. Il fut le premier phare automatisé du littoral finistérien, en avril 1990.",
+      etat: "Inscrit monument historique en 2015, puis classé le 20 avril 2017 ; propriété de l'État.",
+      vis: "exterieur",
+      visNote: "Phare en mer sans accès public ; visible seulement à distance."
+    },
+    {
+      id: "civ:phare-d-eckmuhl",
+      legacyId: "phare-d-eckmuhl",
+      theme: "civil",
+      nom: "Phare d'Eckmühl",
+      cat: "civ-phare",
+      commune: "Penmarc'h",
+      dept: "29 — Finistère",
+      region: "Bretagne",
+      ll: [47.798197, -4.372757],
+      prec: "exact",
+      epoque: "Fin XIXe siècle (1892-1897)",
+      hist: "Construit à partir de 1892 et allumé le 17 octobre 1897 à la pointe de Penmarc'h, le phare d'Eckmühl fut financé par la marquise de Blocqueville, fille du maréchal Davout, prince d'Eckmühl. Sa tour octogonale en granit de Kersanton, haute d'environ 65 m, abrite un escalier de bronze et de laiton, un parement intérieur d'opaline et une chambre de veille lambrissée de chêne. L'ancien phare de 1835 subsiste à proximité.",
+      etat: "Inscrit en 2005, puis classé avec l'ancien phare de Penmarc'h par arrêté du 23 mai 2011 ; propriété de l'État.",
+      vis: "payant",
+      visNote: "Montée payante habituellement proposée d'avril à la Toussaint ; fermeture temporaire signalée en septembre 2026, réouverture à vérifier."
+    },
+    {
+      id: "civ:phare-de-kermorvan",
+      legacyId: "phare-de-kermorvan",
+      theme: "civil",
+      nom: "Phare de Kermorvan",
+      cat: "civ-phare",
+      commune: "Le Conquet",
+      dept: "29 — Finistère",
+      region: "Bretagne",
+      ll: [48.362004, -4.789877],
+      prec: "exact",
+      epoque: "XIXe siècle (1849)",
+      hist: "Sur la presqu'île de Kermorvan, au Conquet, ce phare à tour carrée d'environ 18 m fut allumé en 1849 d'après le projet des ingénieurs Plantier et Menu du Mesnil. Il est aligné sur les feux de Lochrist, Trézien et Saint-Mathieu. Automatisé en 1994, il est accessible à pied par la passerelle du Croaë.",
+      etat: "Phare étudié par l'Inventaire général (dossier IA29001132) ; aucune protection au titre des monuments historiques relevée. Presqu'île en site classé, propriété du Conservatoire du littoral.",
+      vis: "evenement",
+      visNote: "Abords accessibles à pied ; visites intérieures ponctuelles, en été et lors des Journées du patrimoine."
+    },
+    {
+      id: "civ:phares-du-cap-frehel",
+      legacyId: "phares-du-cap-frehel",
+      theme: "civil",
+      nom: "Phares du cap Fréhel",
+      cat: "civ-phare",
+      commune: "Plévenon",
+      dept: "22 — Côtes-d'Armor",
+      region: "Bretagne",
+      ll: [48.68386, -2.31883],
+      prec: "exact",
+      epoque: "XVIIIe siècle (tour de 1702) ; milieu XXe siècle (phare actuel)",
+      hist: "Au cap Fréhel, la tour élevée par l'ingénieur Garangeau et mise en service en 1702 fonctionna jusqu'en 1847 ; elle demeure visible près du phare actuel. Le phare de Léonce Reynaud, allumé en 1847, fut détruit en 1944. Son successeur, reconstruit après la guerre par l'architecte Hémar dans un style régionaliste d'inspiration néo-médiévale, conserve un décor intérieur consacré à la faune et à la flore sous-marines.",
+      etat: "Phare en service, ancien phare et bâtiment de l'ancienne sirène classés par arrêté du 23 mai 2011 ; propriété de l'État.",
+      vis: "evenement",
+      visNote: "Ouvertures ponctuelles, notamment lors des Journées du patrimoine ; une ouverture saisonnière est signalée, à vérifier."
+    },
 
     /* ================= ÎLE-DE-FRANCE ================= */
     {
@@ -210,6 +380,114 @@ PATRIMOINE.enregistrer({
       etat: "Halle classée monument historique par arrêté du 13 août 1921.",
       vis: "libre",
       visNote: "Halle et place en accès libre toute l’année."
+    },
+
+    /* ================= PROVENCE-ALPES-CÔTE D'AZUR ================= */
+    {
+      id: "civ:phare-du-planier",
+      legacyId: "phare-du-planier",
+      theme: "civil",
+      nom: "Phare du Planier",
+      cat: "civ-phare",
+      commune: "Marseille",
+      dept: "13 — Bouches-du-Rhône",
+      region: "Provence-Alpes-Côte d'Azur",
+      ll: [43.19823, 5.22985],
+      prec: "exact",
+      epoque: "Milieu XXe siècle (1947-1959)",
+      hist: "L'îlot du Planier, au large de Marseille, porte un feu depuis le Moyen Âge ; le phare actuel est le cinquième. Celui de 1881 ayant été détruit en août 1944, la reconstruction fut confiée à partir de 1947 au cabinet Arbus et Crillon et resta inachevée. La tour-colonne en pierre, haute de 71,66 m, et ses annexes ordonnancées autour d'une vaste cour composent un ensemble monumental.",
+      etat: "Phare, annexes et île classés monument historique par arrêté du 13 septembre 2012 ; propriété de l'État.",
+      vis: "exterieur",
+      visNote: "Île accessible seulement par bateau ; le site et la tour sont fermés au public."
+    },
+    {
+      id: "civ:phare-de-la-garoupe",
+      legacyId: "phare-de-la-garoupe",
+      theme: "civil",
+      nom: "Phare de la Garoupe",
+      cat: "civ-phare",
+      commune: "Antibes",
+      dept: "06 — Alpes-Maritimes",
+      region: "Provence-Alpes-Côte d'Azur",
+      ll: [43.56432, 7.1327],
+      prec: "exact",
+      epoque: "XIXe siècle (1837) ; reconstruction en 1948",
+      hist: "Au cap d'Antibes, un premier feu fut allumé le 1er juillet 1837 sur une tour cylindrique, en partie détruite par les troupes allemandes le 11 août 1944. Le phare actuel, une tour carrée de 26 m en pierres apparentes, fut élevé sur l'ancien soubassement rénové et mis en service en 1948. Fermé au public pendant environ vingt-cinq ans, il a rouvert ses portes en 2023.",
+      etat: "Phare étudié par l'Inventaire général (IA06001351) ; aucune protection au titre des monuments historiques relevée. Propriété de l'État ; ouverture assurée par la Ville d'Antibes.",
+      vis: "libre",
+      visNote: "Ascension gratuite par petits groupes, à certains jours seulement ; jours et horaires à vérifier."
+    },
+
+    /* ================= CORSE ================= */
+    {
+      id: "civ:phare-de-pertusato",
+      legacyId: "phare-de-pertusato",
+      theme: "civil",
+      nom: "Phare de Pertusato",
+      cat: "civ-phare",
+      commune: "Bonifacio",
+      dept: "2A — Corse-du-Sud",
+      region: "Corse",
+      ll: [41.367514, 9.184428],
+      prec: "exact",
+      epoque: "XIXe siècle (1839-1844)",
+      hist: "À la pointe sud de la Corse, face aux bouches de Bonifacio, le phare de Pertusato fut décidé par la Commission des phares en 1839, dans le programme des grands feux de l'île ; sa première optique fut allumée le 15 novembre 1844. Sa tour carrée en pierres apparentes domine un bâtiment rectangulaire, à près de 100 m au-dessus de la mer. Il est automatisé depuis 1985.",
+      etat: "Phare étudié par l'Inventaire général (IA2A001276) ; aucune protection au titre des monuments historiques relevée. Propriété de l'État.",
+      vis: "exterieur",
+      visNote: "Phare non visitable ; abords accessibles par un sentier de falaise."
+    },
+    {
+      id: "civ:phare-des-sanguinaires",
+      legacyId: "phare-des-sanguinaires",
+      theme: "civil",
+      nom: "Phare des Sanguinaires",
+      cat: "civ-phare",
+      commune: "Ajaccio",
+      dept: "2A — Corse-du-Sud",
+      region: "Corse",
+      ll: [41.878791, 8.594361],
+      prec: "exact",
+      epoque: "XIXe siècle (1838-1844)",
+      hist: "Sur la Grande Sanguinaire, à l'entrée du golfe d'Ajaccio, ce phare fut le premier retenu par la commission chargée en 1838 d'éclairer les côtes corses. Les travaux durèrent six ans, les pierres étant acheminées par barge puis à dos d'âne ; la première optique fut allumée le 15 novembre 1844. Sa tour carrée s'élève sur un soubassement crénelé d'allure médiévale.",
+      etat: "Phare étudié par l'Inventaire général (IA2A001274) ; aucune protection au titre des monuments historiques relevée. Propriété de l'État ; état jugé mauvais lors de l'enquête de 2001.",
+      vis: "exterieur",
+      visNote: "Île accessible par des excursions en bateau ; ouverture de l'intérieur du phare non attestée."
+    },
+
+    /* ================= HAUTS-DE-FRANCE ================= */
+    {
+      id: "civ:phare-de-la-canche",
+      legacyId: "phare-de-la-canche",
+      theme: "civil",
+      nom: "Phare de la Canche",
+      cat: "civ-phare",
+      commune: "Le Touquet-Paris-Plage",
+      dept: "62 — Pas-de-Calais",
+      region: "Hauts-de-France",
+      ll: [50.52338, 1.59219],
+      prec: "exact",
+      epoque: "Milieu XXe siècle (1947-1952)",
+      hist: "Deux phares inaugurés en 1852 signalaient l'entrée de la baie de la Canche ; ils furent détruits en septembre 1944. Le phare actuel, dessiné par l'architecte Louis Quételart, fut construit de 1947 à 1952 et allumé dès septembre 1951. Sa tour en briques de parement se dresse au centre d'un jardin octogonal, près du bâtiment de 1852, réparé et conservé.",
+      etat: "Bâtiments inscrits en 2010 ; tour classée monument historique par arrêté du 19 avril 2011 ; propriété de l'État.",
+      vis: "evenement",
+      visNote: "Montée possible certains jours et lors d'événements ; se renseigner auprès de l'office de tourisme."
+    },
+    {
+      id: "civ:phare-du-risban",
+      legacyId: "phare-du-risban",
+      theme: "civil",
+      nom: "Phare du Risban",
+      cat: "civ-phare",
+      commune: "Dunkerque",
+      dept: "59 — Nord",
+      region: "Hauts-de-France",
+      ll: [51.04886, 2.3644],
+      prec: "exact",
+      epoque: "XIXe siècle (1839-1842 ; électrification en 1883)",
+      hist: "Élevé à l'emplacement de l'ancien fort du Risban, le phare de Dunkerque associe une tour cylindrique, dont la maçonnerie fut achevée en 1841, à un bâtiment d'assise carré terminé en 1842. Il reçut l'éclairage électrique et des annexes en 1883. Endommagé pendant la Seconde Guerre mondiale, il conserve sa tour blanche à sommet noir et une lanterne reconstruite après la guerre.",
+      etat: "Phare, bâtiment d'assise et annexe classés monument historique par arrêté du 19 avril 2011 ; propriété de l'État.",
+      vis: "evenement",
+      visNote: "Montée possible selon les périodes ; horaires et conditions à vérifier."
     }
   ]
 });

@@ -420,6 +420,10 @@ const THEMES_ORDRE = ['chateaux', 'religieux', 'templiers', 'civil', 'militaire'
  * badge neutre et grisé, volontairement distinct des badges d'accès, pour qu'il
  * ne se lise pas comme une invitation à la visite.
  *
+ * `inconnu` n'est pas davantage une condition d'accès : aucune source n'établit
+ * si le lieu se visite. Il n'annonce ni ouverture ni fermeture ; visNote dit ce
+ * que l'on sait. Badge neutre par défaut, comme reservation, evenement et prive.
+ *
  * `vis` et `cat` restent INDÉPENDANTS : trois fiches `tpl-memoire` ont une
  * visite réelle (le-bezu, payns, troyes). Ne jamais déduire l'un de l'autre. */
 const VISITES = {
@@ -430,5 +434,6 @@ const VISITES = {
   exterieur: { txt: 'Extérieur visible seulement', cls: 'badge-exterieur' },
   evenement: { txt: 'Ouvertures ponctuelles', cls: 'badge-evenement' },
   prive: { txt: 'Propriété privée — non visitable', cls: 'badge-prive' },
-  memoire: { txt: 'Lieu de mémoire — aucun vestige visible', cls: 'badge-memoire' }
+  memoire: { txt: 'Lieu de mémoire — aucun vestige visible', cls: 'badge-memoire' },
+  inconnu: { txt: 'Visite non renseignée', cls: 'badge-inconnu' }
 };
