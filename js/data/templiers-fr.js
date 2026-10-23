@@ -397,6 +397,23 @@ PATRIMOINE.enregistrer({
       note: "Fortification hospitalière et non templière : l'appellation « église des Templiers » est une tradition locale tenace.",
       photo: { fichier: "luz-saint-sauveur.webp", auteur: "Moahim", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:2019_-_%C3%89glise_des_Templiers_de_Luz-Saint-Sauveur.jpg" }
     },
+    {
+      id: "tpl:commanderie-de-montfrin",
+      legacyId: "commanderie-de-montfrin",
+      theme: "templiers",
+      nom: "Commanderie de Montfrin",
+      cat: "tpl-commanderie",
+      commune: "Montfrin",
+      dept: "30 — Gard",
+      region: "Occitanie",
+      ll: [43.87781, 4.59278],
+      prec: "exact",
+      epoque: "Seconde moitié du XIIe siècle",
+      hist: "Fondée par l'ordre du Temple dans la seconde moitié du XIIe siècle, la commanderie de Montfrin passa, comme la plupart des biens templiers, à l'ordre de l'Hôpital après la dissolution du Temple en 1312. Ses bâtiments, organisés autour d'une cour centrale, sont parvenus jusqu'à nous, avec une tour massive à l'angle nord-ouest. L'église voisine, liée à la commanderie, fait l'objet d'une notice de protection distincte.",
+      etat: "Ancienne commanderie inscrite en totalité, avec les cours et le sol de l'ancien cimetière, à l'exclusion de la salle communale, par arrêté du 1er août 2003 ; propriétés communale et privée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
 
     /* ================= PROVENCE-ALPES-CÔTE D'AZUR ================= */
     {
@@ -578,6 +595,23 @@ PATRIMOINE.enregistrer({
       etat: "Le hameau de Celles conserve l'église de l'ancienne commanderie et des bâtiments remaniés.",
       vis: "libre",
       visNote: "Hameau et abords en accès libre ; église ouverte selon permanences."
+    },
+    {
+      id: "tpl:commanderie-de-lus-la-croix-haute",
+      legacyId: "commanderie-de-lus-la-croix-haute",
+      theme: "templiers",
+      nom: "Commanderie de Lus-la-Croix-Haute",
+      cat: "tpl-commanderie",
+      commune: "Lus-la-Croix-Haute",
+      dept: "26 — Drôme",
+      region: "Auvergne-Rhône-Alpes",
+      ll: [44.66195, 5.67769],
+      prec: "exact",
+      epoque: "XIIe-XIIIe siècles",
+      hist: "De l'ancienne commanderie du Temple, citée pour la première fois en 1155, subsiste une partie des élévations de l'église, datées des XIIe et XIIIe siècles ; les autres bâtiments ont disparu, leurs fondations étant sans doute encore en place. À la suppression de l'ordre du Temple, la commanderie fut reprise par l'ordre de Saint-Jean de Jérusalem ; à la fin du XVe siècle, Lus fut unie à une commanderie du Valdrôme.",
+      etat: "Ruines de l'ancienne commanderie (église et bâtiments conventuels) et leur parcelle inscrites par arrêté du 26 avril 2005 ; propriété privée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     },
 
     /* ================= BOURGOGNE-FRANCHE-COMTÉ ================= */
@@ -816,6 +850,23 @@ PATRIMOINE.enregistrer({
       etat: "Chapelle gothique simple et émouvante, entretenue ; le village est aussi marqué par la mémoire des combats de 1914-1918 (bois d'Ailly).",
       vis: "exterieur",
       visNote: "Extérieur en accès libre ; ouverture de l'intérieur selon permanences communales."
+    },
+    {
+      id: "tpl:commanderie-du-tempelhof",
+      legacyId: "commanderie-du-tempelhof",
+      theme: "templiers",
+      nom: "Commanderie du Tempelhof",
+      cat: "tpl-commanderie",
+      commune: "Bergheim",
+      dept: "68 — Haut-Rhin",
+      region: "Grand Est",
+      ll: [48.20914, 7.34438],
+      prec: "exact",
+      epoque: "XIIIe siècle (fondation en 1257) ; logis reconstruit en 1557-1559",
+      hist: "Le premier établissement des Templiers à Bergheim, attesté en 1257, fut dévolu aux chevaliers de Saint-Jean après 1312. Dévasté pendant la guerre des Paysans en 1525, il fut rebâti de 1557 à 1559 ; un pilier et plusieurs linteaux portent ces dates et les armoiries de la commanderie. Partiellement détruit dans la seconde moitié du XIXe siècle, devenu ferme de vigneron, il a retrouvé son volume du XVIe siècle.",
+      etat: "Façades, toiture avec la charpente, dispositions et décors intérieurs anciens et cave inscrits par arrêté du 25 février 2000 ; propriété privée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     },
 
     /* ================= ÎLE-DE-FRANCE ================= */
@@ -1140,6 +1191,40 @@ PATRIMOINE.enregistrer({
       vis: "evenement",
       visNote: "Visites lors d'ouvertures associatives et des Journées du patrimoine ; extérieurs visibles.",
       photo: { fichier: "coudrie.webp", auteur: "Melutopia", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Commanderie_de_Coudrie_Challans.jpg" }
+    },
+    {
+      id: "tpl:chapelle-des-templiers-de-clisson",
+      legacyId: "chapelle-des-templiers-de-clisson",
+      theme: "templiers",
+      nom: "Chapelle des Templiers de Clisson",
+      cat: "tpl-eglise",
+      commune: "Clisson",
+      dept: "44 — Loire-Atlantique",
+      region: "Pays de la Loire",
+      ll: [47.08052, -1.27575],
+      prec: "exact",
+      epoque: "Fin XIIe siècle ; avant-nef du XVe siècle",
+      hist: "Dite Madeleine du Temple, cette église romane de la fin du XIIe siècle est le dernier édifice d'une commanderie templière attestée à Clisson avant 1213, qui comptait aussi un manoir, un four banal, un pressoir et une aumônerie. Les Hospitaliers de Saint-Jean y succédèrent aux Templiers après 1312. Nef, chœur et abside sont voûtés ; un petit campanile surmonte la façade. Seul le sanctuaire échappa à la destruction de la commanderie en 1794.",
+      etat: "Chapelle et ruines des bâtiments qui la prolongent classées par arrêté du 11 juillet 1975 ; restaurée dans les années 1970-1980.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:commanderie-du-gue-lian",
+      legacyId: "commanderie-du-gue-lian",
+      theme: "templiers",
+      nom: "Commanderie du Gué-Lian",
+      cat: "tpl-commanderie",
+      commune: "Moitron-sur-Sarthe",
+      dept: "72 — Sarthe",
+      region: "Pays de la Loire",
+      ll: [48.254, 0.04596],
+      prec: "commune",
+      epoque: "XIIIe siècle ; remaniements des XVe-XVIIe siècles",
+      hist: "Cette commanderie de l'ordre du Temple, l'une des plus anciennes du Maine, daterait de la fin du XIIe siècle ; son nom apparaît régulièrement dans les textes à partir de 1231. Rattachée en 1312 à l'ordre de Saint-Jean de Jérusalem, elle fut remaniée aux XVe, XVIe et XVIIe siècles. Elle conserve une chapelle du XIIIe siècle dédiée à sainte Émérence, ornée de peintures murales, ainsi que des bâtiments des XIIIe, XIVe, XVIe et XVIIe siècles.",
+      etat: "Chapelle, bâtiment dit « le temple » et logis du commandeur avec ses deux pavillons inscrits par arrêté du 21 décembre 2005 ; propriété privée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     },
 
     /* ================= NOUVELLE-AQUITAINE ================= */
