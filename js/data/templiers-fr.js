@@ -414,6 +414,23 @@ PATRIMOINE.enregistrer({
       vis: "inconnu",
       visNote: "Conditions de visite non confirmées."
     },
+    {
+      id: "tpl:commanderie-de-cazouls-d-herault",
+      legacyId: "commanderie-de-cazouls-d-herault",
+      theme: "templiers",
+      nom: "Commanderie de Cazouls-d'Hérault",
+      cat: "tpl-commanderie",
+      commune: "Cazouls-d'Hérault",
+      dept: "34 — Hérault",
+      region: "Occitanie",
+      ll: [43.5064, 3.45658],
+      prec: "exact",
+      epoque: "XVe siècle ; XVIIe siècle ; XVIIIe siècle",
+      hist: "Le château de Cazouls est une ancienne commanderie du Temple dont les fondations remontent au XIIIe siècle. Remanié aux XVe, XVIIe et XVIIIe siècles, il organise autour d'un quadrilatère des corps de bâtiments d'époques différentes ; au XVIIIe siècle fut ajouté un corps ouest sur une haute terrasse portée par des caves voûtées d'arêtes. Une tour ronde en grande partie bâtie de basalte, couronnée de mâchicoulis, marque l'angle des façades est et nord.",
+      etat: "Monument historique : inscription du 27 juin 2011. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
 
     /* ================= PROVENCE-ALPES-CÔTE D'AZUR ================= */
     {
@@ -540,6 +557,23 @@ PATRIMOINE.enregistrer({
       etat: "Pas de monument identifié : souvenir documentaire et toponymique dans le centre ancien.",
       vis: "memoire",
       visNote: "Vieille ville en accès libre ; intérêt surtout historique."
+    },
+    {
+      id: "tpl:chapelle-des-templiers-avignon",
+      legacyId: "chapelle-des-templiers-avignon",
+      theme: "templiers",
+      nom: "Chapelle des Templiers d'Avignon",
+      cat: "tpl-eglise",
+      commune: "Avignon",
+      dept: "84 — Vaucluse",
+      region: "Provence-Alpes-Côte d'Azur",
+      ll: [43.94843, 4.80433],
+      prec: "exact",
+      epoque: "Seconde moitié du XIIIe siècle",
+      hist: "Comptée parmi les plus beaux édifices gothiques de Provence, la chapelle dépendait de la maison des Templiers d'Avignon, mentionnée pour la première fois en 1174 ; l'église fut achevée en 1281. Vendue en 1793, l'ancienne commanderie vit son église transformée en écurie surmontée d'un grenier à foin ; la partie supérieure fut aménagée en 1876 par Anselme Mathieu en grande salle néogothique, puis les bâtiments devinrent une hôtellerie.",
+      etat: "Monument historique : classement du 16 mars 2000. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     },
 
     /* ================= AUVERGNE-RHÔNE-ALPES ================= */
@@ -1002,6 +1036,40 @@ PATRIMOINE.enregistrer({
       note: "La détention de 1308 est un fait documenté ; l'attribution des graffiti de la tour de Coudray aux Templiers reste en revanche débattue.",
       photo: { fichier: "chinon.webp", auteur: "Fab5669", licence: "CC BY-SA 4.0", source: "https://commons.wikimedia.org/wiki/File:Chinon_-_forteresse_royale_07.jpg" }
     },
+    {
+      id: "tpl:commanderie-des-bordes-jussy",
+      legacyId: "commanderie-des-bordes-jussy",
+      theme: "templiers",
+      nom: "Commanderie des Bordes",
+      cat: "tpl-commanderie",
+      commune: "Jussy-le-Chaudrier",
+      dept: "18 — Cher",
+      region: "Centre-Val de Loire",
+      ll: [47.12504, 2.92358],
+      prec: "exact",
+      epoque: "Fin du XIIIe siècle – début du XIVe siècle ; fin du XVe siècle – début du XVIe siècle",
+      hist: "La commanderie templière des Bordes est mentionnée pour la première fois en 1170 ; elle fut dévolue aux Hospitaliers après 1312. Sa chapelle date de la fin du XIIIe ou du début du XIVe siècle, sa tour de la fin du XVe ou du début du XVIe siècle ; le château, ou maison, servait d'habitation aux commandeurs. Éprouvée pendant les guerres de Religion, restaurée au XVIIe siècle, en 1672 et en 1733, la commanderie fut supprimée en 1791.",
+      etat: "Monument historique (protection partielle) : inscription du 19 juillet 1995. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:commanderie-de-l-hospital-du-fresne",
+      legacyId: "commanderie-de-l-hospital-du-fresne",
+      theme: "templiers",
+      nom: "Commanderie de l'Hospital-du-Fresne",
+      cat: "tpl-commanderie",
+      commune: "Blancafort",
+      dept: "18 — Cher",
+      region: "Centre-Val de Loire",
+      ll: [47.51522, 2.55099],
+      prec: "exact",
+      epoque: "Milieu du XIIe siècle",
+      hist: "Commanderie templière édifiée du milieu du XIIe siècle à 1312, puis commanderie de Malte jusqu'à la fin du XVIIIe siècle, l'Hospital-du-Fresne est aujourd'hui un château. Le logis fut reconstruit et fortifié en 1469 pour le commandeur Jean de Bridiers ; fossé, pont-levis et dépendances furent détruits à la fin du XVIIIe siècle, et l'ensemble restauré au milieu du XIXe siècle. La chapelle, édifiée vers 1160, reçut au début du XVIe siècle des peintures murales figurant le Christ en majesté entouré des symboles des évangélistes.",
+      etat: "Monument historique : inscription du 19 février 1926. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
 
     /* ================= HAUTS-DE-FRANCE ================= */
     {
@@ -1076,6 +1144,23 @@ PATRIMOINE.enregistrer({
       vis: "memoire",
       visNote: "Commune en accès libre ; intérêt purement mémoriel."
     },
+    {
+      id: "tpl:commanderie-de-moisy",
+      legacyId: "commanderie-de-moisy",
+      theme: "templiers",
+      nom: "Commanderie de Moisy",
+      cat: "tpl-commanderie",
+      commune: "Montigny-l'Allier",
+      dept: "02 — Aisne",
+      region: "Hauts-de-France",
+      ll: [49.11461, 3.08322],
+      prec: "exact",
+      epoque: "XIIIe siècle ; XVIe siècle",
+      hist: "Ancienne commanderie de Templiers, Moisy forme un ensemble remarquable parmi les commanderies picardes parvenues jusqu'à nous. Il en subsiste une exceptionnelle chapelle du XIIIe siècle, un logis Renaissance qui conserve plusieurs cheminées de la même époque, des dépendances et une porterie située à 50 mètres.",
+      etat: "Monument historique : classements du 25 octobre 2004, du 25 mars 2005 ; inscription du 23 septembre 2003. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
 
     /* ================= NORMANDIE ================= */
     {
@@ -1132,6 +1217,57 @@ PATRIMOINE.enregistrer({
       visNote: "Parc en accès libre ; visites guidées du donjon et de la tour du Prisonnier en saison (office de tourisme).",
       note: "La garde templière de 1158 est historique ; le « trésor de Gisors » et l'attribution des graffiti aux Templiers relèvent de la légende.",
       photo: { fichier: "gisors.webp", auteur: "Vsovinsky", licence: "CC BY-SA 3.0", source: "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_de_Gisors.JPG" }
+    },
+    {
+      id: "tpl:commanderie-de-renneville",
+      legacyId: "commanderie-de-renneville",
+      theme: "templiers",
+      nom: "Commanderie de Saint-Étienne-de-Renneville",
+      cat: "tpl-commanderie",
+      commune: "Sainte-Colombe-la-Commanderie",
+      dept: "27 — Eure",
+      region: "Normandie",
+      ll: [49.09727, 0.94502],
+      prec: "exact",
+      epoque: "Dernier quart du XVe siècle ; XVIIIe siècle",
+      hist: "L'un des plus riches établissements des ordres militaires en Normandie, la commanderie naquit d'un don fait aux Templiers vers 1150 par Richard d'Harcourt, seigneur de Renneville, et prit son essor au XIIIe siècle ; à l'abolition du Temple, elle revint aux Hospitaliers. Elle comprenait un premier enclos avec le logis du commandeur de la fin du XVe siècle, démoli en 1847, et une chapelle disparue au début du XIXe siècle, puis une vaste basse-cour bordée de granges, bergeries, cellier et pressoir, dont subsistent notamment la grange et le four.",
+      etat: "Monument historique : inscription du 23 octobre 1992. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:commanderie-de-courval",
+      legacyId: "commanderie-de-courval",
+      theme: "templiers",
+      nom: "Commanderie de Courval",
+      cat: "tpl-eglise",
+      commune: "Valdallière (Vassy)",
+      dept: "14 — Calvados",
+      region: "Normandie",
+      ll: [48.86916, -0.64162],
+      prec: "exact",
+      epoque: "Milieu du XIIe siècle ; premier quart du XIIIe siècle ; XVe siècle (?) ; XVIe siècle (?)",
+      hist: "La commanderie templière de Courval fut fondée vers 1150 par la famille de Vassy, puis transférée en 1307 aux Hospitaliers de Saint-Jean-de-Jérusalem, qui la gardèrent jusqu'à la Révolution. Sa chapelle associe un chœur roman, une nef du début du XIIIe siècle et une charpente du XVe ou du XVIe siècle. Utilisée comme grange jusqu'en 1991, elle a conservé ses peintures murales des XVe ou XVIe siècles.",
+      etat: "Monument historique : classement du 2 septembre 1994. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:ferme-des-templiers-genetey",
+      legacyId: "ferme-des-templiers-genetey",
+      theme: "templiers",
+      nom: "Manoir des Templiers du Genetey",
+      cat: "tpl-commanderie",
+      commune: "Saint-Martin-de-Boscherville",
+      dept: "76 — Seine-Maritime",
+      region: "Normandie",
+      ll: [49.43396, 0.96719],
+      prec: "exact",
+      epoque: "XIIIe siècle ; XVIe siècle",
+      hist: "Le manoir du hameau du Genetey fut bâti peu avant 1214 par les Templiers de la commanderie de Saint-Vaubourg, au Val-de-la-Haye. À la suppression de l'ordre, au début du XIVe siècle, il revint aux moines de Saint-Martin-de-Boscherville, qui le baillèrent à un fermier pendant tout l'Ancien Régime ; il devint exploitation agricole après la Révolution. Il comprend un logis de calcaire à étage avec une tourelle d'escalier, une grange à pans de bois, un pressoir et des dépendances dans un enclos.",
+      etat: "Monument historique : inscriptions du 3 mai 1974, du 3 février 1999. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     },
 
     /* ================= BRETAGNE ================= */
@@ -1223,6 +1359,23 @@ PATRIMOINE.enregistrer({
       epoque: "XIIIe siècle ; remaniements des XVe-XVIIe siècles",
       hist: "Cette commanderie de l'ordre du Temple, l'une des plus anciennes du Maine, daterait de la fin du XIIe siècle ; son nom apparaît régulièrement dans les textes à partir de 1231. Rattachée en 1312 à l'ordre de Saint-Jean de Jérusalem, elle fut remaniée aux XVe, XVIe et XVIIe siècles. Elle conserve une chapelle du XIIIe siècle dédiée à sainte Émérence, ornée de peintures murales, ainsi que des bâtiments des XIIIe, XIVe, XVIe et XVIIe siècles.",
       etat: "Chapelle, bâtiment dit « le temple » et logis du commandeur avec ses deux pavillons inscrits par arrêté du 21 décembre 2005 ; propriété privée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:commanderie-de-feolette",
+      legacyId: "commanderie-de-feolette",
+      theme: "templiers",
+      nom: "Commanderie de Féolette",
+      cat: "tpl-eglise",
+      commune: "Saint-Étienne-de-Brillouet",
+      dept: "85 — Vendée",
+      region: "Pays de la Loire",
+      ll: [46.49956, -0.99813],
+      prec: "exact",
+      epoque: "XIIe siècle ; XIIIe siècle",
+      hist: "Féolette relevait de l'ordre du Temple avant d'être réunie à l'ordre de Saint-Jean-de-Jérusalem. Sa chapelle, des XIIe et XIIIe siècles, fut agrandie au XVe siècle puis transformée au XVIIe siècle.",
+      etat: "Monument historique (protection partielle) : inscription du 30 novembre 1994. Le détail des parties protégées figure dans la notice Mérimée.",
       vis: "inconnu",
       visNote: "Conditions de visite non confirmées."
     },
@@ -1427,6 +1580,91 @@ PATRIMOINE.enregistrer({
       etat: "Chapelle gothique devenue église paroissiale, dans la lignée architecturale de Paulhac.",
       vis: "libre",
       visNote: "Église ouverte selon permanences ; village en accès libre."
+    },
+    {
+      id: "tpl:commanderie-du-courreau",
+      legacyId: "commanderie-du-courreau",
+      theme: "templiers",
+      nom: "Commanderie du Courreau",
+      cat: "tpl-commanderie",
+      commune: "Maine-de-Boixe",
+      dept: "16 — Charente",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.84203, 0.17688],
+      prec: "exact",
+      epoque: "XIIe siècle",
+      hist: "La commanderie templière semble remonter à la seconde moitié du XIIe siècle, date de construction de sa chapelle ; les textes la mentionnent pour la première fois en 1207. Après la chute du Temple, elle passa aux Hospitaliers de Saint-Jean-de-Jérusalem ; désertée pendant la guerre de Cent Ans, ruinée par les guerres de Religion, elle devint un membre de la commanderie du Fouilloux. Vendue à la Révolution et abandonnée, elle s'est dégradée : de la petite chapelle romane subsistent le mur oriental ajouré d'un triplet et une partie des murs gouttereaux.",
+      etat: "Monument historique : inscription du 14 mars 2013. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:commanderie-de-malleyrand",
+      legacyId: "commanderie-de-malleyrand",
+      theme: "templiers",
+      nom: "Commanderie de Malleyrand",
+      cat: "tpl-eglise",
+      commune: "Yvrac-et-Malleyrand",
+      dept: "16 — Charente",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.73095, 0.46445],
+      prec: "exact",
+      epoque: "XIIe siècle",
+      hist: "Fondation templière de la fin du XIIe siècle relevant du diocèse d'Angoulême, la commanderie Saint-Jean-Baptiste de Malleyrand conserve sa chapelle. De plan rectangulaire à trois travées, elle garde les colonnes qui portaient les doubleaux de sa voûte, remplacée au XXe siècle par un plafond lambrissé, et leurs chapiteaux à feuilles d'acanthe. Sa façade s'ouvre par trois portails à archivoltes tressées et est dominée par un clocher-arcade à une baie.",
+      etat: "Monument historique : classement du 4 mars 1994. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:eglise-de-la-commanderie-de-charrieres",
+      legacyId: "eglise-de-la-commanderie-de-charrieres",
+      theme: "templiers",
+      nom: "Église de la commanderie de Charrières",
+      cat: "tpl-eglise",
+      commune: "Saint-Moreil",
+      dept: "23 — Creuse",
+      region: "Nouvelle-Aquitaine",
+      ll: [45.84966, 1.71036],
+      prec: "exact",
+      epoque: "Moyen Âge",
+      hist: "À environ 1,5 km à l'est du bourg de Saint-Moreil, ces vestiges d'église sont les seuls témoins de la commanderie templière de Charrières, l'un des quatre établissements du Temple de la Marche limousine avec Paulhac, Blaudeix et Chamberaud. Charrières apparaît vers 1177 dans le cartulaire de l'abbaye cistercienne du Palais-Notre-Dame, puis dans un accord passé en 1282 entre l'évêque de Limoges et le précepteur du Temple en Limousin. Charrières formait une paroisse, ensuite réunie à celle de Saint-Moreil.",
+      etat: "Monument historique : inscription du 28 mai 2025. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:chapelle-de-la-bussiere-rapy",
+      legacyId: "chapelle-de-la-bussiere-rapy",
+      theme: "templiers",
+      nom: "Chapelle templière de la Bussière-Rapy",
+      cat: "tpl-eglise",
+      commune: "Saint-Amand-Magnazeix",
+      dept: "87 — Haute-Vienne",
+      region: "Nouvelle-Aquitaine",
+      ll: [46.17795, 1.3888],
+      prec: "exact",
+      epoque: "XIIe siècle",
+      hist: "Cette église, mentionnée dans les pièces du procès du Temple, était l'un des cinq membres de la commanderie de Morterolles ; la Bussière-Rapy comprenait aussi deux métairies et deux moulins. En ruine au XVIIe siècle, l'église perdit la voûte de sa nef avant 1615, puis celle du chœur ; vendue en 1804, elle fut désaffectée. Son plan rectangulaire à nef unique, amputé à l'ouest, conserve un chevet percé d'un triplet roman, un portail nord à mouluration limousine et des peintures murales.",
+      etat: "Monument historique : inscription du 28 janvier 1986. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
+    },
+    {
+      id: "tpl:puy-fort-eguille-nerac",
+      legacyId: "puy-fort-eguille-nerac",
+      theme: "templiers",
+      nom: "Établissement templier de Puy-Fort-Éguille",
+      cat: "tpl-commanderie",
+      commune: "Nérac",
+      dept: "47 — Lot-et-Garonne",
+      region: "Nouvelle-Aquitaine",
+      ll: [44.10838, 0.38088],
+      prec: "exact",
+      epoque: "XIIe siècle ; XIIIe siècle",
+      hist: "Cet ancien établissement templier dépendait de la commanderie d'Argentens. L'ensemble comprend une église du XIIe siècle, un logis du XIIIe siècle et un pigeonnier, dernier vestige de communs disposés en U. Endommagés pendant les guerres de Religion, les bâtiments furent restaurés au XVIIe siècle ; ils témoignent de la présence successive des Templiers, des Hospitaliers et des chevaliers de Malte en Néracais.",
+      etat: "Monument historique : inscription du 30 mai 2006. Le détail des parties protégées figure dans la notice Mérimée.",
+      vis: "inconnu",
+      visNote: "Conditions de visite non confirmées."
     }
   ]
 });
