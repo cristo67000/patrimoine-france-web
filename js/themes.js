@@ -159,11 +159,12 @@ const G_RENAISSANCE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2
 const G_CLASSIQUE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 22 9v1.6H2V9Zm-8 9h2v6H4Zm4.5 0h2v6h-2Zm4.5 0h2v6h-2Zm4.5 0h2v6h-2ZM2 19.4h20V21H2Z"/></svg>';
 /* Thème religieux : deux tours et une rose pour la cathédrale, une galerie de
  * cloître pour l'abbaye, un clocher unique pour l'église, un simple oratoire
- * pour la chapelle. */
+ * pour la chapelle, une étoile de David pour la synagogue. */
 const G_CATHEDRALE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V8l2-2 2 2v2h1V6l3-4 3 4v4h1V8l2-2 2 2v13h-6v-4a2 2 0 0 0-4 0v4Z"/><circle cx="12" cy="10.5" r="1.5" fill="#fff" opacity=".85"/></svg>';
 const G_ABBAYE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2h2v3h3v2h-3v4h5v10h-4v-4a2 2 0 0 0-4 0v4H3V11h5V7H5V5h3V2h3Z" opacity=".95"/><path d="M5.5 13.5h2v3h-2Zm3.5 0h2v3H9Z" fill="#fff" opacity=".7"/></svg>';
 const G_EGLISE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 2h2v2.5h2.5v2H13v3l5 3v9h-4v-3.5a2 2 0 0 0-4 0V21H6v-9l5-3v-3H8.5v-2H11Z"/></svg>';
 const G_CHAPELLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.2 3h1.6v2h1.7v1.6h-1.7v1.7L19 13v8h-4.6v-3a2.4 2.4 0 0 0-4.8 0v3H5v-8l6.2-4.7V6.6H9.5V5h1.7Z"/></svg>';
+const G_SYNAGOGUE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 5h6l-3 5 3 5h-6l-3 5-3-5H3l3-5-3-5h6Z"/></svg>';
 /* Thème templier : la croix pattée pour le lieu de mémoire, un logis à croix
  * pour la commanderie, une chapelle à croix pour l'église, une enceinte à tours
  * pour le site fortifié. */
@@ -261,6 +262,11 @@ const THEMES = {
         nom: 'Chapelle ou baptistère',
         pluriel: 'Chapelles & baptistères',
         c: '#0f8f8f', ordre: 4, glyphe: G_CHAPELLE
+      },
+      'rel-synagogue': {
+        nom: 'Synagogue',
+        pluriel: 'Synagogues',
+        c: '#8a4f7d', ordre: 5, glyphe: G_SYNAGOGUE
       }
     }
   },
