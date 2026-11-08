@@ -175,8 +175,8 @@ const G_ENCEINTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21V8
 /* Thème civil : une rangée de maisons pour la place ou l'ensemble urbain, un
  * hôtel de ville à beffroi et horloge pour l'édifice public, un hôtel à
  * cheminées pour la demeure, des sheds et une cheminée d'usine pour le
- * patrimoine industriel, une tour à lanterne et faisceaux pour le phare ou feu
- * maritime, une tour à calotte et quatre ailes en X pour le moulin, une tour
+ * patrimoine industriel, une tour à lanterne et faisceaux pour le phare ou la
+ * signalisation maritime, une tour à calotte et quatre ailes en X pour le moulin, une tour
  * effilée portant une plateforme à garde-corps pour la tour ou le belvédère
  * d'observation, un tablier à deux arches sommé d'une tour crénelée pour le
  * pont historique, fortifié ou non. Ouvertures évidées (fill-rule="evenodd") :
@@ -195,12 +195,16 @@ const G_PONT = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="eve
  * l'enceinte, un fort bastionné en étoile pour le fort ou la citadelle, une
  * cloche cuirassée à créneau de tir pour la Ligne Maginot, un blockhaus à
  * antenne pour les autres ouvrages modernes, une tour isolée à parapet
- * crénelé en encorbellement et porte surélevée pour la tour défensive. */
+ * crénelé en encorbellement et porte surélevée pour la tour défensive, un mât
+ * à vergue et bras de signaux dressé sur la maison des guetteurs pour le
+ * sémaphore ou la vigie. Ouvertures évidées (fill-rule="evenodd") ; vergue et
+ * bras s'arrêtent au bord du mât, sans le recouvrir, pour rester pleins. */
 const G_PORTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21V5h2v2h2V5h2v2h2v3h4V7h2V5h2v2h2V5h2v16h-7v-5a3 3 0 0 0-6 0v5Z"/></svg>';
 const G_BASTION = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.4l3.3 5.7 6.4 1.3-4.4 4.9.7 6.6-6-2.7-6 2.7.7-6.6-4.4-4.9 6.4-1.3Zm0 8.2a2 2 0 1 0 0 4 2 2 0 1 0 0-4Z"/></svg>';
 const G_CLOCHE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 21v-5h3v-2a6 6 0 0 1 12 0v2h3v5ZM8.5 12h7v1.6h-7Z"/></svg>';
 const G_BLOCKHAUS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M2 21l2.5-6H7v-3h10v3h2.5L22 21ZM9 16.5h6v1.6H9Z"/><path d="M11.3 12V4h1.4v8Z"/></svg>';
 const G_GUET = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6 3h3v1.6h2V3h2v1.6h2V3h3v4l-1.5 1.5 1 12.5h-11l1-12.5L6 7Zm5 13v-2.4a1 1 0 0 1 2 0V16Z"/></svg>';
+const G_SEMAPHORE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3.5 21v-6.2L12 12l8.5 2.8V21Zm7.3 0v-3a1.2 1.2 0 0 1 2.4 0v3ZM6 16.5h2v2H6Zm10 0h2v2h-2ZM11.3 12V2.5h1.4V12ZM6.5 3.6h4.8V5H6.5Zm6.2 0h4.8V5h-4.8Zm-1.4 4-4.7 2.8.7 1.2 4-2.4Zm1.4.8 4.7-2.2.6 1.2-5.3 2.5Z"/></svg>';
 
 const THEMES = {
   chateaux: {
@@ -342,7 +346,7 @@ const THEMES = {
         c: '#a0442a', ordre: 4, glyphe: G_USINE
       },
       'civ-phare': {
-        nom: 'Phare ou feu maritime',
+        nom: 'Phare ou signalisation maritime',
         pluriel: 'Phares & feux maritimes',
         c: '#005e9e', ordre: 5, glyphe: G_PHARE
       },
@@ -374,7 +378,7 @@ const THEMES = {
 
   /* Patrimoine militaire : la Ligne Maginot en est une catégorie, non un thème
    * distinct. Famille kaki, olive, acier et anthracite ; bleu acier clair pour
-   * la tour défensive. */
+   * la tour défensive ; olive grisé pour le sémaphore ou la vigie. */
   militaire: {
     id: 'militaire',
     nom: 'Patrimoine militaire',
@@ -410,6 +414,14 @@ const THEMES = {
         nom: 'Tour défensive',
         pluriel: 'Tours défensives',
         c: '#4e6e8e', ordre: 5, glyphe: G_GUET
+      },
+      'mil-semaphore': {
+        /* Sémaphore ou vigie de surveillance côtière, relevant de la Marine ;
+         * un dispositif civil de signalisation (mât de pilotes, signaux d'un
+         * port de commerce) relève de civ-phare. */
+        nom: 'Sémaphore ou vigie',
+        pluriel: 'Sémaphores & vigies',
+        c: '#5f6a3c', ordre: 6, glyphe: G_SEMAPHORE
       }
     }
   }

@@ -639,7 +639,7 @@
     el('p-top').hidden = !s.top;
     el('p-nom').textContent = s.nom;
     el('p-lieu').textContent = s.commune + ' — ' + s.dept + ' · ' + s.region +
-      (s.prec === 'commune' ? ' · position au bourg le plus proche' : '');
+      (s.prec === 'commune' ? ' · Localisation indicative' : '');
     renderPhoto(s);
     const v = VISITES[s.vis] || VISITES.exterieur;
     el('p-badge').textContent = v.txt;
